@@ -6,11 +6,12 @@ public class SleepyPanda extends Panda {
         System.out.println("SleepyPanda CTOR");
     }
 
-    public void sofaActivated(Sofa s){
+    public boolean sofaActivated(Sofa s) {
         System.out.println("SleepyPanda.sofaActivated()");
+        return false; //default return value
     }
 
-    public void sleep (Sofa s){
+    private void sleep(Sofa s) {
         System.out.println("SleepyPanda.sleep()");
     }
 }

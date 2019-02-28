@@ -22,17 +22,14 @@ public class Floor {
         System.out.println("Floor.addField()");
     }
 
-    public void addFieldElement(FieldElement fe){
-        System.out.println("Floor.addFieldElement()");
-    }
-
-    public void newTurn(){
-        System.out.println("Floor.newTurn()");
+    public void add(Activateable a) {
+        System.out.println("Floor.addActivateable()");
     }
 
     public void add(Orangutan o){
         System.out.println("Floor.add()");
     }
+
 
     public void add(Panda p){
         System.out.println("Floor.add()");
@@ -46,8 +43,13 @@ public class Floor {
         System.out.println("Floor.remove()");
     }
 
+    public void newTurn() {
+        System.out.println("Floor.newTurn()");
+    }
+
     public Field waitForStep(Orangutan o){
         System.out.println("Floor.waitForStep()");
         return  null; //default return value
     }
+
 }
