@@ -38,8 +38,4 @@ public class Orangutan extends Steppable {
         System.out.println("Orangutan.incScore()");
     }
 
-    public void releaseFollower() {
-        System.out.println("Orangutan.releaseFollower");
-    }
-
 }

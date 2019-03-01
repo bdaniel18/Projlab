@@ -43,4 +43,8 @@ public abstract class Panda extends Steppable {
         System.out.println("Panda.hitBy()");
         return false; //default return value
     }
+
+    public void releaseFollower() {
+        System.out.println("Panda.releaseFollower()");
+    }
 }
