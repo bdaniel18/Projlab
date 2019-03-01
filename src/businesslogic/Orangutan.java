@@ -6,6 +6,7 @@ public class Orangutan extends Steppable {
     private Floor floor;
 
     public Orangutan() {
+        System.out.println("Orangutan CTOR");
         score = 0; //default
         floor = null;
     }

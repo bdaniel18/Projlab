@@ -6,9 +6,11 @@ public class Game {
 
     private Game(){
         instance = null;
+        System.out.println("Game CTOR");
     }
 
     public static Game getInstance() {
+        System.out.println("Game.getInstance()");
         if (instance == null)
             instance = new Game();
         return instance;

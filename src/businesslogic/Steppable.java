@@ -16,8 +16,8 @@ public abstract class Steppable extends FieldElement {
         System.out.println("Steppable.setStepped()");
     }
 
-    public boolean getStepped() {
-        System.out.println("Steppable.getStepped()");
+    public boolean isStepped() {
+        System.out.println("Steppable.isStepped()");
         return stepped;
     }
 
