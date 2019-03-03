@@ -44,7 +44,11 @@ public abstract class Panda extends Steppable {
         return false; //default return value
     }
 
-    public void releaseFollower() {
-        System.out.println("Panda.releaseFollower()");
+    public void releaseBoth() {
+        System.out.println("Panda.releaseBoth()");
+    }
+
+    public void die() {
+        System.out.println("Panda.die()");
     }
 }
