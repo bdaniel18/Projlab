@@ -50,17 +50,42 @@ public class Field {
 
     public void addNeighbour(Field f) {
         System.out.println("Field.addNeighbour()");
+        neighbours.add(f);
     }
 
-    public boolean accept(Steppable s) {
+
+    /*Paraméterként kapott
+    *
+    *
+    * */
+    public boolean accept(Steppable st) {
         System.out.println("Field.accept()");
+        if(fieldElement != null){
+            if(st.collideWith(fieldElement)){
+                st.setStepped(true);
+                st.setLastSteppedOn(this);
+            }
+        }else{
+            st.setStepped(true);
+            st.setLastSteppedOn(this);
+        }
+        if(true)
+            return true;
         return false; //default return value
     }
-
-    public void moveTo(Field f) {
+    /*(A hívó saját magát adja át paraméterként)
+     *Paraméterként kapja, hogy hova és mit kell mozgatni
+    */
+    public boolean moveTo(Field f, Steppable st) {
         System.out.println("Field.moveTo()");
+        if(f.accept(st)){
+            remove(fieldElement);
+        }
+        return true;
     }
 
+
+    //Eltávolítja a FieldElementet,
     public void remove(FieldElement f) {
         System.out.println("Field.remove()");
     }

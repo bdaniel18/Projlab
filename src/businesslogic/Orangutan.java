@@ -31,6 +31,13 @@ public class Orangutan extends Steppable {
         return floor;
     }
 
+    //A paraméterként kapott FieldElement hitby függvényének saját magát adja át és az alapján tér vissza igaz v. hamissal
+    @Override
+    public  boolean  collideWith(FieldElement fe){
+        System.out.println("Orangutan.collideWith()");
+        return fe.hitBy(this);
+    }
+
     public void caught(Panda p) {
         System.out.println("Orangutan.caught()");
     }

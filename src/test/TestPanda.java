@@ -1,4 +1,6 @@
 package test;
 
-public class TestPanda {
+import businesslogic.Panda;
+
+public class TestPanda  {
 }

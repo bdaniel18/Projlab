@@ -19,10 +19,12 @@ public abstract class FieldElement {
         return field;
     }
 
-    public boolean hitBy(Panda p) {
+
+    public  boolean hitBy(Panda p) {
         System.out.println("FieldElement.hitBy()");
         return false; //default return value
     }
+
 
     public boolean hitBy(Orangutan o) {
         System.out.println("FieldElement.hitBy()");
@@ -33,6 +35,7 @@ public abstract class FieldElement {
         System.out.println("FieldElement.sofaActivated()");
         return false; //default return value
     }
+
 
     public void gmActivated() {
         System.out.println("FieldElement.gmActivated()");

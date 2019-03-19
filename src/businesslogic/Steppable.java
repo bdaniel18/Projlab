@@ -4,11 +4,13 @@ public abstract class Steppable extends FieldElement {
 
     private boolean stepped;
     private Panda follower;
+    private Field lastSteppedOn; //Mező amire legutoljára lépett
 
     public Steppable() {
         System.out.println("Steppable CTOR");
         stepped = false;
         follower = null;
+        lastSteppedOn = null;
     }
 
     public void setStepped(boolean stepped) {
@@ -30,17 +32,28 @@ public abstract class Steppable extends FieldElement {
         System.out.println("Steppable.getFollower()");
         return follower;
     }
+    public void setLastSteppedOn(Field field){
+        lastSteppedOn = field;
+    }
 
     public void die() {
         System.out.println("Steppable.die()");
     }
 
+
     public boolean step(Field f) {
         System.out.println("Steppable.step()");
+        if(getField().moveTo(f, this)){
+            if(follower != null){
+                System.out.println("Follower.");
+                follower.step(lastSteppedOn);
+            }
+        }
         return false; //default return value
     }
 
-    public boolean collideWith(FieldElement fe) {
+    //A panda és az Orángután is override-olja ezt a függvényt
+    public boolean  collideWith(FieldElement fe) {
         System.out.println("Steppable.collideWith()");
         return false; //default return value;
     }
