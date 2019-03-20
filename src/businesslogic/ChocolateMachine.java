@@ -8,5 +8,6 @@ public class ChocolateMachine extends Activateable {
 
     public void activate() {
         System.out.println("ChocolateMachine.activate()");
+
     }
 }

@@ -5,7 +5,7 @@ import businesslogic.Field;
 import businesslogic.Panda;
 
 public class TestOrangutan {
-   public  void OrangutanMove(){
+    public static void OrangutanMove() {
        Orangutan o = new Orangutan();
        Field f = new Field();
        Field f2 = new Field();
@@ -29,4 +29,20 @@ public class TestOrangutan {
        o.step(f2);
 
    }
+
+    public static void OrangutanCatchPanda() {
+
+    }
+
+    public static void OrangutanExit() {
+
+    }
+
+    public static void OrangutanEnterWardrobe() {
+
+    }
+
+    public static void OrangutanDie() {
+
+    }
 }
