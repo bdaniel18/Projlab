@@ -36,7 +36,7 @@ public class Floor {
     }
 
     public void remove (Orangutan o){
-        System.out.println("Floor.remove()");
+        DepthWriter dw = new DepthWriter("Floor.remove(Orangutan)");
     }
 
     public void remove (Panda p){

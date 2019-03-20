@@ -6,7 +6,6 @@ import businesslogic.*;
 
 
 public class Main {
-
     // hány tabulátor kell a fv név kiírásához, meghívott függvény növeli, visszatéréskor csökkenti
     public static int depth = 0;
 

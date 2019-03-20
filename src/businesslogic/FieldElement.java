@@ -15,7 +15,7 @@ public abstract class FieldElement {
     }
 
     public Field getField() {
-        System.out.println("FieldElement.getField()");
+        DepthWriter dw = new DepthWriter("FieldElement.getField()");
         return field;
     }
 

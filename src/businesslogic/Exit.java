@@ -19,13 +19,21 @@ public class Exit extends FieldElement {
         return entrance;
     }
 
-    public boolean hitby(Panda p) {
+    public boolean hiBy(Panda p) {
         System.out.println("Exit.hitBy()");
         return false; //default return value
     }
-
-    public boolean hitby(Orangutan o) {
-        System.out.println("Exit.hitBy()");
+    /*Egy orángután neki megy a kijáratnak akkor az elkapott pandáit kivezeti majd ő maga visszamegy a bejáratra
+     */
+    @Override
+    public boolean hitBy(Orangutan o) {
+        DepthWriter dw = new DepthWriter("Exit.hitBy()");
+        dw.add();
+        if(entrance.accept(o)){
+            if(o.getFollower() != null)
+                 o.getFollower().exitReached();
+            return true;
+        }
         return false; //default return value
     }
 

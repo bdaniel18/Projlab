@@ -35,7 +35,8 @@ public class Wardrobe {
     }
 
     boolean receive(Steppable s) {
-        System.out.println("Wardrobe.receive()");
+        DepthWriter dw = new DepthWriter("Wardrobe.receive()");
+
         return false; //default return value
     }
 
@@ -45,7 +46,11 @@ public class Wardrobe {
     }
 
     boolean hitBy(Orangutan o) {
-        System.out.println("Wardrobe.hitBy()");
+        DepthWriter dw = new DepthWriter("Wardrobe.hitBy()");
+
+        dw.add();
+        target.receive(o);
+
         return false; //default return value
     }
 

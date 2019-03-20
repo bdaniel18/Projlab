@@ -20,11 +20,11 @@ public class Field {
 
     public void setFieldElement(FieldElement fieldElement) {
         this.fieldElement = fieldElement;
-        System.out.println("Field.setFieldElement()");
+        DepthWriter dw = new DepthWriter("Field.setFieldElement()");
     }
 
     public FieldElement getFieldElement() {
-        System.out.println("Field.getFieldElement()");
+        DepthWriter dw = new DepthWriter("Field.getFieldElement()");
         return fieldElement;
     }
 
@@ -59,8 +59,9 @@ public class Field {
     *
     * */
     public boolean accept(Steppable st) {
-        System.out.println("Field.accept()");
+        DepthWriter dw = new DepthWriter("Field.accept()");
         if(fieldElement != null){
+            dw.add();
             if(st.collideWith(fieldElement)){
                 st.setStepped(true);
                 st.setLastSteppedOn(this);
@@ -77,7 +78,8 @@ public class Field {
      *Paraméterként kapja, hogy hova és mit kell mozgatni
     */
     public boolean moveTo(Field f, Steppable st) {
-        System.out.println("Field.moveTo()");
+        DepthWriter dw = new DepthWriter("Field.moveTo()");
+        dw.add();
         if(f.accept(st)){
             remove(fieldElement);
         }
@@ -87,7 +89,7 @@ public class Field {
 
     //Eltávolítja a FieldElementet,
     public void remove(FieldElement f) {
-        System.out.println("Field.remove()");
+        DepthWriter dw = new DepthWriter("Field.remove()");
     }
 
     public void scareNeighbours() {

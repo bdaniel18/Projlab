@@ -27,23 +27,47 @@ public class Orangutan extends Steppable {
     }
 
     public Floor getFloor() {
-        System.out.println("Orangutan.getFloor()");
+        DepthWriter dw = new DepthWriter("Orangutan.getFloor()");
         return floor;
     }
 
     //A paraméterként kapott FieldElement hitby függvényének saját magát adja át és az alapján tér vissza igaz v. hamissal
     @Override
     public  boolean  collideWith(FieldElement fe){
-        System.out.println("Orangutan.collideWith()");
+        DepthWriter dw = new DepthWriter("Orangutan.collideWith()");
+        dw.add();
         return fe.hitBy(this);
     }
 
     public void caught(Panda p) {
-        System.out.println("Orangutan.caught()");
+        DepthWriter dw = new DepthWriter("Orangutan.caught()");
+
+        dw.add();
+        getField().remove(this);
+        p.step(getField());
+
+        if(getFollower() != null){
+            p.setFollower(getFollower());
+            getFollower().setAnterior(p);
+        }
+        setFollower(p);
+        p.setAnterior(this);
+        p.setCatcher(this);
     }
 
     public void incScore() {
-        System.out.println("Orangutan.incScore()");
+        DepthWriter dw = new DepthWriter("Orangutan.incScore()");
+    }
+
+    @Override
+    public void die(){
+        DepthWriter dw = new DepthWriter("Orangutan.die()");
+        dw.add();
+        if(getFollower() != null){
+            getFollower().releaseBoth();
+        }
+
+        getFloor().remove(this);
     }
 
 }

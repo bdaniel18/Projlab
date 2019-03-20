@@ -24,16 +24,24 @@ public  class Panda extends Steppable {
 
     public void setCatcher(Orangutan catcher) {
         this.catcher = catcher;
-        System.out.println("Panda.setCatcher()");
+        DepthWriter dw = new DepthWriter("Panda.setCatcher()");
     }
 
     public Orangutan getCatcher() {
-        System.out.println("Panda.getCatcher()");
+        DepthWriter dw = new DepthWriter("Panda.getCatcher()");
         return catcher;
     }
 
+
+
     public void exitReached() {
-        System.out.println("Panda.exitReached()");
+        DepthWriter dw = new DepthWriter("Panda.exitReached()");
+        dw.add();
+        getCatcher().incScore();
+        if(getFollower() != null){
+            getFollower().exitReached();
+        }
+        this.die();
     }
 
     public void step() {
@@ -41,15 +49,23 @@ public  class Panda extends Steppable {
     }
 
     public boolean hitBy(Orangutan o) {
-        System.out.println("Panda.hitBy()");
+        DepthWriter dw = new DepthWriter("Panda.hitBy()");
+
+        if(catcher == null){
+            dw.add();
+            o.caught(this);
+            return true;
+        }
         return false; //default return value
     }
 
     public void releaseBoth() {
-        System.out.println("Panda.releaseBoth()");
+        DepthWriter dw = new DepthWriter("Panda.releaseBoth()");
+        if(getFollower() != null)
+            getFollower().releaseBoth();
     }
 
     public void die() {
-        System.out.println("Panda.die()");
+        DepthWriter dw = new DepthWriter("Panda.die()");
     }
 }

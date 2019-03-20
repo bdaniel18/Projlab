@@ -3,7 +3,7 @@ package businesslogic;
 public class JumpyPanda extends Panda{
 
     public JumpyPanda(){
-        System.out.println("JumpyPanda CTOR");
+        //System.out.println("JumpyPanda CTOR");
     }
 
     public void cmActivated(){
