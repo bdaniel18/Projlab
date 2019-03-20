@@ -7,7 +7,7 @@ public  class Panda extends Steppable {
     private Orangutan catcher;
 
     public Panda() {
-        System.out.print("Panda CTOR");
+        System.out.println("Panda CTOR");
         floor = null;
         catcher = null;
     }
