@@ -1,7 +1,7 @@
 package businesslogic;
 
 //Ez miért volt abstract?
-public  class Panda extends Steppable {
+public abstract  class Panda extends Steppable {
 
     private Floor floor;
     private Orangutan catcher;

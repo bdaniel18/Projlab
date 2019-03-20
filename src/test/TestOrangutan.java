@@ -23,7 +23,7 @@ public class TestOrangutan {
        System.out.println(" ");
        System.out.println("Test adatok felvétele: ");
 
-       Panda p = new Panda();
+        Panda p = new SleepyPanda();
        p.setField(f3);
        p.setCatcher(o);
        o.setFollower(p);
@@ -38,7 +38,7 @@ public class TestOrangutan {
     public static void OrangutanCatchPanda() {
         System.out.println("Test adatok felvétele: ");
         Orangutan o = new Orangutan();
-        Panda p = new Panda();
+        Panda p = new SleepyPanda();
 
         Field f = new Field();
         Field f2 = new Field();
@@ -61,7 +61,7 @@ public class TestOrangutan {
     public static void OrangutanExit() {
         System.out.println("Test adatok felvétele: ");
         Orangutan o = new Orangutan();
-        Panda p = new Panda();
+        Panda p = new SleepyPanda();
 
         Field f = new Field();
         Field f2 = new Field();
@@ -93,7 +93,7 @@ public class TestOrangutan {
 
     public static void OrangutanDie() {
         Orangutan o = new Orangutan();
-        Panda p = new Panda();
+        Panda p = new SleepyPanda();
         Floor fr = new Floor();
 
         o.setFollower(p);
