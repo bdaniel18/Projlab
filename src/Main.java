@@ -76,12 +76,22 @@ public class Main {
         System.out.println("Main.main()");
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int menuLayer = BASE_MENU, chosenMenu;
+        int menuLayer = BASE_MENU, chosenMenu = BASE_MENU;
 
         while (true) {
             printMenu(menuLayer);
             System.out.println("Valasztott menupont:");
-            chosenMenu = Integer.parseInt(reader.readLine());
+
+            boolean valid = false;
+            while (!valid) {
+                String s = reader.readLine();
+                try {
+                    chosenMenu = Integer.parseInt(s);
+                    valid = true;
+                } catch (NumberFormatException e) {
+                    System.out.println("Hibas ertek. A menupont szam formatumu.");
+                }
+            }
 
             switch (menuLayer) {
                 case BASE_MENU:
@@ -146,6 +156,26 @@ public class Main {
                             System.out.println("Hibas menupont");
                     }
                     break;
+
+                case FURNITURE_MENU:
+                    switch (chosenMenu) {
+                        case BASE_MENU:
+                            menuLayer = BASE_MENU;
+                            break;
+                        case 1:
+                            test.TestFurniture.SofaActivate();
+                            break;
+                        case 2:
+                            test.TestFurniture.GMActivate();
+                            break;
+                        case 3:
+                            test.TestFurniture.CMActivate();
+                            break;
+                        default:
+                            System.out.println("Hibas menupont");
+                    }
+                    break;
+
                 case FIELD_MENU:
                     if (chosenMenu == BASE_MENU) menuLayer = BASE_MENU;
                     else if (chosenMenu == 1) test.TestField.FieldBreak();
