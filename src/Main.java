@@ -20,6 +20,7 @@ public class Main {
             FURNITURE_MENU = 3, FIELD_MENU = 4, FLOOR_MENU = 5, EXIT_GAME = 6;
 
     private static void printMenu(int type) {
+        System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
         switch (type) {
             case BASE_MENU:
                 System.out.println("Orangutan test -> 1");
@@ -68,6 +69,7 @@ public class Main {
                 break;
             default:
         }
+        System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
 
     }
 
