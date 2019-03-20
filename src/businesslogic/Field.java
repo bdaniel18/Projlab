@@ -34,7 +34,7 @@ public class Field {
     }
 
     public int getDurability() {
-        System.out.println("Field.getDurability()");
+        DepthWriter dw = new DepthWriter("Field.getDurability()");
         return durability;
     }
 
@@ -44,7 +44,7 @@ public class Field {
     }
 
     public boolean isFragile() {
-        System.out.println("Field.isFragile()");
+        DepthWriter dw = new DepthWriter("Field.isFragile()");
         return fragile;
     }
 
@@ -52,28 +52,48 @@ public class Field {
         System.out.println("Field.addNeighbour()");
         neighbours.add(f);
     }
+    /*idx-edik szomszédot adja vissza ha nincs ilyen szomszéd hibét dob*/
+    public Field getNeighbour(int idx){
+        DepthWriter dw = new DepthWriter("Field.getNeighbour()");
+        return neighbours.get(idx);
+    }
 
 
-    /*Paraméterként kapott
-    *
-    *
-    * */
+
     public boolean accept(Steppable st) {
         DepthWriter dw = new DepthWriter("Field.accept()");
+        dw.add();
         if(fieldElement != null){
-            dw.add();
             if(st.collideWith(fieldElement)){
                 st.setStepped(true);
                 st.setLastSteppedOn(this);
+                if(isFragile()){
+                    decDurability();
+                        if(getDurability() < 1){
+                            st.die();
+                        }
+
+                }
+                return  true;
+            }else{
+                return false;
             }
+        }
+        if(isFragile()){
+            decDurability();
+            st.setStepped(true);
+            st.setLastSteppedOn(this);
+            if(getDurability() < 1){
+                st.die();
+            }
+            return true;
         }else{
             st.setStepped(true);
             st.setLastSteppedOn(this);
         }
-        if(true)
-            return true;
-        return false; //default return value
+        return true;
     }
+
     /*(A hívó saját magát adja át paraméterként)
      *Paraméterként kapja, hogy hova és mit kell mozgatni
     */
@@ -109,7 +129,8 @@ public class Field {
     }
 
     public void decDurability() {
-        System.out.println("Field.decDurability()");
+        DepthWriter dw = new DepthWriter("Field.decDurability()");
+        --durability;
     }
 
 }

@@ -3,7 +3,7 @@ package businesslogic;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Wardrobe {
+public class Wardrobe extends  FieldElement {
 
     private Wardrobe target;
     private Map<Orangutan, Field> targetField;
@@ -34,24 +34,37 @@ public class Wardrobe {
         return targetField;
     }
 
-    boolean receive(Steppable s) {
-        DepthWriter dw = new DepthWriter("Wardrobe.receive()");
-
-        return false; //default return value
-    }
-
-    boolean hitBy(Panda p) {
-        System.out.println("Wardrobe.hitBy()");
-        return false; //default return value
-    }
-
-    boolean hitBy(Orangutan o) {
-        DepthWriter dw = new DepthWriter("Wardrobe.hitBy()");
-
+    /*Valamelyik szomszédos szabad mezőre rakja a kapott Orangutant*/
+    boolean receive(Orangutan o) {
+        DepthWriter dw = new DepthWriter("Wardrobe.receive(o: Orangutan)");
         dw.add();
-        target.receive(o);
+        targetField.put(o,getField().getNeighbour(0));
+        return targetField.get(o).accept(o);
+    }
+    /*Valamelyik szomszédos szabad mezőre rakja a kapott Pandat, ha elfogott panda akkor az orangutanhoz tartozó mezőre rakja azt*/
+    boolean receive(Panda p){
+        DepthWriter dw = new DepthWriter("Wardrobe.receive(p: Panda)");
+        dw.add();
+        if(p.getCatcher() == null){
+            return getField().getNeighbour(0).accept(p);
+        }
+        else return getTargetField().get(p.getCatcher()).accept(p);
+    }
 
-        return false; //default return value
+    /*Wardrobenak neki ment egy panda*/
+    @Override
+    public boolean hitBy(Panda p) {
+        DepthWriter dw = new DepthWriter("Wardrobe.hitBy(p: Panda)");
+        dw.add();
+        return target.receive(p);
+    }
+    /*Wardrobenak neki ment egy Oranguran*/
+    @Override
+    public boolean hitBy(Orangutan o) {
+        DepthWriter dw = new DepthWriter("Wardrobe.hitBy(o: Orangutan)");
+        dw.add();
+        return target.receive(o);
+
     }
 
 }
