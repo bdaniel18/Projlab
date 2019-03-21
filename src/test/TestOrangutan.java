@@ -5,41 +5,46 @@ import businesslogic.Orangutan;
 import businesslogic.Field;
 import businesslogic.*;
 
+/**
+ * Orángután funkckiókat tesztelő osztály
+ */
 public class TestOrangutan {
-    /*Orangutan lépését figyeljük meg követővel illetve anélkül
+    /**
+     * Orangutan lépését figyeljük meg követővel illetve anélkül
      */
     public static void OrangutanMove() {
-       System.out.println("Test adatok felvétele: ");
-       Orangutan o = new Orangutan();
-       Field f = new Field();
-       Field f2 = new Field();
-       Field f3 = new Field();
-       o.setField(f);
-       f.addNeighbour(f2);
-       f2.addNeighbour(f);
-       f2.addNeighbour(f3);
-       System.out.println(" ");
+        System.out.println("Test adatok felvétele: ");
+        Orangutan o = new Orangutan();
+        Field f = new Field();
+        Field f2 = new Field();
+        Field f3 = new Field();
+        o.setField(f);
+        f.addNeighbour(f2);
+        f2.addNeighbour(f);
+        f2.addNeighbour(f3);
+        System.out.println(" ");
         DepthWriter dw = new DepthWriter("Orangutan Move Szekvencia without follower: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
 
-       o.step(f2);
-       System.out.println(" ");
-       System.out.println("Test adatok felvétele: ");
+        o.step(f2);
+        System.out.println(" ");
+        System.out.println("Test adatok felvétele: ");
 
         Panda p = new SleepyPanda();
-       p.setField(f3);
-       p.setCatcher(o);
-       o.setFollower(p);
-       o.setField(f);
+        p.setField(f3);
+        p.setCatcher(o);
+        o.setFollower(p);
+        o.setField(f);
         dw.reset();
-       System.out.println(" ");
+        System.out.println(" ");
         DepthWriter dw2 = new DepthWriter("Orangutan Move Szekvencia with follower: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
-       o.step(f2);
+        o.step(f2);
         dw2.reset();
-   }
-    /*
-    Orangutan elkap egy pandát
+    }
+
+    /**
+     * Orangután elkap egy pandát
      */
     public static void OrangutanCatchPanda() {
         System.out.println("Test adatok felvétele: ");
@@ -64,8 +69,9 @@ public class TestOrangutan {
         o.step(f2);
         dw.reset();
     }
-    /*
-    Orangutan kimegy a kijáraton egy pandával
+
+    /**
+     * Orangutan kimegy a kijáraton egy pandával
      */
     public static void OrangutanExit() {
         System.out.println("Test adatok felvétele: ");
@@ -96,8 +102,9 @@ public class TestOrangutan {
         o.step(f2);
         dw.reset();
     }
-    /*
-    Orangután bemegy egy szekrénybe egy pandával
+
+    /**
+     * Orangután bemegy egy szekrénybe egy pandával
      */
     public static void OrangutanEnterWardrobe() {
         System.out.println("Test adatok felvétele: ");
@@ -137,8 +144,9 @@ public class TestOrangutan {
         o.step(wf1);
         dw.reset();
     }
-    /*
-    Orangután meghal
+
+    /**
+     * Orá1ngután meghal, az őt követő panda elengedi a kezét
      */
     public static void OrangutanDie() {
         System.out.println("Test adatok felvétele: ");

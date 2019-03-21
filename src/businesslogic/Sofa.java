@@ -33,6 +33,18 @@ public class Sofa extends Activateable {
     public void activate() {
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("Sofa.activate()");
+        int i = 0;
+        while (panda != null) {
+            Field temp = getField().getNeighbour(i);
+            if (temp == null) return;         //nincs üres szomszédos mező
+            FieldElement fe = temp.getFieldElement();
+            if (fe == null) {
+                temp.accept(panda);
+                break;
+            }
+            i++;
+        }
+        getField().sleepNeighbours(this);
         DepthWriter.reduce();
     }
 }

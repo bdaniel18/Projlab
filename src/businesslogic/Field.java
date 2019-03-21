@@ -71,7 +71,9 @@ public class Field {
         DepthWriter.reduce();
     }
 
-    /*idx-edik szomszédot adja vissza ha nincs ilyen szomszéd hibát dob*/
+    /**
+     * idx-edik szomszédot adja vissza ha nincs ilyen szomszéd null-t ad vissza
+     */
     public Field getNeighbour(int idx){
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("Field.getNeighbour()");
@@ -125,8 +127,8 @@ public class Field {
         return true;
     }
 
-    /*(A hívó saját magát adja át paraméterként)
-     *Paraméterként kapja, hogy hova és mit kell mozgatni
+    /**(A hívó saját magát adja át paraméterként)
+     * Paraméterként kapja, hogy hova és mit kell mozgatni
     */
     public boolean moveTo(Field f, Steppable st) {
         DepthWriter.add();
@@ -139,21 +141,34 @@ public class Field {
     }
 
 
-    //Eltávolítja a FieldElementet,
+    /**
+     * Eltávolítja a kapott FieldElementet a mezőről, ha rajta van.
+     */
     public void remove(FieldElement f) {
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("Field.remove()");
+        if (fieldElement == f)
+            fieldElement = null;
         DepthWriter.reduce();
     }
 
+    /**
+     * Aktiválódott a mezőn egy GamblingMachine.
+     * A szomszédos mezőn állók gmActivated() függvényét meghívja.
+     */
     public void scareNeighbours() {
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("Field.scareNeighbours()");
+        for (int i = 0; i < neighbours.size(); i++) {
+            Field temp = neighbours.get(i);
+            FieldElement fe = temp.getFieldElement();
+            if (fe != null) fe.gmActivated();
+        }
         DepthWriter.reduce();
     }
 
-    /*  A szomszédos mezőn állók cmActivated() függvényét meghívja
-     *
+    /** Aktiválódott a mezőn egy ChocolateMachine.
+     * A szomszédos mezőn állók cmActivated() függvényét meghívja.
      */
     public void jumpNeighbours() {
         DepthWriter.add();
@@ -166,12 +181,29 @@ public class Field {
         DepthWriter.reduce();
     }
 
-    public void sleepNeighbours() {
+    /**
+     * Szól a szomszédos mezőknek, hogy a mezőn fotel van.
+     *
+     * @param s A mezőn álló fotel
+     */
+    public void sleepNeighbours(Sofa s) {
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("Field.sleepNeighbours()");
+
+        for (int i = 0; i < neighbours.size(); i++) {
+            Field temp = neighbours.get(i);
+            FieldElement fe = temp.getFieldElement();
+            if (fe != null) {
+                if (fe.sofaActivated(s)) break;
+            }
+        }
         DepthWriter.reduce();
     }
 
+    /**
+     * A mezőn álló panda ugrott egyet, amitől eggyel csökken a durability,
+     * ha a mező törékeny.
+     */
     public void pandaJumped() {
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("Field.pandaJumped()");

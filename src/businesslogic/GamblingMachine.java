@@ -11,6 +11,9 @@ public class GamblingMachine extends Activateable {
     public void activate() {
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("GamblingMachine.activate()");
+
+        random();
+        getField().scareNeighbours();
         DepthWriter.reduce();
     }
 }

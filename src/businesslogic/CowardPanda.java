@@ -11,6 +11,7 @@ public class CowardPanda extends Panda{
     public void gmActivated(){
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("CowardPanda.gmActivated()");
+        scared();
         DepthWriter.reduce();
     }
 
