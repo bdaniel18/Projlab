@@ -204,12 +204,19 @@ public class Field {
      * A mezőn álló panda ugrott egyet, amitől eggyel csökken a durability,
      * ha a mező törékeny.
      */
-    public void pandaJumped() {
+    public void pandaJumped(Panda p) {
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("Field.pandaJumped()");
+        if (fragile) {
+            decDurability();
+            if (durability < 1) p.die();
+        }
         DepthWriter.reduce();
     }
 
+    /**
+     * A durability értékét csökkenti eggyel.
+     */
     public void decDurability() {
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("Field.decDurability()");

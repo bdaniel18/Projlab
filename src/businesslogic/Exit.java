@@ -25,7 +25,7 @@ public class Exit extends FieldElement {
         return entrance;
     }
 
-    public boolean hiBy(Panda p) {
+    public boolean hitBy(Panda p) {
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("Exit.hitBy()");
         DepthWriter.reduce();
