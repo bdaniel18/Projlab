@@ -5,8 +5,10 @@ public class Exit extends FieldElement {
     private Field entrance;
 
     public Exit() {
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Exit CTOR");
+        DepthWriter.reduce();
         entrance = null;
-        System.out.println("Exit CTOR");
     }
 
     public void setEntrance(Field entrance) {

@@ -5,8 +5,10 @@ public class Game {
     private static Game instance;
 
     private Game(){
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Game CTOR");
+        DepthWriter.reduce();
         instance = null;
-        System.out.println("Game CTOR");
     }
 
     public static Game getInstance() {

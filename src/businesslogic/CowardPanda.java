@@ -3,7 +3,9 @@ package businesslogic;
 public class CowardPanda extends Panda{
 
     public CowardPanda(){
-        System.out.println("CowardPanda CTOR");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("CowardPanda CTOR");
+        DepthWriter.reduce();
     }
 
     public void gmActivated(){

@@ -9,9 +9,11 @@ public class Wardrobe extends FieldElement {
     private Map<Orangutan, Field> targetField;
 
     public Wardrobe() {
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Wardrobe CTOR");
+        DepthWriter.reduce();
         target = null;
         targetField = new HashMap<Orangutan, Field>();
-        System.out.println("Wardrobe CTOR");
     }
 
     public void setTarget(Wardrobe target) {

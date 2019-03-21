@@ -5,7 +5,9 @@ public class Sofa extends Activateable {
     private Panda panda;
 
     public Sofa() {
-        System.out.println("Sofa CTOR");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Sofa CTOR");
+        DepthWriter.reduce();
     }
 
     public void setPanda(Panda panda) {

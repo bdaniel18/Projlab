@@ -3,7 +3,9 @@ package businesslogic;
 public class GamblingMachine extends Activateable {
 
     public GamblingMachine() {
-        System.out.println("GamblingMachine CTOR");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("GamblingMachine CTOR");
+        DepthWriter.reduce();
     }
 
     public void activate() {

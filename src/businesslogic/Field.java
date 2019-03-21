@@ -11,11 +11,14 @@ public class Field {
     private List<Field> neighbours;
 
     public Field() {
-        System.out.println("Field CTOR");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Field CTOR");
         fieldElement = null;
         durability = 0; //default
         fragile = false; //default
         neighbours = new ArrayList<Field>();
+
+        DepthWriter.reduce();
     }
 
     public void setFieldElement(FieldElement fieldElement) {
@@ -23,6 +26,7 @@ public class Field {
         DepthWriter dw = new DepthWriter("Field.setFieldElement()");
         DepthWriter.reduce();
         this.fieldElement = fieldElement;
+        fieldElement.setField(this);
     }
 
     public FieldElement getFieldElement() {
@@ -71,6 +75,10 @@ public class Field {
     public Field getNeighbour(int idx){
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("Field.getNeighbour()");
+        if (idx >= neighbours.size()) {
+            DepthWriter.reduce();
+            return null;
+        }
         Field temp = neighbours.get(idx);
         DepthWriter.reduce();
         return temp;
@@ -144,9 +152,17 @@ public class Field {
         DepthWriter.reduce();
     }
 
+    /*  A szomszédos mezőn állók cmActivated() függvényét meghívja
+     *
+     */
     public void jumpNeighbours() {
         DepthWriter.add();
         DepthWriter dw = new DepthWriter("Field.jumpNeighbours()");
+        for (int i = 0; i < neighbours.size(); i++) {
+            Field temp = neighbours.get(i);
+            FieldElement fe = temp.getFieldElement();
+            if (fe != null) fe.cmActivated();
+        }
         DepthWriter.reduce();
     }
 

@@ -9,7 +9,9 @@ public abstract class Steppable extends FieldElement {
     private Field lastSteppedOn; //Mező amire legutoljára lépett
 
     public Steppable() {
-        System.out.println("Steppable CTOR");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Steppable CTOR");
+        DepthWriter.reduce();
         stepped = false;
         follower = null;
         anterior = null;

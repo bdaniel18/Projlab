@@ -3,7 +3,9 @@ package businesslogic;
 public class SleepyPanda extends Panda {
 
     public SleepyPanda(){
-        System.out.println("SleepyPanda CTOR");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("SleepyPanda CTOR");
+        DepthWriter.reduce();
     }
 
     public boolean sofaActivated(Sofa s) {

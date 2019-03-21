@@ -7,7 +7,9 @@ public abstract  class Panda extends Steppable {
     private Orangutan catcher;
 
     public Panda() {
-        System.out.println("Panda CTOR");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Panda CTOR");
+        DepthWriter.reduce();
         floor = null;
         catcher = null;
     }

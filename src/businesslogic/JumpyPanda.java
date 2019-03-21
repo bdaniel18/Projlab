@@ -3,7 +3,9 @@ package businesslogic;
 public class JumpyPanda extends Panda{
 
     public JumpyPanda(){
-        System.out.println("JumpyPanda CTOR");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("JumpyPanda CTOR");
+        DepthWriter.reduce();
     }
 
     public void cmActivated(){

@@ -11,11 +11,14 @@ public class Floor {
     private List<Panda> pandas;
 
     public Floor(){
-        System.out.println("Floor CTOR");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Floor CTOR");
         fields = new ArrayList<Field>();
         activateables = new ArrayList<Activateable>();
         orangutans = new ArrayList<Orangutan>();
         pandas = new ArrayList<Panda>();
+
+        DepthWriter.reduce();
     }
 
     public void addField(Field f){

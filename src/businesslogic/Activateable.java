@@ -3,7 +3,9 @@ package businesslogic;
 public abstract class Activateable extends FieldElement {
 
     public Activateable() {
-        System.out.println("Activateable CTOR");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Activateable CTOR");
+        DepthWriter.reduce();
     }
 
     public abstract void activate();

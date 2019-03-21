@@ -6,7 +6,9 @@ public class Orangutan extends Steppable {
     private Floor floor;
 
     public Orangutan() {
-        System.out.println("Orangutan CTOR");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Orangutan CTOR");
+        DepthWriter.reduce();
         score = 0; //default
         floor = null;
     }

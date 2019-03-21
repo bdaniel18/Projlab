@@ -5,7 +5,9 @@ public abstract class FieldElement {
     private Field field;
 
     public FieldElement() {
-        System.out.println("FieldElement CTOR");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("FieldElement CTOR");
+        DepthWriter.reduce();
         field = null;
     }
 
