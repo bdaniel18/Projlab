@@ -10,39 +10,52 @@ public abstract class FieldElement {
     }
 
     public void setField(Field field) {
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("FieldElement.setField()");
         this.field = field;
-        System.out.println("FieldElement.setField()");
+        DepthWriter.reduce();
     }
 
     public Field getField() {
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("FieldElement.getField()");
+        DepthWriter.reduce();
         return field;
     }
 
-
-    public  boolean hitBy(Panda p) {
-        System.out.println("FieldElement.hitBy()");
+    public boolean hitBy(Panda p) {
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("FieldElement.hitBy()");
+        DepthWriter.reduce();
         return false; //default return value
     }
 
 
     public boolean hitBy(Orangutan o) {
-        System.out.println("FieldElement.hitBy()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("FieldElement.hitBy()");
+        DepthWriter.reduce();
         return false; //default return value
     }
 
     public boolean sofaActivated(Sofa s) {
-        System.out.println("FieldElement.sofaActivated()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("FieldElement.sofaActivated()");
+        DepthWriter.reduce();
         return false; //default return value
     }
 
 
     public void gmActivated() {
-        System.out.println("FieldElement.gmActivated()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("FieldElement.gmActivated()");
+        DepthWriter.reduce();
     }
 
     public void cmActivated() {
-        System.out.println("FieldElement.cmActivated()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("FieldElement.cmActivated()");
+        DepthWriter.reduce();
     }
 
 }

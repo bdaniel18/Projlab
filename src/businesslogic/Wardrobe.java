@@ -3,7 +3,7 @@ package businesslogic;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Wardrobe extends  FieldElement {
+public class Wardrobe extends FieldElement {
 
     private Wardrobe target;
     private Map<Orangutan, Field> targetField;
@@ -15,55 +15,77 @@ public class Wardrobe extends  FieldElement {
     }
 
     public void setTarget(Wardrobe target) {
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Wardrobe.setTarget()");
+        DepthWriter.reduce();
         this.target = target;
-        System.out.println("Wardrobe.setTarget()");
     }
 
     public Wardrobe getTarget() {
-        System.out.println("Wardrobe.getTarget()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Wardrobe.getTarget()");
+        DepthWriter.reduce();
         return target;
     }
 
     public void setTargetField(Map<Orangutan, Field> targetField) {
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Wardrobe.setTargetField()");
+        DepthWriter.reduce();
         this.targetField = targetField;
-        System.out.println("Wardrobe.setTargetField()");
     }
 
     public Map<Orangutan, Field> getTargetField() {
-        System.out.println("Wardrobe.getTargetField()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Wardrobe.getTargetField()");
+        DepthWriter.reduce();
         return targetField;
     }
 
     /*Valamelyik szomszédos szabad mezőre rakja a kapott Orangutant*/
     boolean receive(Orangutan o) {
-        DepthWriter dw = new DepthWriter("Wardrobe.receive(o: Orangutan)");
-        dw.add();
-        targetField.put(o,getField().getNeighbour(0));
-        return targetField.get(o).accept(o);
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Wardrobe.receive(Orangutan)");
+        targetField.put(o, getField().getNeighbour(0));
+        boolean temp = targetField.get(o).accept(o);
+
+        DepthWriter.reduce();
+        return temp;
     }
+
     /*Valamelyik szomszédos szabad mezőre rakja a kapott Pandat, ha elfogott panda akkor az orangutanhoz tartozó mezőre rakja azt*/
-    boolean receive(Panda p){
-        DepthWriter dw = new DepthWriter("Wardrobe.receive(p: Panda)");
-        dw.add();
-        if(p.getCatcher() == null){
-            return getField().getNeighbour(0).accept(p);
+    boolean receive(Panda p) {
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Wardrobe.receive(Panda)");
+        if (p.getCatcher() == null) {
+            boolean temp = getField().getNeighbour(0).accept(p);
+            DepthWriter.reduce();
+            return temp;
+        } else {
+            boolean temp = getTargetField().get(p.getCatcher()).accept(p);
+            DepthWriter.reduce();
+            return temp;
         }
-        else return getTargetField().get(p.getCatcher()).accept(p);
     }
 
     /*Wardrobenak neki ment egy panda*/
     @Override
     public boolean hitBy(Panda p) {
-        DepthWriter dw = new DepthWriter("Wardrobe.hitBy(p: Panda)");
-        dw.add();
-        return target.receive(p);
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Wardrobe.hitBy(Panda)");
+        boolean temp = target.receive(p);
+        DepthWriter.reduce();
+        return temp;
     }
+
     /*Wardrobenak neki ment egy Oranguran*/
     @Override
     public boolean hitBy(Orangutan o) {
-        DepthWriter dw = new DepthWriter("Wardrobe.hitBy(o: Orangutan)");
-        dw.add();
-        return target.receive(o);
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Wardrobe.hitBy(Orangutan)");
+        boolean temp = target.receive(o);
+        DepthWriter.reduce();
+        return temp;
 
     }
 

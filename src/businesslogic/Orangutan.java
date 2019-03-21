@@ -12,62 +12,76 @@ public class Orangutan extends Steppable {
     }
 
     public void setScore(int score) {
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Orangutan.setScore()");
         this.score = score;
-        System.out.println("Orangutan.setScore()");
+        DepthWriter.reduce();
     }
 
     public int getScore() {
-        System.out.println("Orangutan.getScore()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Orangutan.getScore()");
+        DepthWriter.reduce();
         return score;
     }
 
     public void setFloor(Floor floor) {
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Orangutan.setFloor()");
         this.floor = floor;
-        System.out.println("Orangutan.setFloor()");
+        DepthWriter.reduce();
     }
 
     public Floor getFloor() {
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("Orangutan.getFloor()");
+        DepthWriter.reduce();
         return floor;
     }
 
     //A paraméterként kapott FieldElement hitby függvényének saját magát adja át és az alapján tér vissza igaz v. hamissal
     @Override
-    public  boolean  collideWith(FieldElement fe){
+    public boolean collideWith(FieldElement fe) {
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("Orangutan.collideWith()");
-        dw.add();
-        return fe.hitBy(this);
+        boolean temp = fe.hitBy(this);
+        DepthWriter.reduce();
+        return temp;
     }
 
     public void caught(Panda p) {
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("Orangutan.caught()");
-
-        dw.add();
         getField().remove(this);
         p.step(getField());
 
-        if(getFollower() != null){
+        if (getFollower() != null) {
             p.setFollower(getFollower());
             getFollower().setAnterior(p);
         }
         setFollower(p);
         p.setAnterior(this);
         p.setCatcher(this);
+        DepthWriter.reduce();
     }
 
     public void incScore() {
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("Orangutan.incScore()");
+        DepthWriter.reduce();
     }
 
     @Override
-    public void die(){
+    public void die() {
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("Orangutan.die()");
-        dw.add();
-        if(getFollower() != null){
+
+        if (getFollower() != null) {
             getFollower().releaseBoth();
         }
 
         getFloor().remove(this);
+        DepthWriter.reduce();
     }
 
 }

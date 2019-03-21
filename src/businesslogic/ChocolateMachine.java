@@ -7,7 +7,9 @@ public class ChocolateMachine extends Activateable {
     }
 
     public void activate() {
-        System.out.println("ChocolateMachine.activate()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("ChocolateMachine.activate()");
 
+        DepthWriter.reduce();
     }
 }

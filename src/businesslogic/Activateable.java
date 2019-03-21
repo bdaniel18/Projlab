@@ -9,7 +9,9 @@ public abstract class Activateable extends FieldElement {
     public abstract void activate();
 
     public boolean random() {
-        System.out.println("Activateable.random()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Activateable.random()");
+        DepthWriter.reduce();
         return false; //default return value
     }
 }

@@ -7,10 +7,14 @@ public class JumpyPanda extends Panda{
     }
 
     public void cmActivated(){
-        System.out.println("JumpyPanda.cmActivated()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("JumpyPanda.cmActivated()");
+        DepthWriter.reduce();
     }
 
     private void jump(){
-        System.out.println("JumpyPanda.jump()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("JumpyPanda.jump()");
+        DepthWriter.reduce();
     }
 }

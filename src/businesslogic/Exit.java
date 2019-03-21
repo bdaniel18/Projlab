@@ -10,30 +10,38 @@ public class Exit extends FieldElement {
     }
 
     public void setEntrance(Field entrance) {
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Exit.setEntrance()");
         this.entrance = entrance;
-        System.out.println("Exit.setEntrance()");
+        DepthWriter.reduce();
     }
 
     public Field getEntrance() {
-        System.out.println("Exit.getEntrance()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Exit.getEntrance()");
+        DepthWriter.reduce();
         return entrance;
     }
 
     public boolean hiBy(Panda p) {
-        System.out.println("Exit.hitBy()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Exit.hitBy()");
+        DepthWriter.reduce();
         return false; //default return value
     }
     /*Egy orángután neki megy a kijáratnak akkor az elkapott pandáit kivezeti majd ő maga visszamegy a bejáratra
      */
     @Override
     public boolean hitBy(Orangutan o) {
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("Exit.hitBy()");
-        dw.add();
         if(entrance.accept(o)){
             if(o.getFollower() != null)
                  o.getFollower().exitReached();
+            DepthWriter.reduce();
             return true;
         }
+        DepthWriter.reduce();
         return false; //default return value
     }
 

@@ -17,49 +17,68 @@ public abstract class Steppable extends FieldElement {
     }
 
     public void setStepped(boolean stepped) {
-        this.stepped = stepped;
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("Steppable.setStepped()");
+        this.stepped = stepped;
+        DepthWriter.reduce();
+
     }
     public void setAnterior(Steppable st){
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("Steppable.setAnterior()");
         anterior = st;
+        DepthWriter.reduce();
     }
     public Steppable getAnterior(){
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("Steppable.getAnterior()");
+        DepthWriter.reduce();
         return anterior;
     }
     public boolean isStepped() {
-        DepthWriter dw = new DepthWriter("Steppable.getAnterior()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Steppable.isStepped()");
+        DepthWriter.reduce();
         return stepped;
     }
 
     public void setFollower(Panda follower) {
-        this.follower = follower;
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("Steppable.setFollower()");
+        DepthWriter.reduce();
+        this.follower = follower;
     }
 
     public Panda getFollower() {
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("Steppable.getFollower()");
+        DepthWriter.reduce();
         return follower;
     }
     public void setLastSteppedOn(Field field){
-        DepthWriter dw = new DepthWriter("setLastSteppedOn()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Steppable.setLastSteppedOn()");
+        DepthWriter.reduce();
         lastSteppedOn = field;
     }
 
     public void die() {
-        System.out.println("Steppable.die()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Steppable.die()");
+        DepthWriter.reduce();
     }
 
 
     public boolean step(Field f) {
+        DepthWriter.add();
         DepthWriter dw = new DepthWriter("Steppable.step()");
-        dw.add();
+
         if(getField().moveTo(f, this)){
             if(follower != null){
                 follower.step(lastSteppedOn);
             }
         }
+        DepthWriter.reduce();
         return false; //default return value
     }
 
@@ -70,7 +89,9 @@ public abstract class Steppable extends FieldElement {
     }
 
     public void releaseFollower() {
-        System.out.println("Steppable.releaseFollower()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Steppable.releaseFollower()");
+        DepthWriter.reduce();
     }
 
 }

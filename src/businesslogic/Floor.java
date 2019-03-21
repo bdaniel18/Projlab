@@ -19,36 +19,52 @@ public class Floor {
     }
 
     public void addField(Field f){
-        System.out.println("Floor.addField()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Floor.addField()");
+        DepthWriter.reduce();
     }
 
     public void add(Activateable a) {
-        System.out.println("Floor.addActivateable()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Floor.add()");
+        DepthWriter.reduce();
     }
 
     public void add(Orangutan o){
-        System.out.println("Floor.add()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Floor.add()");
+        DepthWriter.reduce();
     }
 
 
     public void add(Panda p){
-        System.out.println("Floor.add()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Floor.add()");
+        DepthWriter.reduce();
     }
 
     public void remove (Orangutan o){
-        DepthWriter dw = new DepthWriter("Floor.remove(Orangutan)");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Floor.remove()");
+        DepthWriter.reduce();
     }
 
     public void remove (Panda p){
-        System.out.println("Floor.remove()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Floor.remove()");
+        DepthWriter.reduce();
     }
 
     public void newTurn() {
-        System.out.println("Floor.newTurn()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Floor.newTurn()");
+        DepthWriter.reduce();
     }
 
     public Field waitForStep(Orangutan o){
-        System.out.println("Floor.waitForStep()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Floor.waitForStep()");
+        DepthWriter.reduce();
         return  null; //default return value
     }
 

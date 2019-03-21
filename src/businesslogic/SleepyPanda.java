@@ -7,11 +7,15 @@ public class SleepyPanda extends Panda {
     }
 
     public boolean sofaActivated(Sofa s) {
-        System.out.println("SleepyPanda.sofaActivated()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("SleepyPanda.sofaActivated()");
+        DepthWriter.reduce();
         return false; //default return value
     }
 
     private void sleep(Sofa s) {
-        System.out.println("SleepyPanda.sleep()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("SleepyPanda.sleep()");
+        DepthWriter.reduce();
     }
 }

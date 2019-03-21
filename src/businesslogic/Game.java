@@ -10,17 +10,23 @@ public class Game {
     }
 
     public static Game getInstance() {
-        System.out.println("Game.getInstance()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Game.getInstance()");
         if (instance == null)
             instance = new Game();
+        DepthWriter.reduce();
         return instance;
     }
 
     public void newGame(String map){
-        System.out.println("Game.newGame()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Game.newGame()");
+        DepthWriter.reduce();
     }
 
     public void endGame(String map){
-        System.out.println("Game.endGame()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Game.endGame()");
+        DepthWriter.reduce();
     }
 }

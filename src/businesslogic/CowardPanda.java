@@ -7,10 +7,14 @@ public class CowardPanda extends Panda{
     }
 
     public void gmActivated(){
-        System.out.println("CowardPanda.gmActivated()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("CowardPanda.gmActivated()");
+        DepthWriter.reduce();
     }
 
     public void scared(){
-        System.out.println("CowardPanda.scared()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("CowardPanda.scared()");
+        DepthWriter.reduce();
     }
 }

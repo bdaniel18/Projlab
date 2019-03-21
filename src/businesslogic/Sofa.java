@@ -9,20 +9,28 @@ public class Sofa extends Activateable {
     }
 
     public void setPanda(Panda panda) {
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Sofa.setPanda()");
+        DepthWriter.reduce();
         this.panda = panda;
-        System.out.println("Sofa.setPanda()");
     }
 
     public Panda getPanda() {
-        System.out.println("Sofa.getPanda()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Sofa.getPanda()");
+        DepthWriter.reduce();
         return panda;
     }
 
     public void sit(Panda p) {
-        System.out.println("Sofa.sit()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Sofa.sit()");
+        DepthWriter.reduce();
     }
 
     public void activate() {
-        System.out.println("Sofa.activate()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("Sofa.activate()");
+        DepthWriter.reduce();
     }
 }

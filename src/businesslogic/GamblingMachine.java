@@ -7,6 +7,8 @@ public class GamblingMachine extends Activateable {
     }
 
     public void activate() {
-        System.out.println("GamblingMachine.activate()");
+        DepthWriter.add();
+        DepthWriter dw = new DepthWriter("GamblingMachine.activate()");
+        DepthWriter.reduce();
     }
 }
