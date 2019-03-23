@@ -26,10 +26,10 @@ public class TestFurniture {
         ff[2].setFieldElement(new Wardrobe());
 
         System.out.println("  ");
-        DepthWriter dw = new DepthWriter("Activate GamblingMachine: ");
+        DepthWriter.print("Activate GamblingMachine: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
         sofa.activate();
-        dw.reset();
+        DepthWriter.reset();
 
     }
 
@@ -51,10 +51,10 @@ public class TestFurniture {
         ff[2].setFieldElement(new Sofa());
 
         System.out.println("  ");
-        DepthWriter dw = new DepthWriter("Activate GamblingMachine: ");
+        DepthWriter.print("Activate GamblingMachine: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
         gm.activate();
-        dw.reset();
+        DepthWriter.reset();
     }
 
     /**
@@ -75,9 +75,9 @@ public class TestFurniture {
         ff[2].setFieldElement(new Wardrobe());
 
         System.out.println("  ");
-        DepthWriter dw = new DepthWriter("Activate ChocolateMachine: ");
+        DepthWriter.print("Activate ChocolateMachine: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
         cm.activate();
-        dw.reset();
+        DepthWriter.reset();
     }
 }

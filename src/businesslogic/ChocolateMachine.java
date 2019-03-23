@@ -4,13 +4,13 @@ public class ChocolateMachine extends Activateable {
 
     public ChocolateMachine() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("ChocolateMachine CTOR");
+        DepthWriter.print("ChocolateMachine CTOR");
         DepthWriter.reduce();
     }
 
     public void activate() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("ChocolateMachine.activate()");
+        DepthWriter.print("ChocolateMachine.activate()");
 
         random();
         getField().jumpNeighbours();

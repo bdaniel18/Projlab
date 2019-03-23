@@ -6,33 +6,33 @@ public class Sofa extends Activateable {
 
     public Sofa() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Sofa CTOR");
+        DepthWriter.print("Sofa CTOR");
         DepthWriter.reduce();
     }
 
     public void setPanda(Panda panda) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Sofa.setPanda()");
+        DepthWriter.print("Sofa.setPanda()");
         DepthWriter.reduce();
         this.panda = panda;
     }
 
     public Panda getPanda() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Sofa.getPanda()");
+        DepthWriter.print("Sofa.getPanda()");
         DepthWriter.reduce();
         return panda;
     }
 
     public void sit(Panda p) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Sofa.sit()");
+        DepthWriter.print("Sofa.sit()");
         DepthWriter.reduce();
     }
 
     public void activate() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Sofa.activate()");
+        DepthWriter.print("Sofa.activate()");
         int i = 0;
         while (panda != null) {
             Field temp = getField().getNeighbour(i);

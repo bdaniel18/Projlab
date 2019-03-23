@@ -6,14 +6,14 @@ public class Game {
 
     private Game(){
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Game CTOR");
+        DepthWriter.print("Game CTOR");
         DepthWriter.reduce();
         instance = null;
     }
 
     public static Game getInstance() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Game.getInstance()");
+        DepthWriter.print("Game.getInstance()");
         if (instance == null)
             instance = new Game();
         DepthWriter.reduce();
@@ -22,13 +22,13 @@ public class Game {
 
     public void newGame(String map){
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Game.newGame()");
+        DepthWriter.print("Game.newGame()");
         DepthWriter.reduce();
     }
 
     public void endGame(String map){
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Game.endGame()");
+        DepthWriter.print("Game.endGame()");
         DepthWriter.reduce();
     }
 }

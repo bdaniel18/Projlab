@@ -12,7 +12,7 @@ public class Floor {
 
     public Floor(){
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Floor CTOR");
+        DepthWriter.print("Floor CTOR");
         fields = new ArrayList<Field>();
         activateables = new ArrayList<Activateable>();
         orangutans = new ArrayList<Orangutan>();
@@ -23,50 +23,50 @@ public class Floor {
 
     public void addField(Field f){
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Floor.addField()");
+        DepthWriter.print("Floor.addField()");
         DepthWriter.reduce();
     }
 
     public void add(Activateable a) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Floor.add()");
+        DepthWriter.print("Floor.add()");
         DepthWriter.reduce();
     }
 
     public void add(Orangutan o){
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Floor.add()");
+        DepthWriter.print("Floor.add()");
         DepthWriter.reduce();
     }
 
 
     public void add(Panda p){
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Floor.add()");
+        DepthWriter.print("Floor.add()");
         DepthWriter.reduce();
     }
 
     public void remove (Orangutan o){
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Floor.remove()");
+        DepthWriter.print("Floor.remove()");
         DepthWriter.reduce();
     }
 
     public void remove (Panda p){
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Floor.remove()");
+        DepthWriter.print("Floor.remove()");
         DepthWriter.reduce();
     }
 
     public void newTurn() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Floor.newTurn()");
+        DepthWriter.print("Floor.newTurn()");
         DepthWriter.reduce();
     }
 
     public Field waitForStep(Orangutan o){
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Floor.waitForStep()");
+        DepthWriter.print("Floor.waitForStep()");
         DepthWriter.reduce();
         return  null; //default return value
     }

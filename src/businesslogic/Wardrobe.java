@@ -10,7 +10,7 @@ public class Wardrobe extends FieldElement {
 
     public Wardrobe() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Wardrobe CTOR");
+        DepthWriter.print("Wardrobe CTOR");
         DepthWriter.reduce();
         target = null;
         targetField = new HashMap<Orangutan, Field>();
@@ -18,36 +18,40 @@ public class Wardrobe extends FieldElement {
 
     public void setTarget(Wardrobe target) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Wardrobe.setTarget()");
+        DepthWriter.print("Wardrobe.setTarget()");
         DepthWriter.reduce();
         this.target = target;
     }
 
     public Wardrobe getTarget() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Wardrobe.getTarget()");
+        DepthWriter.print("Wardrobe.getTarget()");
         DepthWriter.reduce();
         return target;
     }
 
     public void setTargetField(Map<Orangutan, Field> targetField) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Wardrobe.setTargetField()");
+        DepthWriter.print("Wardrobe.setTargetField()");
         DepthWriter.reduce();
         this.targetField = targetField;
     }
 
     public Map<Orangutan, Field> getTargetField() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Wardrobe.getTargetField()");
+        DepthWriter.print("Wardrobe.getTargetField()");
         DepthWriter.reduce();
         return targetField;
     }
 
-    /*Valamelyik szomszédos szabad mezőre rakja a kapott Orangutant*/
-    boolean receive(Orangutan o) {
+    /**Valamelyik szomszédos szabad mezőre rakja a kapott Orangutant
+     *
+     * @param o: Orangutan
+     * @return boolean
+     */
+    public boolean receive(Orangutan o) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Wardrobe.receive(Orangutan)");
+        DepthWriter.print("Wardrobe.receive(Orangutan)");
         targetField.put(o, getField().getNeighbour(0));
         boolean temp = targetField.get(o).accept(o);
 
@@ -55,10 +59,14 @@ public class Wardrobe extends FieldElement {
         return temp;
     }
 
-    /*Valamelyik szomszédos szabad mezőre rakja a kapott Pandat, ha elfogott panda akkor az orangutanhoz tartozó mezőre rakja azt*/
-    boolean receive(Panda p) {
+    /**Valamelyik szomszédos szabad mezőre rakja a kapott Pandat, ha elfogott panda akkor az orangutanhoz tartozó mezőre rakja azt
+     *
+     * @param p: Panda
+     * @return boolean
+     */
+    public boolean receive(Panda p) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Wardrobe.receive(Panda)");
+        DepthWriter.print("Wardrobe.receive(Panda)");
         if (p.getCatcher() == null) {
             boolean temp = getField().getNeighbour(0).accept(p);
             DepthWriter.reduce();
@@ -70,21 +78,29 @@ public class Wardrobe extends FieldElement {
         }
     }
 
-    /*Wardrobenak neki ment egy panda*/
+    /**Paraméterként kapott Pandat elküldi a vele össszekötött szekrényhez
+     *
+     * @param p: Panda
+     * @return boolean
+     */
     @Override
     public boolean hitBy(Panda p) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Wardrobe.hitBy(Panda)");
+        DepthWriter.print("Wardrobe.hitBy(Panda)");
         boolean temp = target.receive(p);
         DepthWriter.reduce();
         return temp;
     }
 
-    /*Wardrobenak neki ment egy Oranguran*/
+    /**Paraméterként kapott Orangutant elküldi a vele össszekötött szekrényhez
+     *
+     * @param o: Orangutan
+     * @return boolean
+     */
     @Override
     public boolean hitBy(Orangutan o) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Wardrobe.hitBy(Orangutan)");
+        DepthWriter.print("Wardrobe.hitBy(Orangutan)");
         boolean temp = target.receive(o);
         DepthWriter.reduce();
         return temp;

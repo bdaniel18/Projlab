@@ -4,7 +4,7 @@ public abstract class Activateable extends FieldElement {
 
     public Activateable() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Activateable CTOR");
+        DepthWriter.print("Activateable CTOR");
         DepthWriter.reduce();
     }
 
@@ -12,7 +12,7 @@ public abstract class Activateable extends FieldElement {
 
     public boolean random() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Activateable.random()");
+        DepthWriter.print("Activateable.random()");
         DepthWriter.reduce();
         return false; //default return value
     }

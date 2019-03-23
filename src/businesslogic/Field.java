@@ -12,7 +12,7 @@ public class Field {
 
     public Field() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field CTOR");
+        DepthWriter.print("Field CTOR");
         fieldElement = null;
         durability = 0; //default
         fragile = false; //default
@@ -23,7 +23,7 @@ public class Field {
 
     public void setFieldElement(FieldElement fieldElement) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.setFieldElement()");
+        DepthWriter.print("Field.setFieldElement()");
         DepthWriter.reduce();
         this.fieldElement = fieldElement;
         fieldElement.setField(this);
@@ -31,42 +31,42 @@ public class Field {
 
     public FieldElement getFieldElement() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.getFieldElement()");
+        DepthWriter.print("Field.getFieldElement()");
         DepthWriter.reduce();
         return fieldElement;
     }
 
     public void setDurability(int durability) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.setDurability()");
+        DepthWriter.print("Field.setDurability()");
         DepthWriter.reduce();
         this.durability = durability;
     }
 
     public int getDurability() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.getDurability()");
+        DepthWriter.print("Field.getDurability()");
         DepthWriter.reduce();
         return durability;
     }
 
     public void setFragile(boolean fragile) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.setFragile()");
+        DepthWriter.print("Field.setFragile()");
         DepthWriter.reduce();
         this.fragile = fragile;
     }
 
     public boolean isFragile() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.isFragile()");
+        DepthWriter.print("Field.isFragile()");
         DepthWriter.reduce();
         return fragile;
     }
 
     public void addNeighbour(Field f) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.addNeighbour()");
+        DepthWriter.print("Field.addNeighbour()");
         neighbours.add(f);
         DepthWriter.reduce();
     }
@@ -76,7 +76,7 @@ public class Field {
      */
     public Field getNeighbour(int idx){
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.getNeighbour()");
+        DepthWriter.print("Field.getNeighbour()");
         if (idx >= neighbours.size()) {
             DepthWriter.reduce();
             return null;
@@ -90,7 +90,7 @@ public class Field {
 
     public boolean accept(Steppable st) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.accept()");
+        DepthWriter.print("Field.accept()");
 
         if(fieldElement != null){
             if(st.collideWith(fieldElement)){
@@ -132,7 +132,7 @@ public class Field {
     */
     public boolean moveTo(Field f, Steppable st) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.moveTo()");
+        DepthWriter.print("Field.moveTo()");
         if(f.accept(st)){
             remove(fieldElement);
         }
@@ -146,7 +146,7 @@ public class Field {
      */
     public void remove(FieldElement f) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.remove()");
+        DepthWriter.print("Field.remove()");
         if (fieldElement == f)
             fieldElement = null;
         DepthWriter.reduce();
@@ -158,7 +158,7 @@ public class Field {
      */
     public void scareNeighbours() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.scareNeighbours()");
+        DepthWriter.print("Field.scareNeighbours()");
         for (int i = 0; i < neighbours.size(); i++) {
             Field temp = neighbours.get(i);
             FieldElement fe = temp.getFieldElement();
@@ -172,7 +172,7 @@ public class Field {
      */
     public void jumpNeighbours() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.jumpNeighbours()");
+        DepthWriter.print("Field.jumpNeighbours()");
         for (int i = 0; i < neighbours.size(); i++) {
             Field temp = neighbours.get(i);
             FieldElement fe = temp.getFieldElement();
@@ -188,7 +188,7 @@ public class Field {
      */
     public void sleepNeighbours(Sofa s) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.sleepNeighbours()");
+        DepthWriter.print("Field.sleepNeighbours()");
 
         for (int i = 0; i < neighbours.size(); i++) {
             Field temp = neighbours.get(i);
@@ -206,7 +206,7 @@ public class Field {
      */
     public void pandaJumped(Panda p) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.pandaJumped()");
+        DepthWriter.print("Field.pandaJumped()");
         if (fragile) {
             decDurability();
             if (durability < 1) p.die();
@@ -219,7 +219,7 @@ public class Field {
      */
     public void decDurability() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Field.decDurability()");
+        DepthWriter.print("Field.decDurability()");
         --durability;
         DepthWriter.reduce();
     }

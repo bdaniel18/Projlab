@@ -10,7 +10,7 @@ public abstract class Steppable extends FieldElement {
 
     public Steppable() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Steppable CTOR");
+        DepthWriter.print("Steppable CTOR");
         DepthWriter.reduce();
         stepped = false;
         follower = null;
@@ -20,63 +20,67 @@ public abstract class Steppable extends FieldElement {
 
     public void setStepped(boolean stepped) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Steppable.setStepped()");
+        DepthWriter.print("Steppable.setStepped()");
         this.stepped = stepped;
         DepthWriter.reduce();
 
     }
-    public void setAnterior(Steppable st){
+
+    public void setAnterior(Steppable st) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Steppable.setAnterior()");
+        DepthWriter.print("Steppable.setAnterior()");
         anterior = st;
         DepthWriter.reduce();
     }
-    public Steppable getAnterior(){
+
+    public Steppable getAnterior() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Steppable.getAnterior()");
+        DepthWriter.print("Steppable.getAnterior()");
         DepthWriter.reduce();
         return anterior;
     }
+
     public boolean isStepped() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Steppable.isStepped()");
+        DepthWriter.print("Steppable.isStepped()");
         DepthWriter.reduce();
         return stepped;
     }
 
     public void setFollower(Panda follower) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Steppable.setFollower()");
+        DepthWriter.print("Steppable.setFollower()");
         DepthWriter.reduce();
         this.follower = follower;
     }
 
     public Panda getFollower() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Steppable.getFollower()");
+        DepthWriter.print("Steppable.getFollower()");
         DepthWriter.reduce();
         return follower;
     }
-    public void setLastSteppedOn(Field field){
+
+    public void setLastSteppedOn(Field field) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Steppable.setLastSteppedOn()");
+        DepthWriter.print("Steppable.setLastSteppedOn()");
         DepthWriter.reduce();
         lastSteppedOn = field;
     }
 
-    public void die() {
-        DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Steppable.die()");
-        DepthWriter.reduce();
-    }
 
-
+    /**
+     * A paraméterként kapott mezőre lép a Steppable, Illetve ha van követője azt a lépés előtti mezőjére lépteti
+     *
+     * @param f: Field
+     * @return boolean
+     */
     public boolean step(Field f) {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Steppable.step()");
+        DepthWriter.print("Steppable.step()");
 
-        if(getField().moveTo(f, this)){
-            if(follower != null){
+        if (getField().moveTo(f, this)) {
+            if (follower != null) {
                 follower.step(lastSteppedOn);
             }
         }
@@ -84,16 +88,27 @@ public abstract class Steppable extends FieldElement {
         return false; //default return value
     }
 
-    //A panda és az Orángután is override-olja ezt a függvényt
-    public boolean  collideWith(FieldElement fe) {
-        DepthWriter dw = new DepthWriter("Steppable.collideWith()");
-        return false; //default return value;
-    }
-
+    /**
+     * A követő kezét elengedjük
+     */
     public void releaseFollower() {
         DepthWriter.add();
-        DepthWriter dw = new DepthWriter("Steppable.releaseFollower()");
+        DepthWriter.print("Steppable.releaseFollower()");
         DepthWriter.reduce();
     }
 
+
+    /**
+     * Egy másik FieldElementtel való ütközés után hívódik meg, a Panda és az Orangutan is felülírja
+     *
+     * @param fe: Field
+     * @return boolean
+     */
+    public abstract boolean collideWith(FieldElement fe);
+
+    /**
+     * Steppable meghal, abstarct mert a Panda és az Oruangutan is felülírja
+     */
+    public abstract void die();
 }
+

@@ -5,6 +5,8 @@ import businesslogic.Orangutan;
 import businesslogic.Field;
 import businesslogic.*;
 
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * Orángután funkckiókat tesztelő osztály
  */
@@ -13,7 +15,7 @@ public class TestOrangutan {
      * Orangutan lépését figyeljük meg követővel illetve anélkül
      */
     public static void OrangutanMove() {
-        System.out.println("Test adatok felvétele: ");
+        System.out.println("Teszt adatok felvétele: ");
         Orangutan o = new Orangutan();
         Field f = new Field();
         Field f2 = new Field();
@@ -23,7 +25,7 @@ public class TestOrangutan {
         f2.addNeighbour(f);
         f2.addNeighbour(f3);
         System.out.println(" ");
-        DepthWriter dw = new DepthWriter("Orangutan Move Szekvencia without follower: ");
+        DepthWriter.print("Orangutan Move Szekvencia without follower: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
 
         o.step(f2);
@@ -35,12 +37,12 @@ public class TestOrangutan {
         p.setCatcher(o);
         o.setFollower(p);
         o.setField(f);
-        dw.reset();
+        DepthWriter.reset();
         System.out.println(" ");
-        DepthWriter dw2 = new DepthWriter("Orangutan Move Szekvencia with follower: ");
+        DepthWriter.print("Orangutan Move Szekvencia with follower: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
         o.step(f2);
-        dw2.reset();
+        DepthWriter.reset();
     }
 
     /**
@@ -64,10 +66,10 @@ public class TestOrangutan {
         f2.addNeighbour(f);
         f2.addNeighbour(f3);
 
-        DepthWriter dw = new DepthWriter("Orangutan catch Panda: ");
+        DepthWriter.print("Orangutan catch Panda: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
         o.step(f2);
-        dw.reset();
+        DepthWriter.reset();
     }
 
     /**
@@ -77,6 +79,7 @@ public class TestOrangutan {
         System.out.println("Test adatok felvétele: ");
         Orangutan o = new Orangutan();
         Panda p = new SleepyPanda();
+        Floor floor = new Floor();
 
         Field f = new Field();
         Field f2 = new Field();
@@ -91,16 +94,17 @@ public class TestOrangutan {
         f.setFieldElement(o);
         p.setField(f4);
         f4.setFieldElement(p);
+        p.setFloor(floor);
 
         o.setFollower(p);
         p.setCatcher(o);
         p.setAnterior(o);
 
         System.out.println("  ");
-        DepthWriter dw = new DepthWriter("Orangutan Exit: ");
+        DepthWriter.print("Orangutan Exit: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
         o.step(f2);
-        dw.reset();
+        DepthWriter.reset();
     }
 
     /**
@@ -139,10 +143,10 @@ public class TestOrangutan {
         p.setAnterior(o);
 
         System.out.println("  ");
-        DepthWriter dw = new DepthWriter("Orangutan Goes Wardrobe: ");
+        DepthWriter.print("Orangutan Goes Wardrobe: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
         o.step(wf1);
-        dw.reset();
+        DepthWriter.reset();
     }
 
     /**
@@ -160,9 +164,9 @@ public class TestOrangutan {
         o.setFloor(fr);
 
         System.out.println("  ");
-        DepthWriter dw = new DepthWriter("Orangutan Die: ");
+        DepthWriter.print("Orangutan Die: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
         o.die();
-        dw.reset();
+        DepthWriter.reset();
     }
 }

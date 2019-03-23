@@ -2,7 +2,9 @@ package test;
 
 import businesslogic.*;
 
-/*Orangutan Törékeny mezőre lép aminek 1 a durability-e*/
+/** Orangutan Törékeny mezőre lép aminek 1 a durability-e
+ *
+ */
 public class TestField {
     public static void FieldBreak() {
         System.out.println("Test adatok felvétele: ");
@@ -19,9 +21,9 @@ public class TestField {
         o.setFloor(fr);
 
         System.out.println("  ");
-        DepthWriter dw = new DepthWriter("Orangutan steps on Fragile Field: ");
+        DepthWriter.print("Orangutan steps on Fragile Field: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
         o.step(f);
-        dw.reset();
+        DepthWriter.reset();
     }
 }
