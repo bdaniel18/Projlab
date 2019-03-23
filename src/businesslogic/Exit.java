@@ -1,8 +1,11 @@
 package businesslogic;
 
+/**
+ * A pálya kijárata, amin keresztül az orángutánok kivezetik a pandákat
+ */
 public class Exit extends FieldElement {
 
-    private Field entrance;
+    private Field entrance; // a pálya bejárata
 
     public Exit() {
         DepthWriter.add();
@@ -25,10 +28,10 @@ public class Exit extends FieldElement {
         return entrance;
     }
 
-    /**Paraméterként kapott Pandaval közli, hogy nem mehet ki a kijáraton, csak ha egy Orangutan kivezeti
-     *
-     * @param p: Panda
-     * @return boolean
+    /**
+     * Paraméterként kapott Pandaval közli, hogy nem mehet ki a kijáraton, csak ha egy Orangutan kivezeti
+     * @param p Panda
+     * @return a kilépés kimenetele (mindig hamis)
      */
     @Override
     public boolean hitBy(Panda p) {
@@ -41,7 +44,7 @@ public class Exit extends FieldElement {
     /**Paraméterként kapott Oragutant a bejárathoz küldi majd a követőivel közli, hogy elérték a kijáratot
      *
      * @param o: Orangutan
-     * @return boolean
+     * @return a kilépés kimenetele
      */
     @Override
     public boolean hitBy(Orangutan o) {
@@ -49,7 +52,7 @@ public class Exit extends FieldElement {
         DepthWriter.print("Exit.hitBy()");
         if(entrance.accept(o)){
             if(o.getFollower() != null)
-                 o.getFollower().exitReached();
+                o.getFollower().exitReached();
             DepthWriter.reduce();
             return true;
         }

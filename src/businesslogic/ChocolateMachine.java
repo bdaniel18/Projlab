@@ -1,5 +1,8 @@
 package businesslogic;
 
+/**
+ * Csokoládéautomata, néha aktiválódik, ilyenkor sípol.
+ */
 public class ChocolateMachine extends Activateable {
 
     public ChocolateMachine() {
@@ -8,6 +11,9 @@ public class ChocolateMachine extends Activateable {
         DepthWriter.reduce();
     }
 
+    /**
+     * Az automata sípol, amit jelez a mezőjének.
+     */
     public void activate() {
         DepthWriter.add();
         DepthWriter.print("ChocolateMachine.activate()");

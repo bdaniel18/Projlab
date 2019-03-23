@@ -3,12 +3,15 @@ package businesslogic;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * A pálya egy mezője, állhat rajta egyszerre egy FieldElement.
+ */
 public class Field {
 
-    private FieldElement fieldElement;
-    private int durability;
-    private boolean fragile;
-    private List<Field> neighbours;
+    private FieldElement fieldElement; //a mezőn álló elem
+    private int durability;    // ha törékeny a csempe, az élettartamát tárolja
+    private boolean fragile;   //törékeny-e a csempe
+    private List<Field> neighbours;  // a szomszédos mezők
 
     public Field() {
         DepthWriter.add();
@@ -72,7 +75,9 @@ public class Field {
     }
 
     /**
-     * idx-edik szomszédot adja vissza ha nincs ilyen szomszéd null-t ad vissza
+     * Visszaadja a paraméterként kapott indexű szomszédot
+     * @param idx a kért mező indexe
+     * @return az idx. szomszéd
      */
     public Field getNeighbour(int idx){
         DepthWriter.add();
@@ -86,8 +91,12 @@ public class Field {
         return temp;
     }
 
-
-
+    /**
+     * Egy Steppable lépést kísérel meg a mezőre
+     *
+     * @param st a lépést végző Steppable
+     * @return a lépés sikeressége
+     */
     public boolean accept(Steppable st) {
         DepthWriter.add();
         DepthWriter.print("Field.accept()");
@@ -98,9 +107,9 @@ public class Field {
                 st.setLastSteppedOn(this);
                 if(isFragile()){
                     decDurability();
-                        if(getDurability() < 1){
-                            st.die();
-                        }
+                    if (getDurability() < 1) {
+                        st.die();
+                    }
 
                 }
                 DepthWriter.reduce();
@@ -127,9 +136,13 @@ public class Field {
         return true;
     }
 
-    /**(A hívó saját magát adja át paraméterként)
-     * Paraméterként kapja, hogy hova és mit kell mozgatni
-    */
+    /**
+     * A mezőn álló Steppable lépést kísérel meg egy szomszédos mezőre
+     *
+     * @param f  a célmező
+     * @param st a lépő Steppable
+     * @return a lépés sikeressége
+     */
     public boolean moveTo(Field f, Steppable st) {
         DepthWriter.add();
         DepthWriter.print("Field.moveTo()");
@@ -142,7 +155,8 @@ public class Field {
 
 
     /**
-     * Eltávolítja a kapott FieldElementet a mezőről, ha rajta van.
+     * Eltávolítja a mezőről a kapott FieldElementet, ha rajta áll
+     * @param f az eltávolítandó elem
      */
     public void remove(FieldElement f) {
         DepthWriter.add();
@@ -153,8 +167,7 @@ public class Field {
     }
 
     /**
-     * Aktiválódott a mezőn egy GamblingMachine.
-     * A szomszédos mezőn állók gmActivated() függvényét meghívja.
+     * A mező szól a szomszédos mezőn álló elemeknek, hogy játékgép aktiválódott rajta
      */
     public void scareNeighbours() {
         DepthWriter.add();
@@ -167,8 +180,8 @@ public class Field {
         DepthWriter.reduce();
     }
 
-    /** Aktiválódott a mezőn egy ChocolateMachine.
-     * A szomszédos mezőn állók cmActivated() függvényét meghívja.
+    /**
+     * A mezőn csokiautomata aktiválódott, szól a szomdédos elemeknek.
      */
     public void jumpNeighbours() {
         DepthWriter.add();
@@ -182,8 +195,7 @@ public class Field {
     }
 
     /**
-     * Szól a szomszédos mezőknek, hogy a mezőn fotel van.
-     *
+     * Szól a szomszédos mezőknek, hogy a mezőn fotel van
      * @param s A mezőn álló fotel
      */
     public void sleepNeighbours(Sofa s) {
@@ -203,6 +215,7 @@ public class Field {
     /**
      * A mezőn álló panda ugrott egyet, amitől eggyel csökken a durability,
      * ha a mező törékeny.
+     * @param p a mezőn álló panda
      */
     public void pandaJumped(Panda p) {
         DepthWriter.add();

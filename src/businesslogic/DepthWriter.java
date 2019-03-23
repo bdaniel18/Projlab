@@ -11,6 +11,11 @@ public class DepthWriter {
         System.out.println(str);
     }
 
+    /**
+     * A kapott stringet annyi tabulátor után írja ki amennyi a depth értéke.
+     *
+     * @param str a kiírandó szöveg
+     */
     public static void print(String str){
         for (int i = 0; i < depth; i++) {
             System.out.print("   ");
@@ -21,11 +26,9 @@ public class DepthWriter {
     public static void add() {
         depth++;
     }
-
     public static void reduce() {
         depth--;
     }
-
     public static void reset() {
         depth = 0;
     }
