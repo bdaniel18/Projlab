@@ -3,7 +3,9 @@ package businesslogic;
 import com.sun.xml.internal.bind.annotation.XmlLocation;
 import java.util.Random;
 
-//Ez miért volt abstract?
+/**
+ * Panda osztály, az orángutánok el tudják fogni, és kivezetni a kijáraton.
+ */
 public abstract  class Panda extends Steppable {
 
     private Floor floor;
@@ -110,21 +112,21 @@ public abstract  class Panda extends Steppable {
         return false;
     }
 
-    /** A panda elengedi a követője kezét(ha van) illetve az őt vezető kezét is.
-     *
+    /**
+     * A panda elengedi a követője kezét(ha van) illetve az őt vezető kezét is.
      */
-
     public void releaseBoth() {
         DepthWriter.add();
         DepthWriter.print("Panda.releaseBoth()");
-
+        catcher = null;
         if(getFollower() != null)
             getFollower().releaseBoth();
         DepthWriter.reduce();
     }
 
-    /**A paraméterként kapott FieldElement hitBy függvénnyel közli a Panda, hogy ütköztek és a visszatérési értéket továbbadja a hívónak
-     *
+    /**
+     * A paraméterként kapott FieldElement hitBy függvénnyel közli a Panda,
+     * hogy ütköztek és a visszatérési értéket továbbadja a hívónak
      * @param fe: Field
      * @return boolean
      */
@@ -137,8 +139,8 @@ public abstract  class Panda extends Steppable {
         return temp;
     }
 
-    /**Panda meghal, elengedi a vezetője és a követője kezét is(ha van) és lekerül a Floor-ról
-     *
+    /**
+     * Panda meghal, elengedi a vezetője és a követője kezét is(ha van) és lekerül a Floor-ról
      */
     @Override
     public void die() {

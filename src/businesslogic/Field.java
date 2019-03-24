@@ -3,12 +3,15 @@ package businesslogic;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * A játék mezője
+ */
 public class Field {
 
-    private FieldElement fieldElement;
-    private int durability;
-    private boolean fragile;
-    private List<Field> neighbours;
+    private FieldElement fieldElement; // a mezőn álló elem
+    private int durability; // a mező tartóssága
+    private boolean fragile; // törékeny-e a mező
+    private List<Field> neighbours; //a szomszédos mezők
 
     public Field() {
         DepthWriter.add();
@@ -97,7 +100,7 @@ public class Field {
         DepthWriter.print("Field.accept()");
 
         if(fieldElement != null){
-            if(st.collideWith(fieldElement)){
+            if (st.collideWith(fieldElement)) { // a lépés sikeres
                 st.setStepped(true);
                 st.setLastSteppedOn(this);
                 if(isFragile()){
@@ -109,7 +112,7 @@ public class Field {
                 }
                 DepthWriter.reduce();
                 return  true;
-            }else{
+            } else { // a lépés sikertelen
                 DepthWriter.reduce();
                 return false;
             }
@@ -173,7 +176,8 @@ public class Field {
         DepthWriter.reduce();
     }
 
-    /** Aktiválódott a mezőn egy ChocolateMachine.
+    /**
+     * Aktiválódott a mezőn egy ChocolateMachine.
      * A szomszédos mezőn állók cmActivated() függvényét meghívja.
      */
     public void jumpNeighbours() {
@@ -189,7 +193,6 @@ public class Field {
 
     /**
      * Szól a szomszédos mezőknek, hogy a mezőn fotel van.
-     *
      * @param s A mezőn álló fotel
      */
     public void sleepNeighbours(Sofa s) {
