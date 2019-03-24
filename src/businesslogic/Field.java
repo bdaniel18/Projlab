@@ -86,7 +86,7 @@ public class Field {
         return temp;
     }
 
-    /**Paraméterként kapott Steppable-t megpróbálja elhezeni a Field-en
+    /**Paraméterként kapott Steppable-t megpróbálja elhelyezni a Field-en
      * Vizsgáljuk, hogy van-e a Field-en FieldElement és a vele való ütközés eredménye alapján történik az elhelyezés, amennyiben sikerült a lépés
      * megnézzük, hogy a Field Fragile-e amennyiben igen a durability-t csökkentjünk és ha nulla akkor leesik a Steppable, (meghal)
      * @param st: Steppable
