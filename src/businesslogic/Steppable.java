@@ -72,11 +72,10 @@ public abstract class Steppable extends FieldElement {
         lastSteppedOn = field;
     }
 
-
     /**
      * A paraméterként kapott mezőre lép a Steppable, Illetve ha van követője azt a lépés előtti mezőjére lépteti
      * @param f: Field
-     * @return boolean
+     * @return a lépés sikeressége
      */
     public boolean step(Field f) {
         DepthWriter.add();
@@ -109,7 +108,7 @@ public abstract class Steppable extends FieldElement {
     public abstract boolean collideWith(FieldElement fe);
 
     /**
-     * Steppable meghal, abstarct mert a Panda és az Oruangutan is felülírja
+     * Steppable meghal, abstract mert a Panda és az Oruangutan is felülírja
      */
     public abstract void die();
 }

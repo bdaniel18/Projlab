@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Szekrény osztály,
+ * Szekrény osztály, továbbítja a belelépő Steppableket egy másik szekrénynek.
  */
 public class Wardrobe extends FieldElement {
 
-    private Wardrobe target;
-    private Map<Orangutan, Field> targetField;
+    private Wardrobe target; // a célszekrény
+    private Map<Orangutan, Field> targetField; // adott orángutánhoz a mező, amire az orángutánt utoljára rakta.
 
     public Wardrobe() {
         DepthWriter.add();
@@ -49,10 +49,10 @@ public class Wardrobe extends FieldElement {
         return targetField;
     }
 
-    /**Valamelyik szomszédos szabad mezőre rakja a kapott Orangutant
-     *
+    /**
+     * Valamelyik szomszédos szabad mezőre rakja a kapott Orangutant
      * @param o: Orangutan
-     * @return boolean
+     * @return a lépés sikeressége
      */
     public boolean receive(Orangutan o) {
         DepthWriter.add();
@@ -68,7 +68,7 @@ public class Wardrobe extends FieldElement {
      * Valamelyik szomszédos szabad mezőre rakja a kapott Pandat,
      * ha elfogott panda akkor az orangutanhoz tartozó mezőre rakja azt
      * @param p: Panda
-     * @return boolean
+     * @return a lépés sikeressége
      */
     public boolean receive(Panda p) {
         DepthWriter.add();
@@ -87,7 +87,7 @@ public class Wardrobe extends FieldElement {
     /**
      * Paraméterként kapott Pandat elküldi a vele össszekötött szekrényhez
      * @param p: Panda
-     * @return boolean
+     * @return a lépés sikeressége
      */
     @Override
     public boolean hitBy(Panda p) {
@@ -98,10 +98,10 @@ public class Wardrobe extends FieldElement {
         return temp;
     }
 
-    /**Paraméterként kapott Orangutant elküldi a vele össszekötött szekrényhez
-     *
+    /**
+     * Paraméterként kapott Orangutant elküldi a vele össszekötött szekrényhez
      * @param o: Orangutan
-     * @return boolean
+     * @return a lépés sikeressége
      */
     @Override
     public boolean hitBy(Orangutan o) {

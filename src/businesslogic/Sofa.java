@@ -2,9 +2,13 @@ package businesslogic;
 
 import test.DepthWriter;
 
+/**
+ * Fotel osztály, ülhet benne egy panda egyszerre, amit tárol.
+ * Minden körben aktiválódik.
+ */
 public class Sofa extends Activateable {
 
-    private Panda panda;
+    private Panda panda; // a fotelben ülő panda
 
     public Sofa() {
         DepthWriter.add();
@@ -26,12 +30,22 @@ public class Sofa extends Activateable {
         return panda;
     }
 
+    /**
+     * Egy álmos panda beleül a fotelbe.
+     *
+     * @param p Panda
+     */
     public void sit(Panda p) {
         DepthWriter.add();
         DepthWriter.print("Sofa.sit()");
         DepthWriter.reduce();
+        panda = p;
     }
 
+    /**
+     * A fotel, ha ül benne panda megpróbálja továbbítani szomszédos mezőre,
+     * ha üressé vált, szól a mezőjének hogy aktiválódott.
+     */
     public void activate() {
         DepthWriter.add();
         DepthWriter.print("Sofa.activate()");
