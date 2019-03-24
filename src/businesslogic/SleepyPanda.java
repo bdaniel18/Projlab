@@ -12,6 +12,9 @@ public class SleepyPanda extends Panda {
         DepthWriter.add();
         DepthWriter.print("SleepyPanda.sofaActivated()");
         DepthWriter.reduce();
+
+        sleep(s);
+
         return false; //default return value
     }
 
@@ -19,5 +22,10 @@ public class SleepyPanda extends Panda {
         DepthWriter.add();
         DepthWriter.print("SleepyPanda.sleep()");
         DepthWriter.reduce();
+
+        releaseFollower();
+        releaseBoth();
+        s.sit(this);
+        getField().remove(this);
     }
 }

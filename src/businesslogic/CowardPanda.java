@@ -19,5 +19,8 @@ public class CowardPanda extends Panda{
         DepthWriter.add();
         DepthWriter.print("CowardPanda.scared()");
         DepthWriter.reduce();
+
+        releaseBoth();
+        releaseFollower();
     }
 }
