@@ -5,12 +5,16 @@ import test.DepthWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Az emelet osztály, tárolja a pálya mezőit, és az elemeket, amik minden körben
+ * aktiválódnak, vagy lépnek.
+ */
 public class Floor {
 
-    private List<Field> fields;
-    private List<Activateable> activateables;
-    private List<Orangutan> orangutans;
-    private List<Panda> pandas;
+    private List<Field> fields; // a pálya mezői
+    private List<Activateable> activateables; // a pálya aktiválható elemei
+    private List<Orangutan> orangutans; // a pálya orángutánjai
+    private List<Panda> pandas; // a pálya pandái
 
     /**
      * Konstruktor, inicializálja a listákat
@@ -26,6 +30,11 @@ public class Floor {
         DepthWriter.reduce();
     }
 
+    /**
+     * Egy mezőt ad a pályához.
+     *
+     * @param f Field
+     */
     public void addField(Field f){
         DepthWriter.add();
         DepthWriter.print("Floor.addField()");
@@ -34,6 +43,11 @@ public class Floor {
         fields.add(f);
     }
 
+    /**
+     * Egy Activeablet ad a pályához
+     *
+     * @param a Aktiválható elem
+     */
     public void add(Activateable a) {
         DepthWriter.add();
         DepthWriter.print("Floor.add()");
@@ -42,6 +56,10 @@ public class Floor {
         activateables.add(a);
     }
 
+    /**
+     * Egy orángutánt ad a pályához
+     * @param o Orángután
+     */
     public void add(Orangutan o){
         DepthWriter.add();
         DepthWriter.print("Floor.add()");
@@ -50,7 +68,10 @@ public class Floor {
         orangutans.add(o);
     }
 
-
+    /**
+     * Egy pandát ad a pályához.
+     * @param p Panda
+     */
     public void add(Panda p){
         DepthWriter.add();
         DepthWriter.print("Floor.add()");
@@ -59,6 +80,10 @@ public class Floor {
         pandas.add(p);
     }
 
+    /**
+     * A pálya irányításából eltávolít egy orángutánt
+     * @param o az eltávolítandó orángután.
+     */
     public void remove (Orangutan o){
         DepthWriter.add();
         DepthWriter.print("Floor.remove()");
@@ -67,6 +92,10 @@ public class Floor {
         orangutans.remove(o);
     }
 
+    /**
+     * A pálya irányításából eltávolít egy pandát
+     * @param p az eltávolítandó panda
+     */
     public void remove (Panda p){
         DepthWriter.add();
         DepthWriter.print("Floor.remove()");
@@ -75,6 +104,10 @@ public class Floor {
         pandas.remove(p);
     }
 
+    /**
+     * Új kör kezdődik, minden Steppable lép, és minden Activateable-nek meghívódik
+     * az activate() függvénye
+     */
     public void newTurn() {
         DepthWriter.add();
         DepthWriter.print("Floor.newTurn()");
@@ -89,6 +122,11 @@ public class Floor {
         if(activateables.size() != 0) activateables.get(0).activate();
     }
 
+    /**
+     * Várunk, hogy a felhasználó léptesse az adott orángutánt.
+     * @param o Orángután
+     * @return a mező, amire lépett
+     */
     public Field waitForStep(Orangutan o){
         DepthWriter.add();
         DepthWriter.print("Floor.waitForStep()");
