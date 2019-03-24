@@ -1,5 +1,7 @@
 package businesslogic;
 
+import test.DepthWriter;
+
 /**
  * A pálya kijárata, amin keresztül az orángutánok kivezetik a pandákat
  */

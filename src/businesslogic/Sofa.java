@@ -1,5 +1,7 @@
 package businesslogic;
 
+import test.DepthWriter;
+
 public class Sofa extends Activateable {
 
     private Panda panda;

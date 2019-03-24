@@ -1,5 +1,7 @@
 package businesslogic;
 
+import test.DepthWriter;
+
 /**
  * Bármilyen elem a játékban, ami egy mezőre tud állni.
  * Absztrakt osztály

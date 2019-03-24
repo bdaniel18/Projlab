@@ -1,4 +1,4 @@
-package businesslogic;
+package test;
 
 /** Használata: DepthWriter.print(str: string) Paraméterként kapott stringet a megfelelő mennyiségű behúzással írja ki (depth = mélység, továbbiakban a behúzások számát jelenti)
  * Egy függvényel belüli függvény hívások előtt az Depthwriter.Add() növeli a mélységet majd miután visszatért a DeptWriter.reduce() csökkenti azt

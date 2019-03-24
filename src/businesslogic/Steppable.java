@@ -1,5 +1,7 @@
 package businesslogic;
 
+import test.DepthWriter;
+
 /**
  * A pálya léptethető eleme
  */
