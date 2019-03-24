@@ -111,6 +111,8 @@ public class Floor {
     public void newTurn() {
         DepthWriter.add();
         DepthWriter.print("Floor.newTurn()");
+
+
         DepthWriter.reduce();
 
         if(orangutans.size() != 0) orangutans.get(0).setStepped(false);

@@ -29,7 +29,7 @@ public class TestPanda  {
     }
 
     /**
-     * Panda az exithez ér(vagy az őt elkapó orángután)
+     * A pandát elkapó orángután kiképett a pályáról
      */
     public static void PandaExit() {
         System.out.println("Teszt adatok felvétele: ");
@@ -63,7 +63,9 @@ public class TestPanda  {
         p1.exitReached();
     }
 
-
+    /**
+     * Panda belép egy szekrénybe
+     */
     public static void PandaEnterWardrobe() {
         System.out.println("Teszt adatok felvétele: ");
         /**
@@ -112,6 +114,9 @@ public class TestPanda  {
 
     }
 
+    /**
+     * Panda halálának tesztje
+     */
     public static void PandaDie() {
         System.out.println("Teszt adatok felvétele: ");
 
@@ -134,6 +139,9 @@ public class TestPanda  {
         p1.die();
     }
 
+    /**
+     * Panda ugrásának tesztje
+     */
     public static void PandaJump() {
         System.out.println("Teszt adatok felvétele: ");
         Panda p1 = new JumpyPanda();
@@ -154,6 +162,9 @@ public class TestPanda  {
         p1.cmActivated();
     }
 
+    /**
+     * Panda alvásának tesztje
+     */
     public static void PandaSleep() {
         System.out.println("Teszt adatok felvétele: ");
 
@@ -183,6 +194,9 @@ public class TestPanda  {
 
     }
 
+    /**
+     * Panda megijedésének tesztje
+     */
     public static void PandaScared() {
         System.out.println("Teszt adatok felvétele: ");
         Panda p1 = new CowardPanda();

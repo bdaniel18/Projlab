@@ -15,7 +15,6 @@ public class SleepyPanda extends Panda {
 
     /**
      * Szomszédos mezőn fotel van.
-     *
      * @param s a szomszédos fotel
      * @return beleült-e a fotelbe
      */
@@ -29,8 +28,7 @@ public class SleepyPanda extends Panda {
     }
 
     /**
-     * Beleül a fotelbe egy körre
-     *
+     * A panda beleül a fotelbe egy körre
      * @param s a fotel
      */
     private void sleep(Sofa s) {
