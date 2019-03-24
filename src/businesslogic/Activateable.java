@@ -1,5 +1,8 @@
 package businesslogic;
 
+
+import test.DepthWriter;
+
 /**
  * Aktiválható pályaelem, absztrakt osztály
  */
