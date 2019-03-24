@@ -2,6 +2,7 @@ package businesslogic;
 
 /**
  * Bármilyen elem a játékban, ami egy mezőre tud állni.
+ * Absztrakt osztály
  */
 public abstract class FieldElement {
 

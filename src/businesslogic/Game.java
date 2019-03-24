@@ -1,5 +1,8 @@
 package businesslogic;
 
+/**
+ * A játék osztály, felelős a játék indításáért és befejezésért.
+ */
 public class Game {
 
     private static Game instance;

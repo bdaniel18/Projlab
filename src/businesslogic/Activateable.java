@@ -1,6 +1,8 @@
 package businesslogic;
 
-
+/**
+ * Aktiválható pályaelem, absztrakt osztály
+ */
 public abstract class Activateable extends FieldElement {
 
 

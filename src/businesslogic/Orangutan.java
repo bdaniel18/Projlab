@@ -5,7 +5,9 @@ package businesslogic;
  */
 public class Orangutan extends Steppable {
 
-    // az orángután pontszáma, amit pandák kivezetéséért kap
+    /**
+     * az orángután pontszáma, amit pandák kivezetéséért kap
+     */
     private int score;
     private Floor floor;
 
