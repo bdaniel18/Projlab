@@ -86,8 +86,12 @@ public class Field {
         return temp;
     }
 
-
-
+    /**Paraméterként kapott Steppable-t megpróbálja elhezeni a Field-en
+     * Vizsgáljuk, hogy van-e a Field-en FieldElement és a vele való ütközés eredménye alapján történik az elhelyezés, amennyiben sikerült a lépés
+     * megnézzük, hogy a Field Fragile-e amennyiben igen a durability-t csökkentjünk és ha nulla akkor leesik a Steppable, (meghal)
+     * @param st: Steppable
+     * @return boolean , Sikerült-e elhelyezni a Steppable-t
+     */
     public boolean accept(Steppable st) {
         DepthWriter.add();
         DepthWriter.print("Field.accept()");
@@ -110,6 +114,7 @@ public class Field {
                 return false;
             }
         }
+        //Mivel a FieldElement null, a lépés megtörténik
         if(isFragile()){
             decDurability();
             st.setStepped(true);
