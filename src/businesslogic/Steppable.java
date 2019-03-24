@@ -1,11 +1,13 @@
 package businesslogic;
 
-
+/**
+ * A pálya léptethető eleme
+ */
 public abstract class Steppable extends FieldElement {
 
-    private boolean stepped;
-    private Panda follower;
-    private Steppable anterior;
+    private boolean stepped; // lépett-e az adott körben
+    private Panda follower; // a sorban utána következő panda ( ha van)
+    private Steppable anterior; // a sorban előtte haladó
     private Field lastSteppedOn; //Mező amire legutoljára lépett
 
     public Steppable() {
@@ -71,7 +73,6 @@ public abstract class Steppable extends FieldElement {
 
     /**
      * A paraméterként kapott mezőre lép a Steppable, Illetve ha van követője azt a lépés előtti mezőjére lépteti
-     *
      * @param f: Field
      * @return boolean
      */
@@ -100,7 +101,6 @@ public abstract class Steppable extends FieldElement {
 
     /**
      * Egy másik FieldElementtel való ütközés után hívódik meg, a Panda és az Orangutan is felülírja
-     *
      * @param fe: Field
      * @return boolean
      */

@@ -49,7 +49,7 @@ public class TestOrangutan {
      * Orangután elkap egy pandát
      */
     public static void OrangutanCatchPanda() {
-        System.out.println("Test adatok felvétele: ");
+        System.out.println("Teszt adatok felvétele: ");
         Orangutan o = new Orangutan();
         Panda p = new SleepyPanda();
 
@@ -76,7 +76,7 @@ public class TestOrangutan {
      * Orangutan kimegy a kijáraton egy pandával
      */
     public static void OrangutanExit() {
-        System.out.println("Test adatok felvétele: ");
+        System.out.println("Teszt adatok felvétele: ");
         Orangutan o = new Orangutan();
         Panda p = new SleepyPanda();
         Floor floor = new Floor();
@@ -111,7 +111,7 @@ public class TestOrangutan {
      * Orangután bemegy egy szekrénybe egy pandával
      */
     public static void OrangutanEnterWardrobe() {
-        System.out.println("Test adatok felvétele: ");
+        System.out.println("Teszt adatok felvétele: ");
         Orangutan o = new Orangutan();
         Panda p = new SleepyPanda();
 
@@ -153,7 +153,7 @@ public class TestOrangutan {
      * Orá1ngután meghal, az őt követő panda elengedi a kezét
      */
     public static void OrangutanDie() {
-        System.out.println("Test adatok felvétele: ");
+        System.out.println("Teszt adatok felvétele: ");
         Orangutan o = new Orangutan();
         Panda p = new SleepyPanda();
         Floor fr = new Floor();
