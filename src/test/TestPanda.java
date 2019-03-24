@@ -105,7 +105,7 @@ public class TestPanda  {
          */
 
         System.out.println(" ");
-        DepthWriter.print("Panda Exit Szekvencia: ");
+        DepthWriter.print("Panda goes to wardrobe Szekvencia: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
 
         w.hitBy(p);
@@ -128,13 +128,30 @@ public class TestPanda  {
 
 
         System.out.println(" ");
-        DepthWriter.print("Panda Move Szekvencia: ");
+        DepthWriter.print("Panda Die Szekvencia: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
 
         p1.die();
     }
 
     public static void PandaJump() {
+        System.out.println("Teszt adatok felvétele: ");
+        Panda p1 = new JumpyPanda();
+        Field f = new Field();
+        Floor floor = new Floor();
+        floor.addField(f);
+        floor.add(p1);
+        p1.setFloor(floor);
+        f.setFragile(true);
+        f.setDurability(1);
+        f.setFieldElement(p1);
+
+
+        System.out.println(" ");
+        DepthWriter.print("Panda jump Szekvencia: ");
+        System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
+
+        p1.cmActivated();
 
     }
 
