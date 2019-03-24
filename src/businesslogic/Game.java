@@ -1,5 +1,7 @@
 package businesslogic;
 
+import test.DepthWriter;
+
 public class Game {
 
     private static Game instance;

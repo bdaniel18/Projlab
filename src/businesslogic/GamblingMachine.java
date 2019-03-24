@@ -1,5 +1,7 @@
 package businesslogic;
 
+import test.DepthWriter;
+
 public class GamblingMachine extends Activateable {
 
     public GamblingMachine() {

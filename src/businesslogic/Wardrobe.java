@@ -1,5 +1,7 @@
 package businesslogic;
 
+import test.DepthWriter;
+
 import java.util.HashMap;
 import java.util.Map;
 

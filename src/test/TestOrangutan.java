@@ -1,11 +1,8 @@
 package test;
 
-import businesslogic.DepthWriter;
 import businesslogic.Orangutan;
 import businesslogic.Field;
 import businesslogic.*;
-
-import javax.xml.bind.annotation.XmlType;
 
 /**
  * Orángután funkckiókat tesztelő osztály
