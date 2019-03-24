@@ -1,6 +1,7 @@
 package businesslogic;
 
 import com.sun.xml.internal.bind.annotation.XmlLocation;
+import java.util.Random;
 
 //Ez miért volt abstract?
 public abstract  class Panda extends Steppable {
@@ -51,6 +52,20 @@ public abstract  class Panda extends Steppable {
         DepthWriter.add();
         DepthWriter.print("Panda.step()");
         DepthWriter.reduce();
+
+        /**
+         * Létrehoz egy random számot 0-10-ig
+         */
+        Random rand = new Random();
+        int n = rand.nextInt(10);
+
+        /**
+         * Leellenőrzi, hogy a generált randomszámnak megfelelő szomszéd létezik e
+         */
+        while(getField().getNeighbour(n) == null) {
+            n = rand.nextInt(10);
+        }
+        this.step(getField().getNeighbour(n));
     }
 
     /**A pandát kivezette egy Orangutan a kijáraton így az megszünik( előtte még ad egy pontot az Orangutannak)
@@ -128,7 +143,7 @@ public abstract  class Panda extends Steppable {
     @Override
     public void die() {
         DepthWriter.add();
-        DepthWriter.print("Orangutan.die()");
+        DepthWriter.print("Panda.die()");
         if (getFollower() != null) {
             getFollower().releaseBoth();
         }
