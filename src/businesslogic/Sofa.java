@@ -32,7 +32,6 @@ public class Sofa extends Activateable {
 
     /**
      * Egy álmos panda beleül a fotelbe.
-     *
      * @param p Panda
      */
     public void sit(Panda p) {

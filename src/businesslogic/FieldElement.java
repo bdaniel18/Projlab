@@ -4,11 +4,11 @@ import test.DepthWriter;
 
 /**
  * Bármilyen elem a játékban, ami egy mezőre tud állni.
- * Absztrakt osztály
+ * Absztrakt osztály.
  */
 public abstract class FieldElement {
 
-    private Field field;
+    private Field field; // a mező amin áll
 
     public FieldElement() {
         DepthWriter.add();
@@ -31,6 +31,12 @@ public abstract class FieldElement {
         return field;
     }
 
+    /**
+     * Panda próbál ugyanerre a mezőre lépni
+     *
+     * @param p Panda
+     * @return sikertelen lépés
+     */
     public boolean hitBy(Panda p) {
         DepthWriter.add();
         DepthWriter.print("FieldElement.hitBy()");
@@ -38,7 +44,12 @@ public abstract class FieldElement {
         return false; //default return value
     }
 
-
+    /**
+     * Orángutánnal történik ütközés
+     *
+     * @param o Orangutan
+     * @return sikertelen lépés
+     */
     public boolean hitBy(Orangutan o) {
         DepthWriter.add();
         DepthWriter.print("FieldElement.hitBy()");
@@ -46,6 +57,11 @@ public abstract class FieldElement {
         return false; //default return value
     }
 
+    /**
+     * Szomszédos mezőn Sofa van.
+     * @param s a szomszédos fotel
+     * @return nem ül bele a fotelbe a FieldElement (default)
+     */
     public boolean sofaActivated(Sofa s) {
         DepthWriter.add();
         DepthWriter.print("FieldElement.sofaActivated()");
@@ -53,13 +69,18 @@ public abstract class FieldElement {
         return false; //default return value
     }
 
-
+    /**
+     * Szomszédos mezőn játékgép van.
+     */
     public void gmActivated() {
         DepthWriter.add();
         DepthWriter.print("FieldElement.gmActivated()");
         DepthWriter.reduce();
     }
 
+    /**
+     * Szomszédos mezőn Csokiautomata van.
+     */
     public void cmActivated() {
         DepthWriter.add();
         DepthWriter.print("FieldElement.cmActivated()");
