@@ -105,7 +105,7 @@ public class TestPanda  {
          */
 
         System.out.println(" ");
-        DepthWriter.print("Panda Exit Szekvencia: ");
+        DepthWriter.print("Panda goes to wardrobe Szekvencia: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
 
         w.hitBy(p);
@@ -128,22 +128,79 @@ public class TestPanda  {
 
 
         System.out.println(" ");
-        DepthWriter.print("Panda Move Szekvencia: ");
+        DepthWriter.print("Panda Die Szekvencia: ");
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
 
         p1.die();
     }
 
     public static void PandaJump() {
+        System.out.println("Teszt adatok felvétele: ");
+        Panda p1 = new JumpyPanda();
+        Field f = new Field();
+        Floor floor = new Floor();
+        floor.addField(f);
+        floor.add(p1);
+        p1.setFloor(floor);
+        f.setFragile(true);
+        f.setDurability(1);
+        f.setFieldElement(p1);
 
+
+        System.out.println(" ");
+        DepthWriter.print("Panda jump Szekvencia: ");
+        System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
+
+        p1.cmActivated();
     }
 
     public static void PandaSleep() {
+        System.out.println("Teszt adatok felvétele: ");
+
+        /**
+         * Init
+         */
+        Floor floor = new Floor();
+        Field f1 = new Field();
+        Field f2 = new Field();
+        Panda p1 = new SleepyPanda();
+        Sofa sofa = new Sofa();
+
+        floor.addField(f1);
+        floor.addField(f2);
+        floor.add(p1);
+        floor.add(sofa);
+        f1.setFieldElement(p1);
+        f2.setFieldElement(sofa);
+
+
+        System.out.println(" ");
+        DepthWriter.print("Panda sleep Szekvencia: ");
+        System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
+
+        p1.sofaActivated(sofa);
+
 
     }
 
     public static void PandaScared() {
+        System.out.println("Teszt adatok felvétele: ");
+        Panda p1 = new CowardPanda();
+        Panda p2 = new CowardPanda();
+        Field f = new Field();
+        Floor floor = new Floor();
+        floor.addField(f);
+        floor.add(p1);
+        p1.setFloor(floor);
+        f.setFieldElement(p1);
+        p1.setFollower(p2);
 
+
+        System.out.println(" ");
+        DepthWriter.print("Panda scared Szekvencia: ");
+        System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-");
+
+        p1.gmActivated();
     }
 
 
