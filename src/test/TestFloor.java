@@ -2,11 +2,17 @@ package test;
 
 import businesslogic.*;
 
+/**
+ * Az emelet tesztelése
+ */
 public class TestFloor {
     public static void NewTurn() {
 
         System.out.println("Teszt adatok felvétele: ");
 
+        /**
+         * A pálya létrehozása
+         */
         Floor floor = new Floor();
         Field f1 = new Field();
         Field f2 = new Field();
@@ -18,6 +24,9 @@ public class TestFloor {
         f2.addNeighbour(f3);
         f3.addNeighbour(f1);
 
+        /**
+         * Dolgok létrehozása, és mezőkön elhelyezése
+         */
         Panda p1 = new JumpyPanda();
         Orangutan o1 = new Orangutan();
         Sofa s = new Sofa();
