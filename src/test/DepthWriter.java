@@ -5,7 +5,8 @@ package test;
  * A DeepthWriter.reset() a mélységet csökkenti 0-ra
  */
 public class DepthWriter {
-    public static int depth = 0;
+
+    public static int depth = 0; // a tabulátorok száma a kiíráskor
 
     public DepthWriter(String str){
         System.out.println(str);
@@ -13,7 +14,6 @@ public class DepthWriter {
 
     /**
      * A kapott stringet annyi tabulátor után írja ki amennyi a depth értéke.
-     *
      * @param str a kiírandó szöveg
      */
     public static void print(String str){
