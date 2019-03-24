@@ -105,6 +105,12 @@ public abstract  class Panda extends Steppable {
         DepthWriter.reduce();
         return false; //default return value
     }
+
+    /**
+     * A panda ütközik egy másik pandával, ezért nem tud oda lépni
+     * @param p
+     * @return
+     */
     @Override
     public boolean hitBy(Panda p){
         DepthWriter.add();

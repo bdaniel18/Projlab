@@ -1,7 +1,8 @@
 package businesslogic;
 
-import test.DepthWriter;
-
+/**
+ * A játék osztály, felelős a játék indításáért és befejezésért.
+ */
 public class Game {
 
     private static Game instance;

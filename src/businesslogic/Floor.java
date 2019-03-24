@@ -12,6 +12,9 @@ public class Floor {
     private List<Orangutan> orangutans;
     private List<Panda> pandas;
 
+    /**
+     * Konstruktor, inicializálja a listákat
+     */
     public Floor(){
         DepthWriter.add();
         DepthWriter.print("Floor CTOR");

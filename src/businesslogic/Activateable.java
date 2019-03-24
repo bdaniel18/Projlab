@@ -1,8 +1,8 @@
 package businesslogic;
 
-
-import test.DepthWriter;
-
+/**
+ * Aktiválható pályaelem, absztrakt osztály
+ */
 public abstract class Activateable extends FieldElement {
 
 

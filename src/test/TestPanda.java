@@ -31,7 +31,6 @@ public class TestPanda  {
     /**
      * Panda az exithez ér(vagy az őt elkapó orángután)
      */
-
     public static void PandaExit() {
         System.out.println("Teszt adatok felvétele: ");
         Panda p1 = new CowardPanda();
@@ -63,6 +62,7 @@ public class TestPanda  {
 
         p1.exitReached();
     }
+
 
     public static void PandaEnterWardrobe() {
         System.out.println("Teszt adatok felvétele: ");
