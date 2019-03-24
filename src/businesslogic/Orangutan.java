@@ -1,7 +1,11 @@
 package businesslogic;
 
+/**
+ * Orángután osztály, a játékos irányítja a lépését, pandákat tud elfogni, és vezetni.
+ */
 public class Orangutan extends Steppable {
 
+    // az orángután pontszáma, amit pandák kivezetéséért kap
     private int score;
     private Floor floor;
 
@@ -55,8 +59,9 @@ public class Orangutan extends Steppable {
         return temp;
     }
 
-    /**A paraméterként kapott Pandát elhelyezi az őt követő pandák sorának elejére és beállítja az előző követő pandának mint vezetőt
-     *
+    /**
+     * A paraméterként kapott Pandát elhelyezi az őt követő pandák sorának elejére,
+     * és beállítja az előző követő pandának mint vezetőt
      * @param p: Panda
      */
 
@@ -76,8 +81,8 @@ public class Orangutan extends Steppable {
         DepthWriter.reduce();
     }
 
-    /** Orangutan pontszámát növeli
-     *
+    /**
+     * Orangutan pontszámát növeli
      */
     public void incScore() {
         DepthWriter.add();
@@ -85,8 +90,8 @@ public class Orangutan extends Steppable {
         DepthWriter.reduce();
     }
 
-    /**Orangutan meghal, elengedi a követője kezét(ha van) illetve lekerül a Floor-ról is
-     *
+    /**
+     * Orangutan meghal, elengedi a követője kezét(ha van) illetve lekerül a Floor-ról is
      */
     @Override
     public void die() {

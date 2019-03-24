@@ -1,5 +1,8 @@
 package businesslogic;
 
+/**
+ * Olyan panda, ami a csokiautomata sípolásától ugrik egyet.
+ */
 public class JumpyPanda extends Panda{
 
     public JumpyPanda(){
@@ -8,6 +11,9 @@ public class JumpyPanda extends Panda{
         DepthWriter.reduce();
     }
 
+    /**
+     * Csokiautomata aktiválódott szomszédos mezőn.
+     */
     public void cmActivated(){
         DepthWriter.add();
         DepthWriter.print("JumpyPanda.cmActivated()");
@@ -16,6 +22,9 @@ public class JumpyPanda extends Panda{
         jump();
     }
 
+    /**
+     * A panda ugrik egyet.
+     */
     private void jump(){
         DepthWriter.add();
         DepthWriter.print("JumpyPanda.jump()");

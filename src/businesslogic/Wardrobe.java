@@ -3,6 +3,9 @@ package businesslogic;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Szekrény osztály,
+ */
 public class Wardrobe extends FieldElement {
 
     private Wardrobe target;
@@ -59,8 +62,9 @@ public class Wardrobe extends FieldElement {
         return temp;
     }
 
-    /**Valamelyik szomszédos szabad mezőre rakja a kapott Pandat, ha elfogott panda akkor az orangutanhoz tartozó mezőre rakja azt
-     *
+    /**
+     * Valamelyik szomszédos szabad mezőre rakja a kapott Pandat,
+     * ha elfogott panda akkor az orangutanhoz tartozó mezőre rakja azt
      * @param p: Panda
      * @return boolean
      */
@@ -78,8 +82,8 @@ public class Wardrobe extends FieldElement {
         }
     }
 
-    /**Paraméterként kapott Pandat elküldi a vele össszekötött szekrényhez
-     *
+    /**
+     * Paraméterként kapott Pandat elküldi a vele össszekötött szekrényhez
      * @param p: Panda
      * @return boolean
      */

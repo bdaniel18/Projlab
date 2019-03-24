@@ -1,6 +1,5 @@
 package businesslogic;
 
-import com.sun.xml.internal.bind.annotation.XmlLocation;
 import java.util.Random;
 
 /**
