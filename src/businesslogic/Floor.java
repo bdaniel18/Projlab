@@ -79,6 +79,14 @@ public class Floor {
         DepthWriter.add();
         DepthWriter.print("Floor.newTurn()");
         DepthWriter.reduce();
+
+        if(orangutans.size() != 0) orangutans.get(0).setStepped(false);
+        if(pandas.size() != 0) {
+            pandas.get(0).setStepped(false);
+            pandas.get(0).step();
+        }
+
+        if(activateables.size() != 0) activateables.get(0).activate();
     }
 
     public Field waitForStep(Orangutan o){
