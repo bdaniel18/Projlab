@@ -25,18 +25,24 @@ public class Floor {
         DepthWriter.add();
         DepthWriter.print("Floor.addField()");
         DepthWriter.reduce();
+
+        fields.add(f);
     }
 
     public void add(Activateable a) {
         DepthWriter.add();
         DepthWriter.print("Floor.add()");
         DepthWriter.reduce();
+
+        activateables.add(a);
     }
 
     public void add(Orangutan o){
         DepthWriter.add();
         DepthWriter.print("Floor.add()");
         DepthWriter.reduce();
+
+        orangutans.add(o);
     }
 
 
@@ -44,18 +50,24 @@ public class Floor {
         DepthWriter.add();
         DepthWriter.print("Floor.add()");
         DepthWriter.reduce();
+
+        pandas.add(p);
     }
 
     public void remove (Orangutan o){
         DepthWriter.add();
         DepthWriter.print("Floor.remove()");
         DepthWriter.reduce();
+
+        orangutans.remove(o);
     }
 
     public void remove (Panda p){
         DepthWriter.add();
         DepthWriter.print("Floor.remove()");
         DepthWriter.reduce();
+
+        pandas.remove(p);
     }
 
     public void newTurn() {
