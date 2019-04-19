@@ -8,9 +8,6 @@ import test.DepthWriter;
 public class GamblingMachine extends Activateable {
 
     public GamblingMachine() {
-        DepthWriter.add();
-        DepthWriter.print("GamblingMachine CTOR");
-        DepthWriter.reduce();
     }
 
     /**
@@ -18,14 +15,9 @@ public class GamblingMachine extends Activateable {
      * Random szám alapján aktiválódik és fejti ki hatását
      */
     public void activate() {
-        DepthWriter.add();
-        DepthWriter.print("GamblingMachine.activate()");
-
         if(random()) {
             System.out.println("Activateable " + getId() + "(GamblingMachine) was activated.");
             getField().scareNeighbours();
         }
-
-        DepthWriter.reduce();
     }
 }

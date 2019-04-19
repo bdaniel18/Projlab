@@ -20,14 +20,10 @@ public class Floor {
      * Konstruktor, inicializálja a listákat
      */
     public Floor(){
-        DepthWriter.add();
-        DepthWriter.print("Floor CTOR");
         fields = new ArrayList<Field>();
         activateables = new ArrayList<Activateable>();
         orangutans = new ArrayList<Orangutan>();
         pandas = new ArrayList<Panda>();
-
-        DepthWriter.reduce();
     }
 
     /**
@@ -36,10 +32,6 @@ public class Floor {
      * @param f Field
      */
     public void addField(Field f){
-        DepthWriter.add();
-        DepthWriter.print("Floor.addField()");
-        DepthWriter.reduce();
-
         fields.add(f);
     }
 
@@ -49,10 +41,6 @@ public class Floor {
      * @param a Aktiválható elem
      */
     public void add(Activateable a) {
-        DepthWriter.add();
-        DepthWriter.print("Floor.add()");
-        DepthWriter.reduce();
-
         activateables.add(a);
     }
 
@@ -61,10 +49,6 @@ public class Floor {
      * @param o Orángután
      */
     public void add(Orangutan o){
-        DepthWriter.add();
-        DepthWriter.print("Floor.add()");
-        DepthWriter.reduce();
-
         orangutans.add(o);
     }
 
@@ -73,10 +57,6 @@ public class Floor {
      * @param p Panda
      */
     public void add(Panda p){
-        DepthWriter.add();
-        DepthWriter.print("Floor.add()");
-        DepthWriter.reduce();
-
         pandas.add(p);
     }
 
@@ -85,10 +65,6 @@ public class Floor {
      * @param o az eltávolítandó orángután.
      */
     public void remove (Orangutan o){
-        DepthWriter.add();
-        DepthWriter.print("Floor.remove()");
-        DepthWriter.reduce();
-
         orangutans.remove(o);
     }
 
@@ -97,10 +73,6 @@ public class Floor {
      * @param p az eltávolítandó panda
      */
     public void remove (Panda p){
-        DepthWriter.add();
-        DepthWriter.print("Floor.remove()");
-        DepthWriter.reduce();
-
         pandas.remove(p);
     }
 
@@ -109,18 +81,11 @@ public class Floor {
      * az activate() függvénye
      */
     public void newTurn() {
-        DepthWriter.add();
-        DepthWriter.print("Floor.newTurn()");
-
-
-        DepthWriter.reduce();
-
         if(orangutans.size() != 0) orangutans.get(0).setStepped(false);
         if(pandas.size() != 0) {
             pandas.get(0).setStepped(false);
             pandas.get(0).step();
         }
-
         if(activateables.size() != 0) activateables.get(0).activate();
     }
 
@@ -130,9 +95,6 @@ public class Floor {
      * @return a mező, amire lépett
      */
     public Field waitForStep(Orangutan o){
-        DepthWriter.add();
-        DepthWriter.print("Floor.waitForStep()");
-        DepthWriter.reduce();
         return  null; //default return value
     }
 

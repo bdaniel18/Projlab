@@ -14,38 +14,23 @@ public class Orangutan extends Steppable {
     private Floor floor;
 
     public Orangutan() {
-        DepthWriter.add();
-        DepthWriter.print("Orangutan CTOR");
-        DepthWriter.reduce();
         score = 0; //default
         floor = null;
     }
 
     public void setScore(int score) {
-        DepthWriter.add();
-        DepthWriter.print("Orangutan.setScore()");
         this.score = score;
-        DepthWriter.reduce();
     }
 
     public int getScore() {
-        DepthWriter.add();
-        DepthWriter.print("Orangutan.getScore()");
-        DepthWriter.reduce();
         return score;
     }
 
     public void setFloor(Floor floor) {
-        DepthWriter.add();
-        DepthWriter.print("Orangutan.setFloor()");
         this.floor = floor;
-        DepthWriter.reduce();
     }
 
     public Floor getFloor() {
-        DepthWriter.add();
-        DepthWriter.print("Orangutan.getFloor()");
-        DepthWriter.reduce();
         return floor;
     }
 
@@ -56,10 +41,7 @@ public class Orangutan extends Steppable {
      */
     @Override
     public boolean collideWith(FieldElement fe) {
-        DepthWriter.add();
-        DepthWriter.print("Orangutan.collideWith()");
         boolean temp = fe.hitBy(this);
-        DepthWriter.reduce();
         return temp;
     }
 
@@ -84,9 +66,6 @@ public class Orangutan extends Steppable {
      * Orangutan pontszámát növeli
      */
     public void incScore() {
-        DepthWriter.add();
-        DepthWriter.print("Orangutan.incScore()");
-        DepthWriter.reduce();
     }
 
     /**
@@ -94,14 +73,11 @@ public class Orangutan extends Steppable {
      */
     @Override
     public void die() {
-        DepthWriter.add();
-        DepthWriter.print("Orangutan.die()");
         if (getFollower() != null) {
             getFollower().releaseFollower();
             getFollower().setCatcher(null);
         }
         getFloor().remove(this);
-        DepthWriter.reduce();
     }
 
 }

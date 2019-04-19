@@ -1,7 +1,5 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,38 +12,23 @@ public class Wardrobe extends FieldElement {
     private Map<Orangutan, Field> targetField; // adott orángutánhoz a mező, amire az orángutánt utoljára rakta.
 
     public Wardrobe() {
-        DepthWriter.add();
-        DepthWriter.print("Wardrobe CTOR");
-        DepthWriter.reduce();
         target = null;
         targetField = new HashMap<Orangutan, Field>();
     }
 
     public void setTarget(Wardrobe target) {
-        DepthWriter.add();
-        DepthWriter.print("Wardrobe.setTarget()");
-        DepthWriter.reduce();
         this.target = target;
     }
 
     public Wardrobe getTarget() {
-        DepthWriter.add();
-        DepthWriter.print("Wardrobe.getTarget()");
-        DepthWriter.reduce();
         return target;
     }
 
     public void setTargetField(Map<Orangutan, Field> targetField) {
-        DepthWriter.add();
-        DepthWriter.print("Wardrobe.setTargetField()");
-        DepthWriter.reduce();
         this.targetField = targetField;
     }
 
     public Map<Orangutan, Field> getTargetField() {
-        DepthWriter.add();
-        DepthWriter.print("Wardrobe.getTargetField()");
-        DepthWriter.reduce();
         return targetField;
     }
 
@@ -55,12 +38,8 @@ public class Wardrobe extends FieldElement {
      * @return a lépés sikeressége
      */
     public boolean receive(Orangutan o) {
-        DepthWriter.add();
-        DepthWriter.print("Wardrobe.receive(Orangutan)");
         targetField.put(o, getField().getNeighbour(0));
         boolean temp = targetField.get(o).accept(o);
-
-        DepthWriter.reduce();
         return temp;
     }
 
@@ -71,15 +50,11 @@ public class Wardrobe extends FieldElement {
      * @return a lépés sikeressége
      */
     public boolean receive(Panda p) {
-        DepthWriter.add();
-        DepthWriter.print("Wardrobe.receive(Panda)");
         if (p.getCatcher() == null) {
             boolean temp = getField().getNeighbour(0).accept(p);
-            DepthWriter.reduce();
             return temp;
         } else {
             boolean temp = getTargetField().get(p.getCatcher()).accept(p);
-            DepthWriter.reduce();
             return temp;
         }
     }
@@ -91,10 +66,7 @@ public class Wardrobe extends FieldElement {
      */
     @Override
     public boolean hitBy(Panda p) {
-        DepthWriter.add();
-        DepthWriter.print("Wardrobe.hitBy(Panda)");
         boolean temp = target.receive(p);
-        DepthWriter.reduce();
         return temp;
     }
 
@@ -105,12 +77,8 @@ public class Wardrobe extends FieldElement {
      */
     @Override
     public boolean hitBy(Orangutan o) {
-        DepthWriter.add();
-        DepthWriter.print("Wardrobe.hitBy(Orangutan)");
         boolean temp = target.receive(o);
-        DepthWriter.reduce();
         return temp;
-
     }
 
 }

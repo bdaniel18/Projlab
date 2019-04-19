@@ -1,16 +1,11 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 /**
  * Elfáradó panda, ami ha mellette fotel aktiválódik, és fáradt, beleül.
  */
 public class SleepyPanda extends Panda {
 
-    public SleepyPanda(){
-        DepthWriter.add();
-        DepthWriter.print("SleepyPanda CTOR");
-        DepthWriter.reduce();
+    public SleepyPanda() {
     }
 
     /**
@@ -19,12 +14,8 @@ public class SleepyPanda extends Panda {
      * @return beleült-e a fotelbe
      */
     public boolean sofaActivated(Sofa s) {
-        DepthWriter.add();
-        DepthWriter.print("SleepyPanda.sofaActivated()");
-        DepthWriter.reduce();
-
-        System.out.println("Activateable " + s.getId() + "(Sofa) was activated.");
-        System.out.println("Panda " + this.getId() + " sat down on Field " + s.getField().getId());
+        System.out.println("MESSAGE: Activateable " + s.getId() + "(Sofa) was activated.");
+        System.out.println("MESSAGE: Panda " + getId() + " sat down on Field " + s.getField().getId());
         sleep(s);
         return true; //Always sits in
     }
@@ -34,11 +25,7 @@ public class SleepyPanda extends Panda {
      * @param s a fotel
      */
     private void sleep(Sofa s) {
-        DepthWriter.add();
-        DepthWriter.print("SleepyPanda.sleep()");
-        DepthWriter.reduce();
-
-        releaseFollower();
+        if (getAnterior() != null) getAnterior().releaseFollower();
         releaseBoth();
         s.sit(this);
         getField().remove(this);

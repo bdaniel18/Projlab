@@ -66,6 +66,9 @@ public abstract class Steppable extends FieldElement {
         lastSteppedOn = field;
     }
 
+    public Field getLastSteppedOn() {
+        return lastSteppedOn;
+    }
     /**
      * A paraméterként kapott mezőre lép a Steppable, Illetve ha van követője azt a lépés előtti mezőjére lépteti
      * @param f: Field

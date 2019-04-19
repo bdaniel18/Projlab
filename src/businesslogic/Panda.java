@@ -33,16 +33,16 @@ public abstract  class Panda extends Steppable {
     }
 
     /**
-     * A szabad pandák random mezőre lépnek
+     * A szabad panda random mezőre lép
      */
     public void step() {
         Random rand = new Random();
         ArrayList<Field> options = new ArrayList<Field>();
 
         for (int i = 0; i < getField().getNeighbourNumber(); i++) {
-            options.add(getField().getNeighbour(i));
+            options.add(getField().getNeighbour(i)); // feltöltjük a szomszédos mezők tömbjét
         }
-        while (options.size() > 0) {
+        while (options.size() > 0) { // próbál lépni egy mezőre, ha sikertelen kiveszi a tömbből.
             int r = rand.nextInt(options.size());
             if (step(options.get(r))) return;
             options.remove(r);
@@ -62,6 +62,24 @@ public abstract  class Panda extends Steppable {
     }
 
     /**
+     * A panda lép a kapott mezőre
+     *
+     * @param f: Field
+     * @return sikeres lépés volt-e
+     */
+    @Override
+    public boolean step(Field f) {
+        if (getField().moveTo(f, this)) {
+            if (getFollower() != null) {
+                getFollower().step(getLastSteppedOn());
+            }
+            setLastSteppedOn(f);
+            System.out.println("MESSAGE: Panda " + getId() + " stepped to Field " + f.getId() + ".");
+        }
+        return false;
+    }
+
+    /**
      * A panda egy Orangutannal ütközött így az elfogja
      * @param o: Orangutan
      * @return az ütközés kimenetele
@@ -72,13 +90,13 @@ public abstract  class Panda extends Steppable {
             o.caught(this);
             return true;
         }
-        return false; //default return value
+        return false;
     }
 
     /**
      * A panda ütközik egy másik pandával, ezért nem tud oda lépni
-     * @param p
-     * @return
+     * @param p Panda
+     * @return mindig hamis
      */
     @Override
     public boolean hitBy(Panda p){
@@ -90,18 +108,20 @@ public abstract  class Panda extends Steppable {
      */
     public void releaseBoth() {
         catcher = null;
+        setAnterior(null);
         if(getFollower() != null)
             getFollower().releaseBoth();
+        setFollower(null);
     }
 
     /**
      * A paraméterként kapott FieldElement hitBy függvénnyel közli a Panda,
      * hogy ütköztek és a visszatérési értéket továbbadja a hívónak
-     * @param fe: Field
-     * @return boolean
+     * @param fe: vele történt ütközés
+     * @return az ütközés kimenetele
      */
     @Override
-    public  boolean  collideWith(FieldElement fe){
+    public boolean collideWith(FieldElement fe){
         boolean temp = fe.hitBy(this);
         return temp;
     }
@@ -111,11 +131,10 @@ public abstract  class Panda extends Steppable {
      */
     @Override
     public void die() {
-
+        System.out.println("MESSAGE: Panda " + getId() + " died.");
         if (getFollower() != null) {
             getFollower().releaseBoth();
         }
         getFloor().remove(this);
-
     }
 }

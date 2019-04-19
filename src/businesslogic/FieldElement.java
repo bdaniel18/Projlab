@@ -1,7 +1,5 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 /**
  * Bármilyen elem a játékban, ami egy mezőre tud állni.
  * Absztrakt osztály.
@@ -12,26 +10,14 @@ public abstract class FieldElement {
     private int id;
 
     public FieldElement() {
-        DepthWriter.add();
-        DepthWriter.print("FieldElement CTOR");
-        DepthWriter.reduce();
         field = null;
     }
 
     public void setField(Field field) {
-        DepthWriter.add();
-        DepthWriter.print("FieldElement.setField()");
-
         this.field = field;
-
-        DepthWriter.reduce();
     }
 
     public Field getField() {
-        DepthWriter.add();
-        DepthWriter.print("FieldElement.getField()");
-        DepthWriter.reduce();
-
         return field;
     }
 
@@ -45,15 +31,10 @@ public abstract class FieldElement {
 
     /**
      * Panda próbál ugyanerre a mezőre lépni
-     *
      * @param p Panda
      * @return sikertelen lépés
      */
     public boolean hitBy(Panda p) {
-        DepthWriter.add();
-        DepthWriter.print("FieldElement.hitBy()");
-        DepthWriter.reduce();
-
         return false; //default return value
     }
 
@@ -64,10 +45,6 @@ public abstract class FieldElement {
      * @return sikertelen lépés
      */
     public boolean hitBy(Orangutan o) {
-        DepthWriter.add();
-        DepthWriter.print("FieldElement.hitBy()");
-        DepthWriter.reduce();
-
         return false; //default return value
     }
 
@@ -77,10 +54,6 @@ public abstract class FieldElement {
      * @return nem ül bele a fotelbe a FieldElement (default)
      */
     public boolean sofaActivated(Sofa s) {
-        DepthWriter.add();
-        DepthWriter.print("FieldElement.sofaActivated()");
-        DepthWriter.reduce();
-
         return false; //default return value
     }
 
@@ -88,17 +61,12 @@ public abstract class FieldElement {
      * Szomszédos mezőn játékgép van.
      */
     public void gmActivated() {
-        DepthWriter.add();
-        DepthWriter.print("FieldElement.gmActivated()");
-        DepthWriter.reduce();
     }
 
     /**
      * Szomszédos mezőn Csokiautomata van.
      */
     public void cmActivated() {
-        DepthWriter.add();
-        DepthWriter.print("FieldElement.cmActivated()");
-        DepthWriter.reduce();
+
     }
 }
