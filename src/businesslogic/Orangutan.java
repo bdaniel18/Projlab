@@ -68,13 +68,9 @@ public class Orangutan extends Steppable {
      * és beállítja az előző követő pandának mint vezetőt
      * @param p: Panda
      */
-
     public void caught(Panda p) {
-        DepthWriter.add();
-        DepthWriter.print("Orangutan.caught()");
         getField().remove(this);
         p.step(getField());
-
         if (getFollower() != null) {
             p.setFollower(getFollower());
             getFollower().setAnterior(p);
@@ -82,7 +78,6 @@ public class Orangutan extends Steppable {
         setFollower(p);
         p.setAnterior(this);
         p.setCatcher(this);
-        DepthWriter.reduce();
     }
 
     /**

@@ -5,15 +5,6 @@ import java.io.InputStreamReader;
 
 
 public class Main {
-    // hány tabulátor kell a fv név kiírásához, meghívott függvény növeli, visszatéréskor csökkenti
-    public static int depth = 0;
-
-    //adott darab tabulátort ír ki a konzolra
-    public static void printTabs(int n) {
-        for (int i = 0; i < n; i++) {
-            System.out.println("   ");
-        }
-    }
 
     private static final int BASE_MENU = 0, ORANGUTAN_MENU = 1, PANDA_MENU = 2,
             FURNITURE_MENU = 3, FIELD_MENU = 4, FLOOR_MENU = 5, EXIT_GAME = 6;

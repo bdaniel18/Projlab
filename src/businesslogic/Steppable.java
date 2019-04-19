@@ -13,9 +13,6 @@ public abstract class Steppable extends FieldElement {
     private Field lastSteppedOn; //Mező amire legutoljára lépett
 
     public Steppable() {
-        DepthWriter.add();
-        DepthWriter.print("Steppable CTOR");
-        DepthWriter.reduce();
         stepped = false;
         follower = null;
         anterior = null;
@@ -66,9 +63,6 @@ public abstract class Steppable extends FieldElement {
     }
 
     public void setLastSteppedOn(Field field) {
-        DepthWriter.add();
-        DepthWriter.print("Steppable.setLastSteppedOn()");
-        DepthWriter.reduce();
         lastSteppedOn = field;
     }
 
@@ -78,27 +72,21 @@ public abstract class Steppable extends FieldElement {
      * @return a lépés sikeressége
      */
     public boolean step(Field f) {
-        DepthWriter.add();
-        DepthWriter.print("Steppable.step()");
-
         if (getField().moveTo(f, this)) {
             if (follower != null) {
                 follower.step(lastSteppedOn);
             }
+            lastSteppedOn = f;
         }
-        DepthWriter.reduce();
-        return false; //default return value
+        return false;
     }
 
     /**
      * A követő kezét elengedjük
      */
     public void releaseFollower() {
-        DepthWriter.add();
-        DepthWriter.print("Steppable.releaseFollower()");
-        DepthWriter.reduce();
+        follower = null;
     }
-
 
     /**
      * Egy másik FieldElementtel való ütközés után hívódik meg, a Panda és az Orangutan is felülírja

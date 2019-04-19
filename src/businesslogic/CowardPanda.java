@@ -7,30 +7,21 @@ import test.DepthWriter;
  */
 public class CowardPanda extends Panda{
 
-    public CowardPanda(){
-        DepthWriter.add();
-        DepthWriter.print("CowardPanda CTOR");
-        DepthWriter.reduce();
+    public CowardPanda() {
     }
 
     /**
      * A szomszédos mezőn játékgép aktiválódott(csilingel).
      */
     public void gmActivated(){
-        DepthWriter.add();
-        DepthWriter.print("CowardPanda.gmActivated()");
         scared();
-        DepthWriter.reduce();
     }
 
     /**
      * A panda megijedt, tehát ugrik egyet a mezőjén.
      */
     public void scared(){
-        DepthWriter.add();
-        DepthWriter.print("CowardPanda.scared()");
-        DepthWriter.reduce();
-
+        System.out.println("MESSAGE: Panda" + getId() + " got scared on Field" + getField().getId() + ".");
         releaseBoth();
         releaseFollower();
     }

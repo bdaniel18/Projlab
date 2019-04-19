@@ -10,11 +10,7 @@ public abstract class Activateable extends FieldElement {
 
 
     public Activateable() {
-        DepthWriter.add();
-        DepthWriter.print("Activateable CTOR");
-        DepthWriter.reduce();
     }
-
     public abstract void activate();
 
     /**
@@ -23,14 +19,10 @@ public abstract class Activateable extends FieldElement {
      * @return 1/2 valószínűséggel igaz, vagy hamis véletlen érték.
      */
     public boolean random() {
-        DepthWriter.add();
-        DepthWriter.print("Activateable.random()");
-        DepthWriter.reduce();
-
         Random rand = new Random();
 
         int n = rand.nextInt(50);
-        if(n > 25) return true;
+        if (n > 24) return true;
         else return false;
     }
 }
