@@ -19,7 +19,9 @@ public class Exit extends FieldElement {
     public void setEntrance(Field entrance) {
         DepthWriter.add();
         DepthWriter.print("Exit.setEntrance()");
+
         this.entrance = entrance;
+
         DepthWriter.reduce();
     }
 
@@ -27,6 +29,7 @@ public class Exit extends FieldElement {
         DepthWriter.add();
         DepthWriter.print("Exit.getEntrance()");
         DepthWriter.reduce();
+
         return entrance;
     }
 

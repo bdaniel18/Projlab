@@ -9,6 +9,7 @@ import test.DepthWriter;
 public abstract class FieldElement {
 
     private Field field; // a mező amin áll
+    private int id;
 
     public FieldElement() {
         DepthWriter.add();
@@ -20,7 +21,9 @@ public abstract class FieldElement {
     public void setField(Field field) {
         DepthWriter.add();
         DepthWriter.print("FieldElement.setField()");
+
         this.field = field;
+
         DepthWriter.reduce();
     }
 
@@ -28,7 +31,16 @@ public abstract class FieldElement {
         DepthWriter.add();
         DepthWriter.print("FieldElement.getField()");
         DepthWriter.reduce();
+
         return field;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -41,6 +53,7 @@ public abstract class FieldElement {
         DepthWriter.add();
         DepthWriter.print("FieldElement.hitBy()");
         DepthWriter.reduce();
+
         return false; //default return value
     }
 
@@ -54,6 +67,7 @@ public abstract class FieldElement {
         DepthWriter.add();
         DepthWriter.print("FieldElement.hitBy()");
         DepthWriter.reduce();
+
         return false; //default return value
     }
 
@@ -66,6 +80,7 @@ public abstract class FieldElement {
         DepthWriter.add();
         DepthWriter.print("FieldElement.sofaActivated()");
         DepthWriter.reduce();
+
         return false; //default return value
     }
 
@@ -86,5 +101,4 @@ public abstract class FieldElement {
         DepthWriter.print("FieldElement.cmActivated()");
         DepthWriter.reduce();
     }
-
 }

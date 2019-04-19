@@ -23,8 +23,10 @@ public class SleepyPanda extends Panda {
         DepthWriter.print("SleepyPanda.sofaActivated()");
         DepthWriter.reduce();
 
+        System.out.println("Activateable " + s.getId() + "(Sofa) was activated.");
+        System.out.println("Panda " + this.getId() + " sat down on Field " + s.getField().getId());
         sleep(s);
-        return false; //default return value
+        return true; //Always sits in
     }
 
     /**

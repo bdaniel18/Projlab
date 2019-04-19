@@ -21,8 +21,11 @@ public class GamblingMachine extends Activateable {
         DepthWriter.add();
         DepthWriter.print("GamblingMachine.activate()");
 
-        random();
-        getField().scareNeighbours();
+        if(random()) {
+            System.out.println("Activateable " + getId() + "(GamblingMachine) was activated.");
+            getField().scareNeighbours();
+        }
+
         DepthWriter.reduce();
     }
 }

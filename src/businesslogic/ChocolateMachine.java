@@ -20,8 +20,11 @@ public class ChocolateMachine extends Activateable {
         DepthWriter.add();
         DepthWriter.print("ChocolateMachine.activate()");
 
-        random();
-        getField().jumpNeighbours();
+        if(random()) {
+            System.out.println("Activateable " + getId() + "(ChocolateMachine) was activated.");
+            getField().jumpNeighbours();
+        }
+
         DepthWriter.reduce();
     }
 }

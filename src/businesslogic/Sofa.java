@@ -54,6 +54,8 @@ public class Sofa extends Activateable {
             if (temp == null) return;         //nincs üres szomszédos mező
             FieldElement fe = temp.getFieldElement();
             if (fe == null) {
+                System.out.println("Activateable " + getId() + "(Sofa) was activated.");
+                System.out.println("Panda " + panda.getId() + " stepped to Field " + temp.getId());
                 temp.accept(panda);
                 break;
             }

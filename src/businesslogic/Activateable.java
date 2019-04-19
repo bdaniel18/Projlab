@@ -1,6 +1,7 @@
 package businesslogic;
 
 import test.DepthWriter;
+import java.util.Random;
 
 /**
  * Aktiválható pályaelem, absztrakt osztály
@@ -25,6 +26,11 @@ public abstract class Activateable extends FieldElement {
         DepthWriter.add();
         DepthWriter.print("Activateable.random()");
         DepthWriter.reduce();
-        return false; //default return value
+
+        Random rand = new Random();
+
+        int n = rand.nextInt(50);
+        if(n > 25) return true;
+        else return false;
     }
 }

@@ -14,6 +14,7 @@ public class Field {
     private int durability; // a mező tartóssága
     private boolean fragile; // törékeny-e a mező
     private List<Field> neighbours; //a szomszédos mezők
+    private int id;
 
     public Field() {
         DepthWriter.add();
@@ -39,6 +40,14 @@ public class Field {
         DepthWriter.print("Field.getFieldElement()");
         DepthWriter.reduce();
         return fieldElement;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setDurability(int durability) {
@@ -74,6 +83,7 @@ public class Field {
         DepthWriter.print("Field.addNeighbour()");
         neighbours.add(f);
         DepthWriter.reduce();
+        neighbours.add(f);
     }
 
     /**
@@ -105,6 +115,7 @@ public class Field {
             if (st.collideWith(fieldElement)) { // a lépés sikeres
                 st.setStepped(true);
                 st.setLastSteppedOn(this);
+                st.setField(this);
                 if(isFragile()){
                     decDurability();
                     if (getDurability() < 1) {
@@ -113,6 +124,7 @@ public class Field {
 
                 }
                 DepthWriter.reduce();
+
                 return  true;
             } else { // a lépés sikertelen
                 DepthWriter.reduce();
@@ -231,6 +243,8 @@ public class Field {
     public void decDurability() {
         DepthWriter.add();
         DepthWriter.print("Field.decDurability()");
+
+        System.out.println("Durability decrementation of Field " + getId());
         --durability;
         DepthWriter.reduce();
     }
