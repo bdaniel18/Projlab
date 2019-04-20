@@ -1,7 +1,5 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 /**
  * Ijedős panda , aki megijed a játékgép csilingelésétől.
  */

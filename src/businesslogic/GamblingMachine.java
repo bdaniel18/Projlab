@@ -1,7 +1,5 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 /**
  * Játékgép, néha sípol és megijeszti a szomszédok cellákon állókat
  */

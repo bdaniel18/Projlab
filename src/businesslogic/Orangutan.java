@@ -1,7 +1,5 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 /**
  * Orángután osztály, a játékos irányítja a lépését, pandákat tud elfogni, és vezetni.
  */

@@ -1,7 +1,5 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 /**
  * A pálya léptethető eleme
  */
@@ -20,45 +18,26 @@ public abstract class Steppable extends FieldElement {
     }
 
     public void setStepped(boolean stepped) {
-        DepthWriter.add();
-        DepthWriter.print("Steppable.setStepped()");
         this.stepped = stepped;
-        DepthWriter.reduce();
-
     }
 
     public void setAnterior(Steppable st) {
-        DepthWriter.add();
-        DepthWriter.print("Steppable.setAnterior()");
         anterior = st;
-        DepthWriter.reduce();
     }
 
     public Steppable getAnterior() {
-        DepthWriter.add();
-        DepthWriter.print("Steppable.getAnterior()");
-        DepthWriter.reduce();
         return anterior;
     }
 
     public boolean isStepped() {
-        DepthWriter.add();
-        DepthWriter.print("Steppable.isStepped()");
-        DepthWriter.reduce();
         return stepped;
     }
 
     public void setFollower(Panda follower) {
-        DepthWriter.add();
-        DepthWriter.print("Steppable.setFollower()");
-        DepthWriter.reduce();
         this.follower = follower;
     }
 
     public Panda getFollower() {
-        DepthWriter.add();
-        DepthWriter.print("Steppable.getFollower()");
-        DepthWriter.reduce();
         return follower;
     }
 

@@ -1,7 +1,5 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 /**
  * Csokoládéautomata. Néha aktiválódik, ilyenkor sípol.
  */

@@ -1,7 +1,5 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 /**
  * Olyan panda, ami a csokiautomata sípolásától ugrik egyet.
  */
