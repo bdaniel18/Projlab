@@ -1,5 +1,4 @@
 import businesslogic.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,6 +6,9 @@ public class Main {
 
     private static Game game = Game.getInstance();
 
+    private static boolean started = false;
+    private static int orangutanNumber = 0;
+    private static boolean printedround = false;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -40,8 +42,38 @@ public class Main {
                 case "activate":
                     activate(sl);
                     break;
+                case "dissolve":
+                    dissolve(sl);
+                    break;
                 default:
-                    if () System.out.println("MESSAGE: Unknown command.");
+                    if (started) {
+                        try {
+                            int id = Integer.parseInt(s);
+                            Field f = game.getFloor().getField(id);
+                            if (f == null) throw new Exception();
+                            if (game.getFloor().getCurrentOrangutan().step(f)) {
+                                orangutanNumber++;
+                                if (orangutanNumber >= game.getFloor().getOrangutanNumber()) {
+                                    orangutanNumber = 0;
+                                    printedround = false;
+                                }
+                                game.getFloor().setCurrentOrangutan(orangutanNumber);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("MESSAGE: Bad value.");
+                        }
+                    } else {
+                        System.out.println("MESSAGE: Unknown command.");
+                    }
+            }
+
+            if (started) {
+                if (orangutanNumber == 0 && !printedround) {
+                    System.out.println("MESSAGE: Round of Orangutans.");
+                    printedround = true;
+                }
+                System.out.println("Orangutan " + game.getFloor().getCurrentOrangutan().getId() +
+                        " has to step. Give a field ID! (ID)");
             }
         }
     }
@@ -55,6 +87,10 @@ public class Main {
             System.out.println("MESSAGE: step: wrong parameters.");
             return;
         }
+        if (game.getFloor() == null) {
+            System.out.println("MESSAGE: map does not exist.");
+            return;
+        }
         int id1 = Integer.parseInt(s.get(0)), id2 = Integer.parseInt(s.get(1));
         Steppable st = game.getFloor().getSteppable(id1);
         Field f = game.getFloor().getField(id2);
@@ -65,6 +101,18 @@ public class Main {
         st.step(f);
     }
 
+    private static void dissolve(ArrayList<String> s) {
+        if (game.getFloor() == null) {
+            System.out.println("MESSAGE: map does not exist.");
+            return;
+        }
+        if (!started) {
+            System.out.println("MESSAGE: Game is not started.");
+            return;
+        }
+        game.getFloor().getCurrentOrangutan().dissolve();
+    }
+
     private static void activate(ArrayList<String> s) {
         if (!game.getTestMode()) {
             System.out.println("MESSAGE: error: not in test mode.");
@@ -72,6 +120,10 @@ public class Main {
         }
         if (s.size() != 1) {
             System.out.println("MESSAGE: activate: wrong parameters.");
+            return;
+        }
+        if (game.getFloor() == null) {
+            System.out.println("MESSAGE: map does not exist.");
             return;
         }
         int id = Integer.parseInt(s.get(0));
@@ -84,6 +136,7 @@ public class Main {
     }
 
     private static void load(ArrayList<String> s) {
+        started = false;
         if (!s.get(0).toLowerCase().equals("map") || s.size() > 2) {
             System.out.println("MESSAGE: load: wrong parameters.");
             return;
@@ -96,22 +149,40 @@ public class Main {
         try {
             game.newGame(ss.substring(1));
         } catch (Exception e) {
+            game.setMapid(-1);
             System.out.println("MESSAGE: Map loading failed!");
         }
     }
 
     private static void start(ArrayList<String> s) {
-        if (s.size() != 0) System.out.println("MESSAGE: start: wrong parameters");
-        else game.start();
+        if (s.size() != 0) {
+            System.out.println("MESSAGE: start: wrong parameters");
+            return;
+        }
+        if (game.getFloor() == null) {
+            System.out.println("MESSAGE: Game could not start.");
+            return;
+        }
+        System.out.println("MESSAGE: Game started.");
+        started = true;
+        game.getFloor().setCurrentOrangutan(orangutanNumber);
     }
 
     private static void stop(ArrayList<String> s) {
-        if (s.size() != 0) System.out.println("MESSAGE: stop: wrong parameters");
-        else game.stop();
+        if (s.size() != 0) {
+            System.out.println("MESSAGE: stop: wrong parameters");
+            return;
+        }
+        started = false;
+        System.out.println("MESSAGE: Game stopped.");
     }
 
     private static void list(ArrayList<String> s) {
         Floor f = game.getFloor();
+        if (f == null) {
+            System.out.println("MESSAGE: Game cannot list.");
+            return;
+        }
         switch (s.get(0).toLowerCase()) {
             case "fields":
                 f.listFields();

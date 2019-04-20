@@ -16,14 +16,23 @@ public class Floor {
 
     private Orangutan currentOrangutan = null;
 
-    /**
-     * Konstruktor, inicializálja a listákat
-     */
     public Floor(){
         fields = new ArrayList<>();
         activateables = new ArrayList<>();
         orangutans = new ArrayList<>();
         pandas = new ArrayList<>();
+    }
+
+    public Orangutan getCurrentOrangutan() {
+        return currentOrangutan;
+    }
+
+    public void setCurrentOrangutan(int i) {
+        currentOrangutan = orangutans.get(i);
+    }
+
+    public int getOrangutanNumber() {
+        return orangutans.size();
     }
 
     /**
@@ -79,6 +88,7 @@ public class Floor {
      * az activate() függvénye
      */
     public void newTurn() {
+        System.out.println("Round of pandas.");
         for (int i = 0; i < pandas.size(); i++) {
             Panda p = pandas.get(i);
             if (!p.isStepped() && p.getField() != null) p.step();
@@ -187,11 +197,15 @@ public class Floor {
             System.out.println("MESSAGE: Game cannot list.");
             return;
         }
-        for (int i = 0; i < pandas.size(); i++) {
-            Panda p = pandas.get(i);
-            if (p.getCatcher() != null) {
-                System.out.println(p.toString());
+        for (int i = 0; i < orangutans.size(); i++) {
+            Orangutan o = orangutans.get(i);
+            System.out.print("Orangutan " + o.getId());
+            for (int j = 0; j < pandas.size(); j++) {
+                Panda p = pandas.get(j);
+                if (p.getCatcher() == o)
+                    System.out.print("-Panda " + p.getId());
             }
+            System.out.println();
         }
     }
 

@@ -48,6 +48,7 @@ public class Game {
         testMode = b;
     }
 
+
     public boolean getTestMode() {
         return testMode;
     }
@@ -92,13 +93,4 @@ public class Game {
         System.out.println("MESSAGE: Map loading successful!");
     }
 
-    //TODO
-    public boolean start() {
-        return false;
-
-    }
-
-    public void stop() {
-
-    }
 }

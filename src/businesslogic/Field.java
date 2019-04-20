@@ -202,7 +202,9 @@ public class Field {
 
     public String toString() {
         String s = fragile ? "1" : "0";
-        return "Field " + id + ", object ID: " + fieldElement.getId() +
+        String idd = "null";
+        if (fieldElement != null) idd = String.valueOf(fieldElement.getId());
+        return "Field " + id + ", object ID: " + idd +
                 ", fragile:" + s + ", durability: " + durability;
     }
 

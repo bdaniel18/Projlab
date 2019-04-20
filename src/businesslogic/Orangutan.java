@@ -60,6 +60,10 @@ public class Orangutan extends Steppable {
         p.setCatcher(this);
     }
 
+    public void dissolve() {
+
+    }
+
     /**
      * Orangutan pontszámát növeli
      */
