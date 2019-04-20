@@ -44,4 +44,13 @@ public class Exit extends FieldElement {
         return false;
     }
 
+    public String toString() {
+        return "Exit " + getId() + ",host ID: " + getField().getId();
+    }
+
+    @Override
+    public void printIfExit() {
+        System.out.println(toString());
+    }
+
 }

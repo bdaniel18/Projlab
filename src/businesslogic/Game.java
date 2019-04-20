@@ -10,8 +10,10 @@ public class Game {
 
     private static Game instance; // az egyetlen példány
     private Floor floor;
-    private int mapid;
-    private String mapName;
+    private int mapid = -1;
+    private String mapName = null;
+
+    private boolean testMode = false;
 
     private Game(){
         instance = null;
@@ -40,6 +42,14 @@ public class Game {
 
     public Floor getFloor() {
         return floor;
+    }
+
+    public void setTestMode(boolean b) {
+        testMode = b;
+    }
+
+    public boolean getTestMode() {
+        return testMode;
     }
 
     /**
@@ -79,7 +89,16 @@ public class Game {
         }
         MapParser mp = new MapParser(this);
         mp.parse(s);
+        System.out.println("MESSAGE: Map loading successful!");
     }
 
+    //TODO
+    public boolean start() {
+        return false;
 
+    }
+
+    public void stop() {
+
+    }
 }

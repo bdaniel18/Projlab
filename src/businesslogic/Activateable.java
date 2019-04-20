@@ -18,10 +18,13 @@ public abstract class Activateable extends FieldElement {
      * @return 1/2 valószínűséggel igaz, vagy hamis véletlen érték.
      */
     public boolean random() {
+
         Random rand = new Random();
 
         int n = rand.nextInt(50);
         if (n > 24) return true;
         else return false;
     }
+
+    public abstract String toString();
 }

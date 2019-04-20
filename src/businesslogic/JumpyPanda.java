@@ -21,4 +21,8 @@ public class JumpyPanda extends Panda{
     private void jump(){
         getField().pandaJumped(this);
     }
+
+    public String toString() {
+        return "Panda " + getId() + ", type: jumpy" + ", host ID:" + getField().getId();
+    }
 }

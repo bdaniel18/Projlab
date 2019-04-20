@@ -17,4 +17,8 @@ public class ChocolateMachine extends Activateable {
             getField().jumpNeighbours();
         }
     }
+
+    public String toString() {
+        return "Activateable " + getId() + ",type: ChocolateMachine, host ID: " + getField().getId();
+    }
 }

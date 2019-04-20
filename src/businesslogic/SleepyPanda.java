@@ -30,4 +30,8 @@ public class SleepyPanda extends Panda {
         s.sit(this);
         getField().remove(this);
     }
+
+    public String toString() {
+        return "Panda " + getId() + ", type: sleepy" + ", host ID:" + getField().getId();
+    }
 }

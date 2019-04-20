@@ -200,4 +200,10 @@ public class Field {
         --durability;
     }
 
+    public String toString() {
+        String s = fragile ? "1" : "0";
+        return "Field " + id + ", object ID: " + fieldElement.getId() +
+                ", fragile:" + s + ", durability: " + durability;
+    }
+
 }

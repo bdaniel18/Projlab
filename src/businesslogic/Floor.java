@@ -14,19 +14,20 @@ public class Floor {
     private List<Orangutan> orangutans; // a pálya orángutánjai
     private List<Panda> pandas; // a pálya pandái
 
+    private Orangutan currentOrangutan = null;
+
     /**
      * Konstruktor, inicializálja a listákat
      */
     public Floor(){
-        fields = new ArrayList<Field>();
-        activateables = new ArrayList<Activateable>();
-        orangutans = new ArrayList<Orangutan>();
-        pandas = new ArrayList<Panda>();
+        fields = new ArrayList<>();
+        activateables = new ArrayList<>();
+        orangutans = new ArrayList<>();
+        pandas = new ArrayList<>();
     }
 
     /**
      * Egy mezőt ad a pályához.
-     *
      * @param f Field
      */
     public void addField(Field f){
@@ -35,7 +36,6 @@ public class Floor {
 
     /**
      * Egy Activeablet ad a pályához
-     *
      * @param a Aktiválható elem
      */
     public void add(Activateable a) {
@@ -79,21 +79,153 @@ public class Floor {
      * az activate() függvénye
      */
     public void newTurn() {
-        if(orangutans.size() != 0) orangutans.get(0).setStepped(false);
-        if(pandas.size() != 0) {
-            pandas.get(0).setStepped(false);
-            pandas.get(0).step();
+        for (int i = 0; i < pandas.size(); i++) {
+            Panda p = pandas.get(i);
+            if (!p.isStepped() && p.getField() != null) p.step();
         }
-        if(activateables.size() != 0) activateables.get(0).activate();
+        for (int i = 0; i < orangutans.size(); i++) {
+            orangutans.get(i).setStepped(false);
+        }
+        for (int i = 0; i < pandas.size(); i++) {
+            pandas.get(i).setStepped(false);
+        }
+        for (int i = 0; i < activateables.size(); i++)
+            activateables.get(i).activate();
+    }
+
+
+    /**
+     * Kilistázza a pálya összes mezőjét
+     */
+    public void listFields() {
+        if (fields == null) {
+            System.out.println("MESSAGE: Game cannot list.");
+            return;
+        }
+        System.out.println("Fields of the map:");
+        for (int i = 0; i < fields.size(); i++) System.out.println(fields.get(i).toString());
     }
 
     /**
-     * Várunk, hogy a felhasználó léptesse az adott orángutánt.
-     * @param o Orángután
-     * @return a mező, amire lépett
+     * Kilistázza az aktív orángután szomszédos mezőit
      */
-    public Field waitForStep(Orangutan o){
-        return  null; //default return value
+    public void listNeighbours() {
+        if (currentOrangutan == null) {
+            System.out.println("MESSAGE: Game cannot list.");
+            return;
+        }
+        Field f = currentOrangutan.getField();
+        System.out.println("Neighbours of Field " + f.getId() + ":");
+        for (int i = 0; i < f.getNeighbourNumber(); i++) {
+            System.out.println(f.getNeighbour(i).toString());
+        }
     }
 
+    /**
+     * kilistázza az összes pandát
+     */
+    public void listPandas() {
+        if (pandas == null) {
+            System.out.println("MESSAGE: Game cannot list.");
+            return;
+        }
+        for (int i = 0; i < pandas.size(); i++) {
+            System.out.println(pandas.get(i).toString());
+        }
+    }
+
+    /**
+     * kilistázza az összes orángutánt a pályán
+     */
+    public void listOrangutans() {
+        if (orangutans == null) {
+            System.out.println("MESSAGE: Game cannot list.");
+            return;
+        }
+        for (int i = 0; i < orangutans.size(); i++) {
+            System.out.println(orangutans.get(i).toString());
+        }
+    }
+
+    /**
+     * kilistázza az összes aktiválható elemet a pályán
+     */
+    public void listActivateables() {
+        if (activateables == null) {
+            System.out.println("MESSAGE: Game cannot list.");
+            return;
+        }
+        for (int i = 0; i < activateables.size(); i++)
+            System.out.println(activateables.get(i).toString());
+    }
+
+    /**
+     * Kilistázza a pálya összes szekrényét
+     */
+    public void listWardrobes() {
+        for (int i = 0; i < fields.size(); i++) {
+            FieldElement fe = fields.get(i).getFieldElement();
+            if (fe != null) fe.printIfWardrobe();
+        }
+    }
+
+    /**
+     * Kilistázza a pálya összes exit pontját
+     */
+    public void listExits() {
+        for (int i = 0; i < fields.size(); i++) {
+            FieldElement fe = fields.get(i).getFieldElement();
+            if (fe != null) fe.printIfExit();
+        }
+    }
+
+    /**
+     * kilistázza az összes elfogott pandát a pályán
+     */
+    public void listCaughtPandas() {
+        if (pandas == null) {
+            System.out.println("MESSAGE: Game cannot list.");
+            return;
+        }
+        for (int i = 0; i < pandas.size(); i++) {
+            Panda p = pandas.get(i);
+            if (p.getCatcher() != null) {
+                System.out.println(p.toString());
+            }
+        }
+    }
+
+    /**
+     * Visszaadja az adott idjű Steppablet
+     *
+     * @param id a kért Steppable idje
+     * @return a kapott idjű Steppable
+     */
+    public Steppable getSteppable(int id) {
+        for (int i = 0; i < orangutans.size(); i++)
+            if (orangutans.get(i).getId() == id) return orangutans.get(i);
+        for (int i = 0; i < pandas.size(); i++)
+            if (pandas.get(i).getId() == id) return pandas.get(i);
+        return null;
+    }
+
+    /**
+     * Visszaadja a kért idjű Fieldet ha létezik
+     *
+     * @param id a kért Field id értéke
+     * @return a mező
+     */
+    public Field getField(int id) {
+        for (int i = 0; i < fields.size(); i++) {
+            if (fields.get(i).getId() == id) return fields.get(i);
+        }
+        return null;
+    }
+
+    public Activateable getActivateable(int id) {
+        for (int i = 0; i < activateables.size(); i++) {
+            if (activateables.get(i).getId() == id) return activateables.get(i);
+        }
+        return null;
+    }
 }

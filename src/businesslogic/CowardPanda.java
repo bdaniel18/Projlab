@@ -23,4 +23,8 @@ public class CowardPanda extends Panda{
         releaseBoth();
         releaseFollower();
     }
+
+    public String toString() {
+        return "Panda " + getId() + ", type: coward" + ", host ID:" + getField().getId();
+    }
 }

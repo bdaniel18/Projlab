@@ -81,4 +81,14 @@ public class Wardrobe extends FieldElement {
         return temp;
     }
 
+    public String toString() {
+        return "Wardrobe " + getId() + ",target ID: " + target.getId() + ",target Field ID: "
+                + target.getField().getId() + ",host ID: " + getField().getId();
+    }
+
+    @Override
+    public void printIfWardrobe() {
+        System.out.println(toString());
+    }
+
 }

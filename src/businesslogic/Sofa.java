@@ -47,4 +47,8 @@ public class Sofa extends Activateable {
         }
         getField().sleepNeighbours(this);
     }
+
+    public String toString() {
+        return "Activateable " + getId() + ",type: Sofa, host ID: " + getField().getId();
+    }
 }

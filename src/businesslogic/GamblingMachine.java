@@ -18,4 +18,8 @@ public class GamblingMachine extends Activateable {
             getField().scareNeighbours();
         }
     }
+
+    public String toString() {
+        return "Activateable " + getId() + ",type: GamblingMachine, host ID: " + getField().getId();
+    }
 }

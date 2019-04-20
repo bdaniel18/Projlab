@@ -81,5 +81,7 @@ public abstract class Steppable extends FieldElement {
      * Steppable meghal, abstract mert a Panda és az Oruangutan is felülírja
      */
     public abstract void die();
+
+    public abstract String toString();
 }
 

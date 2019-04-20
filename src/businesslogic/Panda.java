@@ -137,4 +137,6 @@ public abstract  class Panda extends Steppable {
         }
         getFloor().remove(this);
     }
+
+    public abstract String toString();
 }

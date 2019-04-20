@@ -78,4 +78,8 @@ public class Orangutan extends Steppable {
         getFloor().remove(this);
     }
 
+    public String toString() {
+        return "Orangutan " + getId() + ",host ID: " + getField().getId();
+    }
+
 }

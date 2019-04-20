@@ -69,4 +69,20 @@ public abstract class FieldElement {
     public void cmActivated() {
 
     }
+
+    public abstract String toString();
+
+    /**
+     * Ha az adott elem wardrobe, kiírja magát
+     */
+    public void printIfWardrobe() {
+    }
+
+    /**
+     * Ha az adott elem kilépési pont, kiírja magát
+     */
+    public void printIfExit() {
+    }
+
+
 }
