@@ -213,6 +213,7 @@ public class MapParser {
                         Field f = getField(id);
                         f.setFieldElement(p);
                         p.setField(f);
+                        p.setLastSteppedOn(f);
                         break;
                     case "anterior":
                         id = Integer.parseInt(param2);
@@ -241,6 +242,7 @@ public class MapParser {
                         Field f = getField(id);
                         f.setFieldElement(o);
                         o.setField(f);
+                        o.setLastSteppedOn(f);
                         break;
                     case "follower":
                         o.setFollower(getPanda(id));

@@ -96,6 +96,7 @@ public class Field {
             if (st.collideWith(fieldElement)) { // a lépés sikeres
                 st.setStepped(true);
                 st.setField(this);
+                setFieldElement(st);
                 if(isFragile()){
                     decDurability();
                     if (getDurability() < 1) {
@@ -109,14 +110,15 @@ public class Field {
             }
         }
         //Mivel a FieldElement null, a lépés megtörténik
-        if(isFragile()){
+        st.setField(this);
+        st.setStepped(true);
+        setFieldElement(st);
+        if (isFragile()) {
             decDurability();
-            st.setStepped(true);
-            if(getDurability() < 1){
+            if (getDurability() < 1) {
+                if (getDurability() == 0) System.out.println("MESSAGE: Field " + getId() + " has broken.");
                 st.die();
             }
-        }else{
-            st.setStepped(true);
         }
         return true;
     }
@@ -196,7 +198,7 @@ public class Field {
      * A durability értékét csökkenti eggyel.
      */
     public void decDurability() {
-        System.out.println("Durability decrementation of Field " + getId());
+        System.out.println("MESSAGE: Durability decrementation of Field " + getId());
         --durability;
     }
 

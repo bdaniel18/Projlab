@@ -56,6 +56,7 @@ public class Main {
                                 if (orangutanNumber >= game.getFloor().getOrangutanNumber()) {
                                     orangutanNumber = 0;
                                     printedround = false;
+                                    game.getFloor().newTurn();
                                 }
                                 game.getFloor().setCurrentOrangutan(orangutanNumber);
                             }

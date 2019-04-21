@@ -211,7 +211,6 @@ public class Floor {
 
     /**
      * Visszaadja az adott idjű Steppablet
-     *
      * @param id a kért Steppable idje
      * @return a kapott idjű Steppable
      */
@@ -225,7 +224,6 @@ public class Floor {
 
     /**
      * Visszaadja a kért idjű Fieldet ha létezik
-     *
      * @param id a kért Field id értéke
      * @return a mező
      */
