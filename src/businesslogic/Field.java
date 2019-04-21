@@ -131,8 +131,9 @@ public class Field {
         if (!isNeighbour(f)) return false;
         if(f.accept(st)){
             remove(fieldElement);
+            return true;
         }
-        return true;
+        return false;
     }
 
 

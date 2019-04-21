@@ -86,7 +86,7 @@ public abstract  class Panda extends Steppable {
      */
     @Override
     public boolean hitBy(Orangutan o) {
-        if(catcher == null){
+        if(o.getStepsLeft() == 0 && catcher == null){
             o.caught(this);
             return true;
         }
@@ -107,6 +107,7 @@ public abstract  class Panda extends Steppable {
      * A panda elengedi a követője kezét(ha van) illetve az őt vezető kezét is.
      */
     public void releaseBoth() {
+        System.out.println("MESSAGE: Orangutan "+getCatcher().getId()+" lost Panda "+getId()+".");
         catcher = null;
         setAnterior(null);
         if(getFollower() != null)

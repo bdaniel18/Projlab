@@ -10,14 +10,19 @@ public class Orangutan extends Steppable {
      */
     private int score;
     private Floor floor;
+    private int stepsLeft;
 
     public Orangutan() {
         score = 0; //default
         floor = null;
+        stepsLeft = 0; //default
     }
 
     public void setScore(int score) {
         this.score = score;
+    }
+    public void setStepsLeft(int i){
+        stepsLeft = i;
     }
 
     public int getScore() {
@@ -31,6 +36,9 @@ public class Orangutan extends Steppable {
     public Floor getFloor() {
         return floor;
     }
+    public  int getStepsLeft(){
+        return  stepsLeft;
+    }
 
     /** A paraméterként kapott FieldElement hitBy függvényével jelzi, hogy ütközés történt majd a visszatérési értéket továbbadja
      *
@@ -39,8 +47,7 @@ public class Orangutan extends Steppable {
      */
     @Override
     public boolean collideWith(FieldElement fe) {
-        boolean temp = fe.hitBy(this);
-        return temp;
+        return fe.hitBy(this);
     }
 
     /**
@@ -58,16 +65,24 @@ public class Orangutan extends Steppable {
         setFollower(p);
         p.setAnterior(this);
         p.setCatcher(this);
+        System.out.println("MESSAGE: Orangutan "+getId()+" caught Panda "+p.getId()+".");
     }
 
+    /**Az Orangutan elendedi a pandákat amiker gyűjtött (felbomlik az őt követő sor)
+     *
+     */
     public void dissolve() {
-
+        if(getFollower() != null){
+            getFollower().releaseBoth();
+        }
     }
 
     /**
      * Orangutan pontszámát növeli
      */
     public void incScore() {
+        score++;
+        System.out.println("MESSAGE: Orangutan "+getId()+" Points increased by 1.");
     }
 
     /**
@@ -76,14 +91,60 @@ public class Orangutan extends Steppable {
     @Override
     public void die() {
         if (getFollower() != null) {
-            getFollower().releaseFollower();
-            getFollower().setCatcher(null);
+            getFollower().releaseBoth();
         }
+        System.out.println("MESSAGE: Orangutan "+getId()+" died.");
         getFloor().remove(this);
     }
 
     public String toString() {
         return "Orangutan " + getId() + ",host ID: " + getField().getId();
+    }
+
+    /**Paraméterként kapott Field-re próbálja meg léptetni az Orangutant
+     *
+     * @param f: Field(a mező amelyre lépni szeretne az Orangutan)
+     * @return boolean (false ha nem sikerült a lépés különben true)
+     */
+
+    @Override
+    public boolean step(Field f){
+        if(getField().moveTo(f, this)){
+            if(stepsLeft > 0){
+                stepsLeft -=1;
+            }
+            if(getFollower() != null){
+                getFollower().step(this.getLastSteppedOn());
+            }
+            this.setLastSteppedOn(f);
+            System.out.println("MESSAGE: Orangutan "+getId()+" stepped to Field "+f.getId()+".");
+            return true;
+        }
+        return false;
+    }
+
+
+
+    @Override
+    public boolean hitBy(Orangutan o){
+        if(this.getStepsLeft() == 0 && this.getFollower() != null && o.getFollower() == null){
+            System.out.println("MESSAGE: Orangutan "+o.getId()+" stole Pandas from Orangutan "+this.getId()+".");
+
+            Field temp = o.getField();
+            o.getField().remove(o);
+            Field temp_this = getField();
+            getField().moveTo(temp, this);
+            o.step(temp_this);
+
+            this.getFollower().setCatcher(o);
+            this.getFollower().setAnterior(o);
+            o.setFollower(this.getFollower());
+            this.setFollower(null);
+            this.setStepsLeft(3);
+
+            return true;
+        }
+        return false;
     }
 
 }
