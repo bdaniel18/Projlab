@@ -5,10 +5,7 @@ package businesslogic;
  */
 public class Orangutan extends Steppable {
 
-    /**
-     * az orángután pontszáma, amit pandák kivezetéséért kap
-     */
-    private int score;
+    private int score; // az orángután pontszáma, amit pandák kivezetéséért kap
     private Floor floor;
     private int stepsLeft;
 
@@ -40,8 +37,8 @@ public class Orangutan extends Steppable {
         return  stepsLeft;
     }
 
-    /** A paraméterként kapott FieldElement hitBy függvényével jelzi, hogy ütközés történt majd a visszatérési értéket továbbadja
-     *
+    /** A paraméterként kapott FieldElement hitBy függvényével jelzi, hogy ütközés történt
+     * majd a visszatérési értéket továbbadja
      * @param fe: Field
      * @return boolean
      */
@@ -68,8 +65,8 @@ public class Orangutan extends Steppable {
         System.out.println("MESSAGE: Orangutan "+getId()+" caught Panda "+p.getId()+".");
     }
 
-    /**Az Orangutan elendedi a pandákat amiker gyűjtött (felbomlik az őt követő sor)
-     *
+    /**
+     * Az Orangutan elendedi a pandákat amiker gyűjtött (felbomlik az őt követő sor)
      */
     public void dissolve() {
         if(getFollower() != null){
@@ -97,12 +94,15 @@ public class Orangutan extends Steppable {
         getFloor().remove(this);
     }
 
+    /**
+     * @return Visszaadja az objektum tulajdonságait stringként
+     */
     public String toString() {
         return "Orangutan " + getId() + ",host ID: " + getField().getId();
     }
 
-    /**Paraméterként kapott Field-re próbálja meg léptetni az Orangutant
-     *
+    /**
+     * Paraméterként kapott Field-re próbálja meg léptetni az Orangutant
      * @param f: Field(a mező amelyre lépni szeretne az Orangutan)
      * @return boolean (false ha nem sikerült a lépés különben true)
      */
@@ -117,13 +117,10 @@ public class Orangutan extends Steppable {
                 getFollower().step(this.getLastSteppedOn());
             }
             this.setLastSteppedOn(f);
-            System.out.println("MESSAGE: Orangutan "+getId()+" stepped to Field "+f.getId()+".");
             return true;
         }
         return false;
     }
-
-
 
     @Override
     public boolean hitBy(Orangutan o){
@@ -145,6 +142,16 @@ public class Orangutan extends Steppable {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Az orángután lépését kiírjatja a konzolra
+     *
+     * @param f a mező, amire lépett
+     */
+    @Override
+    public void printStepped(Field f) {
+        System.out.println("MESSAGE: Orangutan " + getId() + " stepped to Field " + f.getId() + ".");
     }
 
 }

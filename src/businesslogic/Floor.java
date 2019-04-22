@@ -212,7 +212,7 @@ public class Floor {
     /**
      * Visszaadja az adott idjű Steppablet
      * @param id a kért Steppable idje
-     * @return a kapott idjű Steppable
+     * @return a kért Steppable
      */
     public Steppable getSteppable(int id) {
         for (int i = 0; i < orangutans.size(); i++)
@@ -234,6 +234,12 @@ public class Floor {
         return null;
     }
 
+    /**
+     * Visszaadja a kért Activateable-t ha létezik
+     *
+     * @param id az objektum id értéke
+     * @return a kért Activateable
+     */
     public Activateable getActivateable(int id) {
         for (int i = 0; i < activateables.size(); i++) {
             if (activateables.get(i).getId() == id) return activateables.get(i);

@@ -7,7 +7,6 @@ public class JumpyPanda extends Panda{
 
     public JumpyPanda(){
     }
-
     /**
      * Csokiautomata aktiválódott szomszédos mezőn.
      */
@@ -22,6 +21,9 @@ public class JumpyPanda extends Panda{
         getField().pandaJumped(this);
     }
 
+    /**
+     * @return Visszaadja az objektum tulajdonságait stringként.
+     */
     public String toString() {
         return "Panda " + getId() + ", type: jumpy" + ", host ID:" + getField().getId();
     }

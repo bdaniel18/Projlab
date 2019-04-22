@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Pályafájl értelmező osztály, a beolvasott pályafájlból létrehozza a Floort, és felépíti azt.
+ */
 public class MapParser {
     private Game game;
 
@@ -11,6 +14,9 @@ public class MapParser {
         game = g;
     }
 
+    /**
+     * ideiglenes tárolók az adott típusú pályaelemeknek, a beolvasás során
+     */
     private ArrayList<Field> tempFields = new ArrayList<>();
     private ArrayList<ArrayList<ArrayList<String>>> fieldparams = new ArrayList<>();
     private ArrayList<Panda> tempPandas = new ArrayList<>();
@@ -24,6 +30,12 @@ public class MapParser {
     private ArrayList<Exit> tempExits = new ArrayList<>();
     private ArrayList<ArrayList<ArrayList<String>>> exitparams = new ArrayList<>();
 
+    /**
+     * A sorokra bontott pályafájlt értelmezi.
+     *
+     * @param s a sorokra bontott pályafájl
+     * @throws Exception - hiba a beolvasás során
+     */
     public void parse(ArrayList<String> s) throws Exception {
         String ss = s.remove(0), sss;
         if (!ss.trim().equals("<mapfile>")) throw new Exception();
@@ -80,6 +92,10 @@ public class MapParser {
 
     }
 
+    /**
+     * Létrehoz egy mezőt, a paraméterekben kapott id-vel.
+     * @param s a mezőhöz tartozó értelmezett pályafájl sorok.
+     */
     private void fetchField(ArrayList<ArrayList<String>> s) {
         Field f = new Field();
         for (int i = 0; i < s.size(); i++) {
@@ -117,6 +133,7 @@ public class MapParser {
             }
         }
         p.setId(id);
+        p.setFloor(game.getFloor());
         tempPandas.add(p);
         pandaparams.add(s);
     }
@@ -129,6 +146,7 @@ public class MapParser {
                 break;
             }
         }
+        o.setFloor(game.getFloor());
         tempOrangutans.add(o);
         orangutanparams.add(s);
     }
@@ -223,6 +241,9 @@ public class MapParser {
                         id = Integer.parseInt(param2);
                         p.setFollower(getPanda(id));
                         break;
+                    case "catcher":
+                        id = Integer.parseInt(param2);
+                        p.setCatcher(getOrangutan(id));
                     default:
                 }
             }
@@ -328,6 +349,14 @@ public class MapParser {
         return null;
     }
 
+    private Orangutan getOrangutan(int id) {
+        for (int i = 0; i < tempOrangutans.size(); i++) {
+            Orangutan o = tempOrangutans.get(i);
+            if (o.getId() == id) return o;
+        }
+        return null;
+    }
+
     private Steppable getSteppable(int id) {
         for (int i = 0; i < tempPandas.size(); i++) {
             Steppable st = tempPandas.get(i);
@@ -356,6 +385,12 @@ public class MapParser {
         return null;
     }
 
+    /**
+     * Értelmez egy stringet a pályafájl szintaktikájának megfelelően, és visszaadja szétbontva.
+     * @param s az értelmezendő sor
+     * @return a szétbontott sor
+     * @throws Exception a hibás pályafájl sor esetén dobandó
+     */
     private ArrayList<String> splitS(String s) throws Exception {
         ArrayList<String> ss = new ArrayList<String>();
         s = s.trim();
@@ -377,6 +412,7 @@ public class MapParser {
 
         return ss;
     }
+
 
     private boolean isClosing(String s, String line) {
         line = line.trim();

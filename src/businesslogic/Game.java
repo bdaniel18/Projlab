@@ -65,12 +65,6 @@ public class Game {
     }
 
     /**
-     * Játék vége
-     */
-    public void endGame() {
-    }
-
-    /**
      * Új játék indítása
      * @param map a pályafájl elérési útvonala
      */

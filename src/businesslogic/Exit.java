@@ -15,10 +15,6 @@ public class Exit extends FieldElement {
         this.entrance = entrance;
     }
 
-    public Field getEntrance() {
-        return entrance;
-    }
-
     /**
      * Paraméterként kapott Pandaval közli, hogy nem mehet ki a kijáraton, csak ha egy Orangutan kivezeti
      * @param p Panda
@@ -26,7 +22,7 @@ public class Exit extends FieldElement {
      */
     @Override
     public boolean hitBy(Panda p) {
-        return false; //default return value
+        return false;
     }
 
     /**Paraméterként kapott Oragutant a bejárathoz küldi majd a követőivel közli, hogy elérték a kijáratot
@@ -44,10 +40,16 @@ public class Exit extends FieldElement {
         return false;
     }
 
+    /**
+     * @return Az objektum tulajdonságai stringként
+     */
     public String toString() {
         return "Exit " + getId() + ",host ID: " + getField().getId();
     }
 
+    /**
+     * Kiírja magát a konzolra, mivel Exitpont.
+     */
     @Override
     public void printIfExit() {
         System.out.println(toString());

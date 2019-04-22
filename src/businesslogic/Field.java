@@ -94,6 +94,7 @@ public class Field {
     public boolean accept(Steppable st) {
         if(fieldElement != null){
             if (st.collideWith(fieldElement)) { // a lépés sikeres
+                st.printStepped(this);
                 st.setStepped(true);
                 st.setField(this);
                 setFieldElement(st);
@@ -102,7 +103,6 @@ public class Field {
                     if (getDurability() < 1) {
                         st.die();
                     }
-
                 }
                 return  true;
             } else { // a lépés sikertelen
@@ -110,6 +110,7 @@ public class Field {
             }
         }
         //Mivel a FieldElement null, a lépés megtörténik
+        st.printStepped(this);
         st.setField(this);
         st.setStepped(true);
         setFieldElement(st);
@@ -189,6 +190,7 @@ public class Field {
      * ha a mező törékeny.
      */
     public void pandaJumped(Panda p) {
+        System.out.println("MESSAGE: Panda " + p.getId() + " jumped on Field " + getId() + ".");
         if (fragile) {
             decDurability();
             if (durability < 1) p.die();
@@ -199,7 +201,7 @@ public class Field {
      * A durability értékét csökkenti eggyel.
      */
     public void decDurability() {
-        System.out.println("MESSAGE: Durability decrementation of Field " + getId());
+        System.out.println("MESSAGE: Durability decrementation of Field " + getId() + ".");
         --durability;
     }
 

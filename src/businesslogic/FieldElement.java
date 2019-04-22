@@ -70,6 +70,9 @@ public abstract class FieldElement {
 
     }
 
+    /**
+     * @return Visszaadja az objektum tulajdonságait stringként
+     */
     public abstract String toString();
 
     /**

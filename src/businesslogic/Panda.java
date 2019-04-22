@@ -24,8 +24,11 @@ public abstract  class Panda extends Steppable {
         return floor;
     }
 
-    public void setCatcher(Orangutan catcher) {
-        this.catcher = catcher;
+    public void setCatcher(Orangutan _catcher) {
+        if (catcher != null && catcher != _catcher) {
+            System.out.println("MESSAGE: Orangutan " + catcher.getId() + " lost Panda " + getId() + ".");
+        }
+        this.catcher = _catcher;
     }
 
     public Orangutan getCatcher() {
@@ -41,6 +44,22 @@ public abstract  class Panda extends Steppable {
 
         for (int i = 0; i < getField().getNeighbourNumber(); i++) {
             options.add(getField().getNeighbour(i)); // feltöltjük a szomszédos mezők tömbjét
+        }
+
+        if (Game.getInstance().getTestMode()) { // ha determinisztukus módba van kapcsolva
+            Field candidate = null;
+            int candidateIndex = 0, i = 0;
+            while (options.size() > 0) {
+                for (i = 0; i < options.size(); i++) {
+                    if (candidate == null || options.get(i).getId() < candidate.getId()) {
+                        candidate = options.get(i);
+                        candidateIndex = i;
+                    }
+                }
+                options.remove(candidateIndex);
+                if (step(candidate)) return;
+            }
+            return;
         }
         while (options.size() > 0) { // próbál lépni egy mezőre, ha sikertelen kiveszi a tömbből.
             int r = rand.nextInt(options.size());
@@ -58,6 +77,7 @@ public abstract  class Panda extends Steppable {
         if(getFollower() != null){
             getFollower().exitReached();
         }
+        System.out.println("MESSAGE: Panda " + getId() + " exited.");
         die();
     }
 
@@ -74,7 +94,6 @@ public abstract  class Panda extends Steppable {
                 getFollower().step(getLastSteppedOn());
             }
             setLastSteppedOn(f);
-            System.out.println("MESSAGE: Panda " + getId() + " stepped to Field " + f.getId() + ".");
         }
         return false;
     }
@@ -107,8 +126,7 @@ public abstract  class Panda extends Steppable {
      * A panda elengedi a követője kezét(ha van) illetve az őt vezető kezét is.
      */
     public void releaseBoth() {
-        System.out.println("MESSAGE: Orangutan "+getCatcher().getId()+" lost Panda "+getId()+".");
-        catcher = null;
+        setCatcher(null);
         setAnterior(null);
         if(getFollower() != null)
             getFollower().releaseBoth();
@@ -133,6 +151,7 @@ public abstract  class Panda extends Steppable {
     @Override
     public void die() {
         System.out.println("MESSAGE: Panda " + getId() + " died.");
+        setCatcher(null);
         if (getFollower() != null) {
             getFollower().releaseBoth();
         }
@@ -140,4 +159,9 @@ public abstract  class Panda extends Steppable {
     }
 
     public abstract String toString();
+
+    @Override
+    public void printStepped(Field f) {
+        System.out.println("MESSAGE: Panda " + getId() + " stepped to Field " + f.getId() + ".");
+    }
 }

@@ -24,6 +24,9 @@ public class CowardPanda extends Panda{
         releaseFollower();
     }
 
+    /**
+     * @return Az objektum tulajdonságai stringként
+     */
     public String toString() {
         return "Panda " + getId() + ", type: coward" + ", host ID:" + getField().getId();
     }

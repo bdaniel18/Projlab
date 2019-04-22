@@ -83,6 +83,7 @@ public abstract class Steppable extends FieldElement {
      */
     public abstract void die();
 
+    public abstract void printStepped(Field f);
     public abstract String toString();
 }
 

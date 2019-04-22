@@ -18,13 +18,18 @@ public abstract class Activateable extends FieldElement {
      * @return 1/2 valószínűséggel igaz, vagy hamis véletlen érték.
      */
     public boolean random() {
+        if (Game.getInstance().getTestMode()) return true;
 
         Random rand = new Random();
-
         int n = rand.nextInt(50);
         if (n > 24) return true;
         else return false;
     }
 
+    /**
+     * Visszaadja az objektum tulajdonságait
+     *
+     * @return a tulajdonságok stringje
+     */
     public abstract String toString();
 }
