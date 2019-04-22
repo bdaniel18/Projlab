@@ -1,7 +1,9 @@
 package businesslogic;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Szekrény osztály, továbbítja a belelépő Steppableket egy másik szekrénynek.
@@ -13,7 +15,7 @@ public class Wardrobe extends FieldElement {
 
     public Wardrobe() {
         target = null;
-        targetField = new HashMap<Orangutan, Field>();
+        targetField = new HashMap<>();
     }
 
     public void setTarget(Wardrobe target) {
@@ -38,9 +40,32 @@ public class Wardrobe extends FieldElement {
      * @return a lépés sikeressége
      */
     public boolean receive(Orangutan o) {
-        targetField.put(o, getField().getNeighbour(0));
-        boolean temp = targetField.get(o).accept(o);
-        return temp;
+        ArrayList<Field> neighbours = new ArrayList<>();
+        for (int i = 0; i < getField().getNeighbourNumber(); i++) {
+            neighbours.add(getField().getNeighbour(i));
+        }
+
+        int i = 0;
+
+        Random random = new Random();
+        while (neighbours.size() > 0) {
+            int a = random.nextInt(neighbours.size());
+            if (Game.getInstance().getTestMode()) { //ha determinisztikus működés kell
+                a = i;
+                i++;
+            }
+            Field f = neighbours.remove(a);
+
+            if (f.accept(o)) {
+                if (targetField.containsKey(o)) {
+                    targetField.replace(o, f);
+                } else {
+                    targetField.put(o, f);
+                }
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -51,12 +76,27 @@ public class Wardrobe extends FieldElement {
      */
     public boolean receive(Panda p) {
         if (p.getCatcher() == null) {
-            boolean temp = getField().getNeighbour(0).accept(p);
-            return temp;
+            ArrayList<Field> neighbours = new ArrayList<>();
+            for (int i = 0; i < getField().getNeighbourNumber(); i++) {
+                neighbours.add(getField().getNeighbour(i));
+            }
+            int i = 0;
+
+            Random random = new Random();
+            while (neighbours.size() > 0) {
+                int a = random.nextInt(neighbours.size());
+                if (Game.getInstance().getTestMode()) { //ha determinisztikus működés kell
+                    a = i;
+                    i++;
+                }
+                Field f = neighbours.remove(a);
+                if (f.accept(p)) return true;
+            }
         } else {
-            boolean temp = getTargetField().get(p.getCatcher()).accept(p);
-            return temp;
+            Field f = targetField.get(p.getCatcher());
+            if (f.accept(p)) return true;
         }
+        return false;
     }
 
     /**
@@ -66,8 +106,7 @@ public class Wardrobe extends FieldElement {
      */
     @Override
     public boolean hitBy(Panda p) {
-        boolean temp = target.receive(p);
-        return temp;
+        return target.receive(p);
     }
 
     /**
@@ -77,8 +116,7 @@ public class Wardrobe extends FieldElement {
      */
     @Override
     public boolean hitBy(Orangutan o) {
-        boolean temp = target.receive(o);
-        return temp;
+        return target.receive(o);
     }
 
     public String toString() {
