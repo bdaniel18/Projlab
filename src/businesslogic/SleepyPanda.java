@@ -5,6 +5,8 @@ package businesslogic;
  */
 public class SleepyPanda extends Panda {
 
+    private boolean slept = false;
+
     public SleepyPanda() {
     }
 
@@ -14,9 +16,8 @@ public class SleepyPanda extends Panda {
      * @return beleült-e a fotelbe
      */
     public boolean sofaActivated(Sofa s) {
-        System.out.println("MESSAGE: Activateable " + s.getId() + "(Sofa) was activated.");
-        System.out.println("MESSAGE: Panda " + getId() + " sat down on Field " + s.getField().getId());
-        sleep(s);
+        if (!slept) sleep(s);
+        slept = !slept;
         return true; //Always sits in
     }
 
@@ -25,6 +26,7 @@ public class SleepyPanda extends Panda {
      * @param s a fotel
      */
     private void sleep(Sofa s) {
+        System.out.println("MESSAGE: Panda " + getId() + " sat down on Field " + s.getField().getId());
         if (getAnterior() != null) getAnterior().releaseFollower();
         releaseBoth();
         s.sit(this);

@@ -19,7 +19,7 @@ public class CowardPanda extends Panda{
      * A panda megijedt, tehát ugrik egyet a mezőjén.
      */
     public void scared(){
-        System.out.println("MESSAGE: Panda" + getId() + " got scared on Field" + getField().getId() + ".");
+        System.out.println("MESSAGE: Panda " + getId() + " got scared on Field " + getField().getId() + ".");
         releaseBoth();
         releaseFollower();
     }

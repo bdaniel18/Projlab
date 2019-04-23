@@ -126,7 +126,7 @@ public abstract  class Panda extends Steppable {
      */
     public void releaseBoth() {
         setCatcher(null);
-        getAnterior().setFollower(null);
+        if (getAnterior() != null) getAnterior().setFollower(null);
         setAnterior(null);
         if(getFollower() != null)
             getFollower().releaseBoth();

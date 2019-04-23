@@ -11,7 +11,7 @@ public class Main {
     private static boolean printedround = false;
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in).useDelimiter("\n");
         while (sc.hasNextLine()) {
             String s = sc.nextLine();
             String[] ss = s.split(" ");
@@ -60,6 +60,9 @@ public class Main {
                                 }
                                 game.getFloor().setCurrentOrangutan(orangutanNumber);
                                 game.getFloor().getCurrentOrangutan().setStepped(false);
+                            } else {
+                                System.out.println("MESSAGE: Orangutan " + game.getFloor().getCurrentOrangutan().getId() +
+                                        " could not step to Field " + f.getId() + ".");
                             }
                         } catch (Exception e) {
                             System.out.println("MESSAGE: Bad value.");

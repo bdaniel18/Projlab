@@ -14,7 +14,7 @@ public class GamblingMachine extends Activateable {
      */
     public void activate() {
         if(random()) {
-            System.out.println("Activateable " + getId() + "(GamblingMachine) was activated.");
+            System.out.println("MESSAGE: Activateable " + getId() + "(GamblingMachine) was activated.");
             getField().scareNeighbours();
         }
     }

@@ -7,7 +7,6 @@ public class ChocolateMachine extends Activateable {
 
     public ChocolateMachine() {
     }
-
     /**
      * Az automata aktiválódik(sípol), amit jelez a mezőjének.
      */
