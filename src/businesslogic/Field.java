@@ -85,7 +85,7 @@ public class Field {
         return neighbours.get(idx);
     }
 
-    /**Paraméterként kapott Steppable-t megpróbálja elhelyezni a Field-en
+    /** Paraméterként kapott Steppable-t megpróbálja elhelyezni a Field-en
      * Vizsgáljuk, hogy van-e a Field-en FieldElement és a vele való ütközés eredménye alapján történik az elhelyezés, amennyiben sikerült a lépés
      * megnézzük, hogy a Field Fragile-e amennyiben igen a durability-t csökkentjünk és ha nulla akkor leesik a Steppable, (meghal)
      * @param st: Steppable
@@ -95,14 +95,16 @@ public class Field {
         if (st.isStepped()) return false;
         if(fieldElement != null){
             if (st.collideWith(fieldElement)) { // a lépés sikeres
-                st.printStepped(this);
-                st.setStepped(true);
-                st.setField(this);
-                setFieldElement(st);
-                if(isFragile()){
-                    decDurability();
-                    if (getDurability() < 1) {
-                        st.die();
+                if (!st.isStepped()) {
+                    st.printStepped(this);
+                    st.setStepped(true);
+                    st.setField(this);
+                    setFieldElement(st);
+                    if(isFragile()){
+                        decDurability();
+                        if (getDurability() < 1) {
+                            st.die();
+                        }
                     }
                 }
                 return  true;
@@ -111,15 +113,17 @@ public class Field {
             }
         }
         //Mivel a FieldElement null, a lépés megtörténik
-        st.printStepped(this);
-        st.setField(this);
-        st.setStepped(true);
-        setFieldElement(st);
-        if (isFragile()) {
-            decDurability();
-            if (getDurability() < 1) {
-                if (getDurability() == 0) System.out.println("MESSAGE: Field " + getId() + " has broken.");
-                st.die();
+        if (!st.isStepped()) {
+            st.printStepped(this);
+            st.setField(this);
+            st.setStepped(true);
+            setFieldElement(st);
+            if (isFragile()) {
+                decDurability();
+                if (getDurability() < 1) {
+                    if (getDurability() == 0) System.out.println("MESSAGE: Field " + getId() + " has broken.");
+                    st.die();
+                }
             }
         }
         return true;
@@ -176,7 +180,6 @@ public class Field {
      * @param s A mezőn álló fotel
      */
     public void sleepNeighbours(Sofa s) {
-
         for (int i = 0; i < neighbours.size(); i++) {
             Field temp = neighbours.get(i);
             FieldElement fe = temp.getFieldElement();
