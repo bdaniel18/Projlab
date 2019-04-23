@@ -80,6 +80,7 @@ public class Main {
     }
 
     private static void step(ArrayList<String> s) {
+        game.getFloor().resetStepped();
         if (!game.getTestMode()) {
             System.out.println("MESSAGE: error: not in test mode.");
             return;

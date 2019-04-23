@@ -205,7 +205,9 @@ public class Field {
      * A durability értékét csökkenti eggyel.
      */
     public void decDurability() {
-        System.out.println("MESSAGE: Durability decrementation of Field " + getId() + ".");
+        if (durability > 0) {
+            System.out.println("MESSAGE: Durability decrementation of Field " + getId() + ".");
+        }
         --durability;
     }
 

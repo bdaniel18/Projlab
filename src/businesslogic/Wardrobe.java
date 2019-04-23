@@ -40,21 +40,25 @@ public class Wardrobe extends FieldElement {
      * @return a lépés sikeressége
      */
     public boolean receive(Orangutan o) {
+        System.out.println("MESSAGE: Orangutan " + o.getId() + " stepped out from Wardrobe " + getId() + ".");
         ArrayList<Field> neighbours = new ArrayList<>();
         for (int i = 0; i < getField().getNeighbourNumber(); i++) {
-            neighbours.add(getField().getNeighbour(i));
+            Field f = getField().getNeighbour(i);
+            if (f.getFieldElement() == null) neighbours.add(f);
         }
-
-        int i = 0;
 
         Random random = new Random();
         while (neighbours.size() > 0) {
+            int min = 0;
             int a = random.nextInt(neighbours.size());
             if (Game.getInstance().getTestMode()) { //ha determinisztikus működés kell
-                a = i;
-                i++;
+                min = 0;
+                for (int i = 0; i < neighbours.size(); i++) {
+                    if (neighbours.get(i).getId() < neighbours.get(min).getId()) min = i;
+                }
+                a = min;
             }
-            Field f = neighbours.remove(a);
+            Field f = neighbours.remove(min);
 
             if (f.accept(o)) {
                 if (targetField.containsKey(o)) {
@@ -62,6 +66,7 @@ public class Wardrobe extends FieldElement {
                 } else {
                     targetField.put(o, f);
                 }
+
                 return true;
             }
         }
@@ -75,26 +80,36 @@ public class Wardrobe extends FieldElement {
      * @return a lépés sikeressége
      */
     public boolean receive(Panda p) {
+        System.out.println("MESSAGE: Panda " + p.getId() + " stepped out from Wardrobe " + getId() + ".");
         if (p.getCatcher() == null) {
             ArrayList<Field> neighbours = new ArrayList<>();
             for (int i = 0; i < getField().getNeighbourNumber(); i++) {
-                neighbours.add(getField().getNeighbour(i));
+                Field f = getField().getNeighbour(i);
+                if (f.getFieldElement() == null) neighbours.add(f);
             }
-            int i = 0;
 
             Random random = new Random();
             while (neighbours.size() > 0) {
+                int min = 0;
                 int a = random.nextInt(neighbours.size());
                 if (Game.getInstance().getTestMode()) { //ha determinisztikus működés kell
-                    a = i;
-                    i++;
+                    min = 0;
+                    for (int i = 0; i < neighbours.size(); i++) {
+                        if (neighbours.get(i).getId() < neighbours.get(min).getId()) min = i;
+                    }
+                    a = min;
                 }
                 Field f = neighbours.remove(a);
-                if (f.accept(p)) return true;
+                if (f.accept(p)) {
+
+                    return true;
+                }
             }
         } else {
             Field f = targetField.get(p.getCatcher());
-            if (f.accept(p)) return true;
+            if (f.accept(p)) {
+                return true;
+            }
         }
         return false;
     }
@@ -106,7 +121,10 @@ public class Wardrobe extends FieldElement {
      */
     @Override
     public boolean hitBy(Panda p) {
-        return target.receive(p);
+        System.out.println("MESSAGE: Panda " + p.getId() + " stepped into Wardrobe " + getId() + ".");
+        if (target.receive(p)) return true;
+        System.out.println("MESSAGE: Panda " + p.getId() + " stepped out from Wardrobe " + getId() + ".");
+        return false;
     }
 
     /**
@@ -116,7 +134,10 @@ public class Wardrobe extends FieldElement {
      */
     @Override
     public boolean hitBy(Orangutan o) {
-        return target.receive(o);
+        System.out.println("MESSAGE: Orangutan " + o.getId() + " stepped into Wardrobe " + getId() + ".");
+        if (target.receive(o)) return true;
+        System.out.println("MESSAGE: Orangutan " + o.getId() + " stepped out from Wardrobe " + getId() + ".");
+        return false;
     }
 
     public String toString() {

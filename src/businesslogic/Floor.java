@@ -83,6 +83,15 @@ public class Floor {
         pandas.remove(p);
     }
 
+    public void resetStepped() {
+        for (int i = 0; i < orangutans.size(); i++) {
+            orangutans.get(i).setStepped(false);
+        }
+        for (int i = 0; i < pandas.size(); i++) {
+            pandas.get(i).setStepped(false);
+        }
+    }
+
     /**
      * Új kör kezdődik, minden Steppable lép, és minden Activateable-nek meghívódik
      * az activate() függvénye
@@ -93,12 +102,7 @@ public class Floor {
             Panda p = pandas.get(i);
             if (!p.isStepped() && p.getField() != null) p.step();
         }
-        for (int i = 0; i < orangutans.size(); i++) {
-            orangutans.get(i).setStepped(false);
-        }
-        for (int i = 0; i < pandas.size(); i++) {
-            pandas.get(i).setStepped(false);
-        }
+        resetStepped();
         for (int i = 0; i < activateables.size(); i++)
             activateables.get(i).activate();
     }
