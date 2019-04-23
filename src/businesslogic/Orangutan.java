@@ -53,6 +53,7 @@ public class Orangutan extends Steppable {
      * @param p: Panda
      */
     public void caught(Panda p) {
+        System.out.println("MESSAGE: Orangutan " + getId() + " caught Panda " + p.getId() + ".");
         getField().remove(this);
         p.step(getField());
         if (getFollower() != null) {
@@ -62,7 +63,6 @@ public class Orangutan extends Steppable {
         setFollower(p);
         p.setAnterior(this);
         p.setCatcher(this);
-        System.out.println("MESSAGE: Orangutan "+getId()+" caught Panda "+p.getId()+".");
     }
 
     /**
@@ -106,7 +106,6 @@ public class Orangutan extends Steppable {
      * @param f: Field(a mező amelyre lépni szeretne az Orangutan)
      * @return boolean (false ha nem sikerült a lépés különben true)
      */
-
     @Override
     public boolean step(Field f){
         if(getField().moveTo(f, this)){
@@ -132,6 +131,7 @@ public class Orangutan extends Steppable {
             Field temp_this = getField();
             getField().moveTo(temp, this);
             o.step(temp_this);
+            o.setStepped(false); // még léphet a körben, ha sorra kerül
 
             this.getFollower().setCatcher(o);
             this.getFollower().setAnterior(o);
@@ -145,8 +145,7 @@ public class Orangutan extends Steppable {
     }
 
     /**
-     * Az orángután lépését kiírjatja a konzolra
-     *
+     * Az orángután lépését kiíratja a konzolra
      * @param f a mező, amire lépett
      */
     @Override

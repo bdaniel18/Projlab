@@ -138,6 +138,8 @@ public class Main {
 
     private static void load(ArrayList<String> s) {
         started = false;
+        orangutanNumber = 0;
+        printedround = false;
         if (!s.get(0).toLowerCase().equals("map") || s.size() > 2) {
             System.out.println("MESSAGE: load: wrong parameters.");
             return;
@@ -175,6 +177,8 @@ public class Main {
             return;
         }
         started = false;
+        printedround = false;
+        orangutanNumber = 0;
         System.out.println("MESSAGE: Game stopped.");
     }
 

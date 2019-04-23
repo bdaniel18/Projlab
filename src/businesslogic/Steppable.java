@@ -55,6 +55,7 @@ public abstract class Steppable extends FieldElement {
      * @return a lépés sikeressége
      */
     public boolean step(Field f) {
+        if (isStepped()) return false;
         if (getField().moveTo(f, this)) {
             if (follower != null) {
                 follower.step(lastSteppedOn);

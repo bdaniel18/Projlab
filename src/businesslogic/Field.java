@@ -92,6 +92,7 @@ public class Field {
      * @return boolean , Sikerült-e elhelyezni a Steppable-t
      */
     public boolean accept(Steppable st) {
+        if (st.isStepped()) return false;
         if(fieldElement != null){
             if (st.collideWith(fieldElement)) { // a lépés sikeres
                 st.printStepped(this);

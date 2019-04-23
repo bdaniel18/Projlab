@@ -73,11 +73,11 @@ public abstract  class Panda extends Steppable {
      * ad egy pontot az Orangutannak
      */
     public void exitReached() {
+        System.out.println("MESSAGE: Panda " + getId() + " exited.");
         getCatcher().incScore();
         if(getFollower() != null){
             getFollower().exitReached();
         }
-        System.out.println("MESSAGE: Panda " + getId() + " exited.");
         die();
     }
 
@@ -127,6 +127,7 @@ public abstract  class Panda extends Steppable {
      */
     public void releaseBoth() {
         setCatcher(null);
+        getAnterior().setFollower(null);
         setAnterior(null);
         if(getFollower() != null)
             getFollower().releaseBoth();
