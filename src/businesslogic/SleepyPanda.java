@@ -26,7 +26,7 @@ public class SleepyPanda extends Panda {
      * @param s a fotel
      */
     private void sleep(Sofa s) {
-        System.out.println("MESSAGE: Panda " + getId() + " sat down on Field " + s.getField().getId());
+        System.out.println("MESSAGE: Panda " + getId() + " sat down on Field " + s.getField().getId() + ".");
         if (getAnterior() != null) getAnterior().releaseFollower();
         releaseBoth();
         s.sit(this);
