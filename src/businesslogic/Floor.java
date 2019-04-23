@@ -97,7 +97,7 @@ public class Floor {
      * az activate() függvénye
      */
     public void newTurn() {
-        System.out.println("Round of pandas.");
+        System.out.println("MESSAGE: Round of pandas.");
         for (int i = 0; i < pandas.size(); i++) {
             Panda p = pandas.get(i);
             if (!p.isStepped() && p.getField() != null) p.step();

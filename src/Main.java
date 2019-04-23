@@ -61,8 +61,6 @@ public class Main {
                                 game.getFloor().setCurrentOrangutan(orangutanNumber);
                                 game.getFloor().getCurrentOrangutan().setStepped(false);
                             } else {
-                                System.out.println("MESSAGE: Orangutan " + game.getFloor().getCurrentOrangutan().getId() +
-                                        " could not step to Field " + f.getId() + ".");
                             }
                         } catch (Exception e) {
                             System.out.println("MESSAGE: Bad value.");
@@ -77,7 +75,7 @@ public class Main {
                     System.out.println("MESSAGE: Round of Orangutans.");
                     printedround = true;
                 }
-                System.out.println("Orangutan " + game.getFloor().getCurrentOrangutan().getId() +
+                System.out.println("MESSAGE: Orangutan " + game.getFloor().getCurrentOrangutan().getId() +
                         " has to step. Give a field ID! (ID)");
             }
         }

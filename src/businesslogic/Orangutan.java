@@ -119,6 +119,9 @@ public class Orangutan extends Steppable {
             this.setLastSteppedOn(f);
             return true;
         }
+
+        System.out.println("MESSAGE: Orangutan " + getId() +
+                " could not step to Field " + f.getId() + ".");
         return false;
     }
 
