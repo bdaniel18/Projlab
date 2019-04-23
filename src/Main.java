@@ -150,7 +150,7 @@ public class Main {
             return;
         }
         try {
-            game.newGame(ss.substring(1));
+            game.newGame(ss.substring(1) + ".map");
         } catch (Exception e) {
             game.setMapid(-1);
             System.out.println("MESSAGE: Map loading failed!");

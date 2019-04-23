@@ -108,6 +108,7 @@ public class Orangutan extends Steppable {
      */
     @Override
     public boolean step(Field f){
+        if (isStepped()) return false;
         if(getField().moveTo(f, this)){
             if(stepsLeft > 0){
                 stepsLeft -=1;

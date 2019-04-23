@@ -83,7 +83,6 @@ public abstract  class Panda extends Steppable {
 
     /**
      * A panda lép a kapott mezőre
-     *
      * @param f: Field
      * @return sikeres lépés volt-e
      */
@@ -153,9 +152,7 @@ public abstract  class Panda extends Steppable {
     public void die() {
         System.out.println("MESSAGE: Panda " + getId() + " died.");
         setCatcher(null);
-        if (getFollower() != null) {
-            getFollower().releaseBoth();
-        }
+        releaseBoth();
         getFloor().remove(this);
     }
 
