@@ -25,7 +25,7 @@ public abstract  class Panda extends Steppable {
     }
 
     public void setCatcher(Orangutan _catcher) {
-        if (catcher != null && catcher != _catcher) {
+        if (catcher != null && _catcher == null) {
             System.out.println("MESSAGE: Orangutan " + catcher.getId() + " lost Panda " + getId() + ".");
         }
         this.catcher = _catcher;

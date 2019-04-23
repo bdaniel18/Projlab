@@ -59,6 +59,7 @@ public class Main {
                                     game.getFloor().newTurn();
                                 }
                                 game.getFloor().setCurrentOrangutan(orangutanNumber);
+                                game.getFloor().getCurrentOrangutan().setStepped(false);
                             }
                         } catch (Exception e) {
                             System.out.println("MESSAGE: Bad value.");

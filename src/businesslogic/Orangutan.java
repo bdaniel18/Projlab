@@ -87,10 +87,10 @@ public class Orangutan extends Steppable {
      */
     @Override
     public void die() {
+        System.out.println("MESSAGE: Orangutan " + getId() + " died.");
         if (getFollower() != null) {
             getFollower().releaseBoth();
         }
-        System.out.println("MESSAGE: Orangutan "+getId()+" died.");
         getFloor().remove(this);
     }
 
@@ -132,7 +132,6 @@ public class Orangutan extends Steppable {
             Field temp_this = getField();
             getField().moveTo(temp, this);
             o.step(temp_this);
-            o.setStepped(false); // még léphet a körben, ha sorra kerül
 
             this.getFollower().setCatcher(o);
             this.getFollower().setAnterior(o);
