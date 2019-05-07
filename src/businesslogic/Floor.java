@@ -92,6 +92,14 @@ public class Floor {
         }
     }
 
+    public int getFieldNumber() {
+        return fields.size();
+    }
+
+    public Field getField(int i) {
+        return fields.get(i);
+    }
+
     /**
      * Új kör kezdődik, minden Steppable lép, és minden Activateable-nek meghívódik
      * az activate() függvénye
@@ -231,12 +239,12 @@ public class Floor {
      * @param id a kért Field id értéke
      * @return a mező
      */
-    public Field getField(int id) {
+   /* public Field getField(int id) {
         for (int i = 0; i < fields.size(); i++) {
             if (fields.get(i).getId() == id) return fields.get(i);
         }
         return null;
-    }
+    }*/
 
     /**
      * Visszaadja a kért Activateable-t ha létezik

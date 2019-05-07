@@ -3,6 +3,8 @@ package Graphics;
 
 import businesslogic.Game;
 
+import java.util.ArrayList;
+
 public class View {
 
     public View(Game g) {
@@ -13,8 +15,19 @@ public class View {
     private Options nextFrame = Options.MAINMENU;
     private Frame f = null;
 
+    private ArrayList<Drawable> drawables;
+    private ArrayList<FieldView> fieldViews;
+
     public void setNextFrame(Options o) {
         nextFrame = o;
+    }
+
+    public ArrayList<Drawable> getDrawables() {
+        return drawables;
+    }
+
+    public ArrayList<FieldView> getFieldViews() {
+        return fieldViews;
     }
 
     public Game getGame() {

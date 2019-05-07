@@ -13,6 +13,15 @@ public class GameFrame extends Frame {
     public void run() {
         setSize(new Dimension(1100, 1100));
         canvas = new GameCanvas(view);
+        panel.setSize(new Dimension(1000, 1000));
         panel.add(canvas);
+
+        waitingThread.start();
+
+        try {
+            waitingThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
