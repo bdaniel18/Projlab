@@ -1,5 +1,7 @@
 package businesslogic;
 
+import Graphics.Vertex;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -13,6 +15,8 @@ public class Field {
     private boolean fragile; // törékeny-e a mező
     private List<Field> neighbours; //a szomszédos mezők
     private int id;
+
+    private ArrayList<Graphics.Vertex> vertices;
 
     public Field() {
         fieldElement = null;
@@ -28,6 +32,14 @@ public class Field {
 
     public FieldElement getFieldElement() {
         return fieldElement;
+    }
+
+    public ArrayList<Graphics.Vertex> getVertices() {
+        return vertices;
+    }
+
+    public void addVertex(Vertex v) {
+        vertices.add(v);
     }
 
     public int getId() {

@@ -46,21 +46,6 @@ public abstract  class Panda extends Steppable {
             options.add(getField().getNeighbour(i)); // feltöltjük a szomszédos mezők tömbjét
         }
 
-        if (Game.getInstance().getTestMode()) { // ha determinisztukus módba van kapcsolva
-            Field candidate = null;
-            int candidateIndex = 0, i = 0;
-            while (options.size() > 0) {
-                for (i = 0; i < options.size(); i++) {
-                    if (candidate == null || options.get(i).getId() < candidate.getId()) {
-                        candidate = options.get(i);
-                        candidateIndex = i;
-                    }
-                }
-                options.remove(candidateIndex);
-                if (step(candidate)) return;
-            }
-            return;
-        }
         while (options.size() > 0) { // próbál lépni egy mezőre, ha sikertelen kiveszi a tömbből.
             int r = rand.nextInt(options.size());
             if (step(options.get(r))) return;

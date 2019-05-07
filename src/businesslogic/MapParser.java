@@ -93,7 +93,7 @@ public class MapParser {
     }
 
     /**
-     * Létrehoz egy mezőt, a paraméterekben kapott id-vel.
+     * Létrehoz egy mezőt, a paraméterben kapott id-vel.
      * @param s a mezőhöz tartozó értelmezett pályafájl sorok.
      */
     private void fetchField(ArrayList<ArrayList<String>> s) {

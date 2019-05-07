@@ -49,16 +49,8 @@ public class Wardrobe extends FieldElement {
 
         Random random = new Random();
         while (neighbours.size() > 0) {
-            int min = 0;
             int a = random.nextInt(neighbours.size());
-            if (Game.getInstance().getTestMode()) { //ha determinisztikus működés kell
-                min = 0;
-                for (int i = 0; i < neighbours.size(); i++) {
-                    if (neighbours.get(i).getId() < neighbours.get(min).getId()) min = i;
-                }
-                a = min;
-            }
-            Field f = neighbours.remove(min);
+            Field f = neighbours.remove(a);
 
             if (f.accept(o)) {
                 if (targetField.containsKey(o)) {
@@ -90,15 +82,7 @@ public class Wardrobe extends FieldElement {
 
             Random random = new Random();
             while (neighbours.size() > 0) {
-                int min = 0;
                 int a = random.nextInt(neighbours.size());
-                if (Game.getInstance().getTestMode()) { //ha determinisztikus működés kell
-                    min = 0;
-                    for (int i = 0; i < neighbours.size(); i++) {
-                        if (neighbours.get(i).getId() < neighbours.get(min).getId()) min = i;
-                    }
-                    a = min;
-                }
                 Field f = neighbours.remove(a);
                 if (f.accept(p)) {
 

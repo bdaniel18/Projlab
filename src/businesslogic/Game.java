@@ -3,26 +3,26 @@ package businesslogic;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 /**
  * A játék osztály, felelős a játék indításáért és befejezésért.
  */
 public class Game {
 
-    private static Game instance; // az egyetlen példány
+    private static Game instance = null; // az egyetlen példány
     private Floor floor;
     private int mapid = -1;
     private String mapName = null;
 
-    private boolean testMode = false;
 
     private Game(){
-        instance = null;
         floor = null;
     }
 
     public int getMapid() {
         return mapid;
     }
+
 
     public void setMapid(int id) {
         mapid = id;
@@ -36,22 +36,10 @@ public class Game {
         mapName = name;
     }
 
-    public void setFloor(Floor f) {
-        floor = f;
-    }
-
     public Floor getFloor() {
         return floor;
     }
 
-    public void setTestMode(boolean b) {
-        testMode = b;
-    }
-
-
-    public boolean getTestMode() {
-        return testMode;
-    }
 
     /**
      * Visszaadja az osztály egyetlen példányát, amit létre is hoz,
