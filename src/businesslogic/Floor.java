@@ -87,12 +87,16 @@ public class Floor {
         }
     }
 
-    public int getFieldNumber() {
-        return fields.size();
-    }
-
     public Field getField(int i) {
         return fields.get(i);
+    }
+
+    public Field getFieldforId(int id) {
+        for (int i = 0; i < fields.size(); i++) {
+            Field f = fields.get(i);
+            if (f.getId() == id) return f;
+        }
+        return null;
     }
 
     /**

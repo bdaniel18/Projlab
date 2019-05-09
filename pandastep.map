@@ -71,9 +71,9 @@
 		<anterior>7</anterior>
 		<catcher>7</catcher>
 	</panda>
-	<panda>
+	<activateable>
 		<id>9</id>
-		<type>sleepy</type>
+		<type>sofa</type>
 		<host>6</host>
-	</panda>	
+	</activateable>	
 </mapfile>

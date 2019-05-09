@@ -1,5 +1,7 @@
 package businesslogic;
 
+import Graphics.Icons;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -78,6 +80,7 @@ public abstract  class Panda extends Steppable {
                 getFollower().step(getLastSteppedOn());
             }
             setLastSteppedOn(f);
+            Game.getInstance().push(this, Icons.PANDA);
         }
         return false;
     }

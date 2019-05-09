@@ -27,7 +27,7 @@ public class View {
 
     private Game game;
     private Options nextFrame = Options.MAINMENU;
-    private Frame f = null;
+    private Frame frame = null;
 
     private ArrayList<Drawable> drawables = new ArrayList<>();
     private ArrayList<FieldView> fieldViews = new ArrayList<>();
@@ -54,16 +54,6 @@ public class View {
         }
         return null;
     }
-
-    public Drawable getDrawableForId(int id) {
-        Drawable dr;
-        for (int i = 0; i < drawables.size(); i++) {
-            dr = drawables.get(i);
-            if (dr.getId() == id) return dr;
-        }
-        return null;
-    }
-
 
 
     public Game getGame() {
@@ -97,9 +87,11 @@ public class View {
         dw.setPosition(fw.getMiddle());
 
         ImageIcon icon = icons.get(ic);
-        Rectangle2D rect = fw.getMaxRectangle(icon.getIconWidth(), icon.getIconHeight());
-
-
+        Rectangle2D.Double rect = fw.getMaxRectangle(icon.getIconWidth(), icon.getIconHeight());
+        dw.setPosition(new Vertex((int) (rect.x + 1), (int) (rect.y + 1)));
+        dw.setHeight((int) rect.height);
+        dw.setWidth((int) rect.width);
+        dw.setIcon(icon);
         drawables.add(dw);
     }
 
@@ -111,6 +103,13 @@ public class View {
         if (fw == null) return;
         dw.setPosition(fw.getMiddle());
         dw.setIcon(icons.get(Icons.ENTRANCE));
+
+        ImageIcon icon = icons.get(Icons.ENTRANCE);
+        Rectangle2D.Double rect = fw.getMaxRectangle(icon.getIconWidth(), icon.getIconHeight());
+        dw.setPosition(new Vertex((int) (rect.x + 1), (int) (rect.y + 1)));
+        dw.setHeight((int) rect.height);
+        dw.setWidth((int) rect.width);
+        dw.setIcon(icon);
         drawables.add(dw);
     }
 
@@ -121,30 +120,41 @@ public class View {
         return ic;
     }
 
+    public void clickedAt(int x, int y) {
+        for (int i = 0; i < fieldViews.size(); i++) {
+            FieldView fw = fieldViews.get(i);
+            Polygon poly = fw.getPolygon();
+            if (poly.contains(x, y)) {
+                int id = fw.getId();
+                game.stepOrangutan(id);
+            }
+        }
+    }
+
 
     public void start() {
         while (nextFrame != null) {
             switch (nextFrame) {
                 case MAINMENU:
-                    f = new MainMenuFrame(this);
+                    frame = new MainMenuFrame(this);
                     nextFrame = null;
                     break;
                 case LOAD:
-                    f = new LoadMapFrame(this);
+                    frame = new LoadMapFrame(this);
                     nextFrame = null;
                     break;
                 case LEADERBOARD:
-                    f = new LeaderBoardFrame(this);
+                    frame = new LeaderBoardFrame(this);
                     nextFrame = null;
                     break;
                 case NEWGAME:
                     if (game.getMapid() < 0) nextFrame = Options.MAINMENU;
-                    f = new GameFrame(this);
+                    frame = new GameFrame(this);
                     break;
                 default:
                     break;
             }
-            f.run();
+            frame.run();
         }
     }
 }

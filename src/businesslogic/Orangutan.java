@@ -1,5 +1,7 @@
 package businesslogic;
 
+import Graphics.Icons;
+
 /**
  * Orángután osztály, a játékos irányítja a lépését, pandákat tud elfogni, és vezetni.
  */
@@ -117,6 +119,7 @@ public class Orangutan extends Steppable {
                 getFollower().step(this.getLastSteppedOn());
             }
             this.setLastSteppedOn(f);
+            Game.getInstance().push(this, Icons.ORANGUTAN);
             return true;
         }
 

@@ -17,6 +17,21 @@ public class FieldView {
     private Polygon polygon;
     private Vertex middle;
 
+    public FieldView(Field f) {
+        id = f.getId();
+        vertices = f.getVertices();
+        getMiddle(); // init middle
+
+        int x[] = new int[vertices.size()];
+        int y[] = new int[vertices.size()];
+        for (int i = 0; i < vertices.size(); i++) {
+            Vertex v = vertices.get(i);
+            x[i] = v.x;
+            y[i] = v.y;
+        }
+        polygon = new Polygon(x, y, vertices.size());
+    }
+
     public Rectangle2D.Double getMaxRectangle(int width, int height) {
         double dw = (double) 2 * width / height, dh = 2;
         double w = 2, h = 2;
@@ -32,10 +47,8 @@ public class FieldView {
         return fitRect;
     }
 
-    public FieldView(Field f) {
-        id = f.getId();
-        vertices = f.getVertices();
-        getMiddle(); // init middle
+    public Polygon getPolygon() {
+        return polygon;
     }
 
     public int getId() {
@@ -57,16 +70,6 @@ public class FieldView {
     }
 
     public void draw(java.awt.Graphics g) {
-        if (polygon == null) {
-            int x[] = new int[vertices.size()];
-            int y[] = new int[vertices.size()];
-            for (int i = 0; i < vertices.size(); i++) {
-                Vertex v = vertices.get(i);
-                x[i] = v.x;
-                y[i] = v.y;
-            }
-            polygon = new Polygon(x, y, vertices.size());
-        }
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(color);
         g2.fillPolygon(polygon);

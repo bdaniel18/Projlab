@@ -71,7 +71,8 @@ public class Game {
         currentOrangutan = 0;
     }
 
-    public boolean stepOrangutan(Field f) {
+    public boolean stepOrangutan(int fieldId) {
+        Field f = floor.getFieldforId(fieldId);
         if (floor.getOrangutan(currentOrangutan).step(f)) {
             currentOrangutan += 1;
             if (currentOrangutan >= floor.getOrangutanNumber()) {

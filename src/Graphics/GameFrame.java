@@ -14,7 +14,10 @@ public class GameFrame extends Frame {
         setSize(new Dimension(1100, 1100));
         canvas = new GameCanvas(view);
         panel.setSize(new Dimension(1000, 1000));
+        canvas.addMouseListener(new MouseEventHandler(view));
         panel.add(canvas);
+
+        view.getGame().startGame();
 
         waitingThread.start();
 
