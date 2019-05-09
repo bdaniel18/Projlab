@@ -1,11 +1,15 @@
 package businesslogic;
 
+import Graphics.Icons;
+import Graphics.View;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * A játék osztály, felelős a játék indításáért és befejezésért.
+ * Ellátja a kontroller feladatát, a modellel és a nézettel kommunikál
  */
 public class Game {
 
@@ -14,6 +18,8 @@ public class Game {
     private int mapid = -1;
     private String mapName = null;
 
+    private View view;
+    private int currentOrangutan = -1;
 
     private Game(){
         floor = null;
@@ -22,7 +28,6 @@ public class Game {
     public int getMapid() {
         return mapid;
     }
-
 
     public void setMapid(int id) {
         mapid = id;
@@ -38,6 +43,44 @@ public class Game {
 
     public Floor getFloor() {
         return floor;
+    }
+
+
+    /*
+    A nézettel való kommunikációhoz szükséges függvények
+     */
+
+    public void setView(View view) {
+        this.view = view;
+    }
+
+    public void push(Field f) {
+        view.add(f);
+    }
+
+    public void push(FieldElement fe, Icons ic) {
+        view.add(fe, ic);
+    }
+
+    public void pushEntrance(Field f) {
+        view.addEntrance(f);
+    }
+
+
+    public void startGame() {
+        currentOrangutan = 0;
+    }
+
+    public boolean stepOrangutan(Field f) {
+        if (floor.getOrangutan(currentOrangutan).step(f)) {
+            currentOrangutan += 1;
+            if (currentOrangutan >= floor.getOrangutanNumber()) {
+                currentOrangutan = 0;
+                floor.newTurn();
+            }
+            return true;
+        }
+        return false;
     }
 
 

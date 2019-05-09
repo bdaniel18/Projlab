@@ -3,7 +3,7 @@ package Graphics;
 public enum Icons {
     PANDA,
     ORANGUTAN,
-    GAMGLINGMACHINE,
+    GAMBLINGMACHINE,
     CHOCOLATEMACHINE,
     SOFA,
     WARDROBE,

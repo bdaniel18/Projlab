@@ -14,7 +14,6 @@ public class Floor {
     private List<Orangutan> orangutans; // a pálya orángutánjai
     private List<Panda> pandas; // a pálya pandái
 
-    private Orangutan currentOrangutan = null;
 
     public Floor(){
         fields = new ArrayList<>();
@@ -23,12 +22,8 @@ public class Floor {
         pandas = new ArrayList<>();
     }
 
-    public Orangutan getCurrentOrangutan() {
-        return currentOrangutan;
-    }
-
-    public void setCurrentOrangutan(int i) {
-        currentOrangutan = orangutans.get(i);
+    public Orangutan getOrangutan(int i) {
+        return orangutans.get(i);
     }
 
     public int getOrangutanNumber() {
@@ -128,20 +123,6 @@ public class Floor {
         for (int i = 0; i < fields.size(); i++) System.out.println(fields.get(i).toString());
     }
 
-    /**
-     * Kilistázza az aktív orángután szomszédos mezőit
-     */
-    public void listNeighbours() {
-        if (currentOrangutan == null) {
-            System.out.println("MESSAGE: Game cannot list.");
-            return;
-        }
-        Field f = currentOrangutan.getField();
-        System.out.println("Neighbours of Field " + f.getId() + ":");
-        for (int i = 0; i < f.getNeighbourNumber(); i++) {
-            System.out.println(f.getNeighbour(i).toString());
-        }
-    }
 
     /**
      * kilistázza az összes pandát

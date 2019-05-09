@@ -14,7 +14,6 @@ public abstract class Activateable extends FieldElement {
 
     /**
      * Meghívása után generál egy véletlen számot, és ettől függően igaz, vagy hamis értéket ad
-     *
      * @return 1/2 valószínűséggel igaz, vagy hamis véletlen érték.
      */
     public boolean random() {
@@ -26,7 +25,6 @@ public abstract class Activateable extends FieldElement {
 
     /**
      * Visszaadja az objektum tulajdonságait
-     *
      * @return a tulajdonságok stringje
      */
     public abstract String toString();

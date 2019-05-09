@@ -1,5 +1,8 @@
 package businesslogic;
 
+import Graphics.Icons;
+import Graphics.Vertex;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,6 +32,8 @@ public class MapParser {
     private ArrayList<ArrayList<ArrayList<String>>> wardrobeparams = new ArrayList<>();
     private ArrayList<Exit> tempExits = new ArrayList<>();
     private ArrayList<ArrayList<ArrayList<String>>> exitparams = new ArrayList<>();
+
+    private ArrayList<String> activateableTypes = new ArrayList<>();
 
     /**
      * A sorokra bontott pályafájlt értelmezi.
@@ -160,6 +165,7 @@ public class MapParser {
                 if (ss.equals("sofa")) a = new Sofa();
                 if (ss.equals("chocolatemachine")) a = new ChocolateMachine();
                 if (ss.equals("gamblingmachine")) a = new GamblingMachine();
+                activateableTypes.add(ss);
             }
             if (s.get(i).get(0).equals("id")) {
                 id = Integer.parseInt(s.get(i).get(1));
@@ -212,10 +218,18 @@ public class MapParser {
                         int id = Integer.parseInt(param2);
                         f.addNeighbour(getField(id));
                         break;
+                    case "coords":
+                        String str[] = param2.split(",");
+                        if (str.length != 2) System.out.println("Parse error in Field: " + f.getId());
+                        int x = Integer.parseInt(str[0]);
+                        int y = Integer.parseInt(str[1]);
+                        f.addVertex(new Vertex(x, y));
+                        break;
                     default:
                 }
             }
             game.getFloor().addField(f);
+            game.push(f);
         }
     }
 
@@ -248,6 +262,7 @@ public class MapParser {
                 }
             }
             game.getFloor().add(p);
+            game.push(p, Icons.PANDA);
         }
     }
 
@@ -272,6 +287,7 @@ public class MapParser {
                 }
             }
             game.getFloor().add(o);
+            game.push(o, Icons.ORANGUTAN);
         }
     }
 
@@ -292,6 +308,13 @@ public class MapParser {
                 }
             }
             game.getFloor().add(a);
+            String type = activateableTypes.get(i);
+            if (type.equals("sofa"))
+                game.push(a, Icons.SOFA);
+            if (type.equals("chocolatemachine"))
+                game.push(a, Icons.CHOCOLATEMACHINE);
+            if (type.equals("gamblingmachine"))
+                game.push(a, Icons.GAMBLINGMACHINE);
         }
     }
 
@@ -315,6 +338,7 @@ public class MapParser {
                     default:
                 }
             }
+            game.push(w, Icons.WARDROBE);
         }
     }
 
@@ -337,6 +361,8 @@ public class MapParser {
                     default:
                 }
             }
+            game.push(e, Icons.EXIT);
+            game.pushEntrance(e.getEntrance());
         }
     }
 
@@ -394,7 +420,7 @@ public class MapParser {
     private ArrayList<String> splitS(String s) throws Exception {
         ArrayList<String> ss = new ArrayList<String>();
         s = s.trim();
-        String pattern = "<(\\w*)>\\s*(?:(\\w*)\\s*</(\\w*)>)?";
+        String pattern = "<(\\w*)>\\s*(?:([\\w,]*)\\s*</(\\w*)>)?";
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(s);
         if (m.find()) {

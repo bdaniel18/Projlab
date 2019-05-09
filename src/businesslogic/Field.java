@@ -23,6 +23,7 @@ public class Field {
         durability = 0;
         fragile = false;
         neighbours = new ArrayList<Field>();
+        vertices = new ArrayList<>();
     }
 
     public void setFieldElement(FieldElement fieldElement) {
@@ -39,8 +40,13 @@ public class Field {
     }
 
     public void addVertex(Vertex v) {
+        for (int i = 0; i < vertices.size(); i++) {
+            Vertex j = vertices.get(i);
+            if (j.x == v.x && j.y == v.y) return;
+        }
         vertices.add(v);
     }
+
 
     public int getId() {
         return id;

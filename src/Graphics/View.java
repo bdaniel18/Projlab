@@ -1,22 +1,38 @@
 package Graphics;
 
-
+import businesslogic.Field;
+import businesslogic.FieldElement;
 import businesslogic.Game;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class View {
 
     public View(Game g) {
         game = g;
+        icons.put(Icons.PANDA, loadIcon("panda.png"));
+        icons.put(Icons.SOFA, loadIcon("sofa.png"));
+        icons.put(Icons.WARDROBE, loadIcon("wardrobe.png"));
+        icons.put(Icons.CHOCOLATEMACHINE, loadIcon("chocolate_machine.png"));
+        icons.put(Icons.ENTRANCE, loadIcon("entrance.png"));
+        icons.put(Icons.EXIT, loadIcon("exit.png"));
+        icons.put(Icons.GAMBLINGMACHINE, loadIcon("gambling_machine.png"));
+        icons.put(Icons.ORANGUTAN, loadIcon("orangutan.png"));
     }
 
     private Game game;
     private Options nextFrame = Options.MAINMENU;
     private Frame f = null;
 
-    private ArrayList<Drawable> drawables;
-    private ArrayList<FieldView> fieldViews;
+    private ArrayList<Drawable> drawables = new ArrayList<>();
+    private ArrayList<FieldView> fieldViews = new ArrayList<>();
+
+    private Map<Icons, ImageIcon> icons = new HashMap<>();
 
     public void setNextFrame(Options o) {
         nextFrame = o;
@@ -30,9 +46,81 @@ public class View {
         return fieldViews;
     }
 
+    public FieldView getFieldViewForId(int id) {
+        FieldView fw;
+        for (int i = 0; i < fieldViews.size(); i++) {
+            fw = fieldViews.get(i);
+            if (fw.getId() == id) return fw;
+        }
+        return null;
+    }
+
+    public Drawable getDrawableForId(int id) {
+        Drawable dr;
+        for (int i = 0; i < drawables.size(); i++) {
+            dr = drawables.get(i);
+            if (dr.getId() == id) return dr;
+        }
+        return null;
+    }
+
+
+
     public Game getGame() {
         return game;
     }
+
+    public void removeFieldView(int id) {
+        for (int i = 0; i < fieldViews.size(); i++) {
+            FieldView fw = fieldViews.get(i);
+            if (fw.getId() == id) fieldViews.remove(i);
+        }
+    }
+
+    public void removeDrawable(int id) {
+        for (int i = 0; i < drawables.size(); i++) {
+            Drawable dw = drawables.get(i);
+            if (dw.getId() == id) drawables.remove(i);
+        }
+    }
+
+    public void add(Field f) {
+        removeFieldView(f.getId());
+        fieldViews.add(new FieldView(f));
+    }
+
+    public void add(FieldElement fe, Icons ic) {
+        removeDrawable(fe.getId());
+        Drawable dw = new Drawable(fe.getId());
+        FieldView fw = getFieldViewForId(fe.getField().getId());
+        if (fw == null) return;
+        dw.setPosition(fw.getMiddle());
+
+        ImageIcon icon = icons.get(ic);
+        Rectangle2D rect = fw.getMaxRectangle(icon.getIconWidth(), icon.getIconHeight());
+
+
+        drawables.add(dw);
+    }
+
+    public void addEntrance(Field entrance) {
+        int id = entrance.getId();
+        removeDrawable(id);
+        Drawable dw = new Drawable(id);
+        FieldView fw = getFieldViewForId(id);
+        if (fw == null) return;
+        dw.setPosition(fw.getMiddle());
+        dw.setIcon(icons.get(Icons.ENTRANCE));
+        drawables.add(dw);
+    }
+
+
+    private ImageIcon loadIcon(String name) {
+        String dir = System.getProperty("user.dir") + "\\images\\";
+        ImageIcon ic = new ImageIcon(dir + name);
+        return ic;
+    }
+
 
     public void start() {
         while (nextFrame != null) {

@@ -15,6 +15,10 @@ public class Exit extends FieldElement {
         this.entrance = entrance;
     }
 
+    public Field getEntrance() {
+        return entrance;
+    }
+
     /**
      * Paraméterként kapott Pandaval közli, hogy nem mehet ki a kijáraton, csak ha egy Orangutan kivezeti
      * @param p Panda
