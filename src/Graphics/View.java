@@ -23,6 +23,7 @@ public class View {
         icons.put(Icons.EXIT, loadIcon("exit.png"));
         icons.put(Icons.GAMBLINGMACHINE, loadIcon("gambling_machine.png"));
         icons.put(Icons.ORANGUTAN, loadIcon("orangutan.png"));
+        icons.put(Icons.SOFAPANDA, loadIcon("sofapanda.png"));
     }
 
     private Game game;
@@ -93,6 +94,7 @@ public class View {
         dw.setWidth((int) rect.width);
         dw.setIcon(icon);
         drawables.add(dw);
+        frame.repaint();
     }
 
     public void addEntrance(Field entrance) {

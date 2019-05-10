@@ -59,11 +59,19 @@ public class Game {
     }
 
     public void push(FieldElement fe, Icons ic) {
+        if (fe.getField() == null) return;
         view.add(fe, ic);
     }
 
     public void pushEntrance(Field f) {
         view.addEntrance(f);
+    }
+
+    public void pushSofaPanda(Sofa s) {
+        if (s.getField() == null) return;
+        view.removeDrawable(s.getId());
+        view.removeDrawable(s.getPanda().getId());
+        view.add(s, Icons.SOFAPANDA);
     }
 
 

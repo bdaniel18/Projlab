@@ -27,4 +27,9 @@ public class GameFrame extends Frame {
             e.printStackTrace();
         }
     }
+
+    public void paint(Graphics g) {
+        canvas.repaint();
+    }
+
 }

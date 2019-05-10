@@ -8,5 +8,6 @@ public enum Icons {
     SOFA,
     WARDROBE,
     ENTRANCE,
-    EXIT
+    EXIT,
+    SOFAPANDA
 }

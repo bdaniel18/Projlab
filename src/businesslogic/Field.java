@@ -165,8 +165,11 @@ public class Field {
      * Eltávolítja a kapott FieldElementet a mezőről, ha rajta van.
      */
     public void remove(FieldElement f) {
-        if (fieldElement == f)
+        if (fieldElement == f) {
             fieldElement = null;
+            f.setField(null);
+        }
+
     }
 
     /**

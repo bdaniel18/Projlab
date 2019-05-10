@@ -1,5 +1,7 @@
 package businesslogic;
 
+import Graphics.Icons;
+
 /**
  * Fotel osztály, ülhet benne egy panda egyszerre, amit tárol.
  * Minden körben aktiválódik.
@@ -26,6 +28,7 @@ public class Sofa extends Activateable {
      */
     public void sit(Panda p) {
         panda = p;
+        Game.getInstance().pushSofaPanda(this);
     }
 
     /**
@@ -41,10 +44,13 @@ public class Sofa extends Activateable {
             FieldElement fe = temp.getFieldElement();
             if (fe == null) {
                 temp.accept(panda);
+                panda.setSleeping(false);
+                Game.getInstance().push(panda, Icons.PANDA);
                 break;
             }
             i++;
         }
+        Game.getInstance().push(this, Icons.SOFA);
         getField().sleepNeighbours(this);
     }
 
