@@ -11,8 +11,14 @@ import java.util.ArrayList;
 public class FieldView {
     private ArrayList<Vertex> vertices;
     private int id;
-    private Color color = new Color(128, 177, 205);
+    private Color color;
     private Color borderColor = Color.BLUE;
+
+    private static final Color FRAGILE_COLOR = new Color(147, 177, 130),
+            NON_FRAGILE_COLOR = new Color(128, 177, 205),
+            BROKEN_COLOR = Color.BLUE,
+            GOING_TO_STEP = new Color(255, 255, 110),
+            GOING_TO_STEP_FOLLOWER = new Color(255, 127, 80);
 
     private Polygon polygon;
     private Vertex middle;
@@ -21,6 +27,8 @@ public class FieldView {
         id = f.getId();
         vertices = f.getVertices();
         getMiddle(); // init middle
+
+        //TODO COLOR SET
 
         int x[] = new int[vertices.size()];
         int y[] = new int[vertices.size()];

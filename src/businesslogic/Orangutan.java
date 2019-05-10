@@ -115,11 +115,13 @@ public class Orangutan extends Steppable {
             if(stepsLeft > 0){
                 stepsLeft -=1;
             }
+
             if(getFollower() != null){
                 getFollower().step(this.getLastSteppedOn());
             }
             this.setLastSteppedOn(f);
             Game.getInstance().push(this, Icons.ORANGUTAN);
+
             return true;
         }
 

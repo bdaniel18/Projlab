@@ -54,16 +54,7 @@ public abstract class Steppable extends FieldElement {
      * @param f: Field
      * @return a lépés sikeressége
      */
-    public boolean step(Field f) {
-        if (isStepped()) return false;
-        if (getField().moveTo(f, this)) {
-            if (follower != null) {
-                follower.step(lastSteppedOn);
-            }
-            lastSteppedOn = f;
-        }
-        return false;
-    }
+    public abstract boolean step(Field f);
 
     /**
      * A követő kezét elengedjük

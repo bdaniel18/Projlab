@@ -125,10 +125,8 @@ public class Field {
                         }
                     }
                 }
-                return  true;
-            } else { // a lépés sikertelen
-                return false;
-            }
+                return true;
+            } else return false;
         }
         //Mivel a FieldElement null, a lépés megtörténik
         if (!st.isStepped()) {
@@ -154,7 +152,7 @@ public class Field {
     public boolean moveTo(Field f, Steppable st) {
         if (!isNeighbour(f)) return false;
         if(f.accept(st)){
-            remove(fieldElement);
+            remove(st);
             return true;
         }
         return false;
@@ -167,9 +165,7 @@ public class Field {
     public void remove(FieldElement f) {
         if (fieldElement == f) {
             fieldElement = null;
-            f.setField(null);
         }
-
     }
 
     /**

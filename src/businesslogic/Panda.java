@@ -41,7 +41,7 @@ public abstract  class Panda extends Steppable {
      * A szabad panda random mezőre lép
      */
     public void step() {
-        if (getField() == null) return;
+        if (getField() == null || catcher != null) return;
         Random rand = new Random();
         ArrayList<Field> options = new ArrayList<Field>();
 
@@ -155,9 +155,7 @@ public abstract  class Panda extends Steppable {
     /**
      * Ha egy panda alszik, vagy felébred állítani kell a változót
      * csak SleepyPanda esetén kell felüldefiniálni
-     *
-     * @param b alszik-e a panda
      */
-    public void setSleeping(boolean b) {
+    public void sleptThisTurn() {
     }
 }

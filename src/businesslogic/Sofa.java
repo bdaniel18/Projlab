@@ -37,6 +37,7 @@ public class Sofa extends Activateable {
      */
     public void activate() {
         int i = 0;
+        Panda lastPanda = panda;
         System.out.println("MESSAGE: Activateable " + getId() + "(Sofa) was activated.");
         while (panda != null) {
             Field temp = getField().getNeighbour(i);
@@ -44,14 +45,15 @@ public class Sofa extends Activateable {
             FieldElement fe = temp.getFieldElement();
             if (fe == null) {
                 temp.accept(panda);
-                panda.setSleeping(false);
+                panda.setStepped(false);
                 Game.getInstance().push(panda, Icons.PANDA);
-                break;
+                panda = null;
             }
             i++;
         }
         Game.getInstance().push(this, Icons.SOFA);
         getField().sleepNeighbours(this);
+        if (lastPanda != null) lastPanda.sleptThisTurn();
     }
 
     public String toString() {

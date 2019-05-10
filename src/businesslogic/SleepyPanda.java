@@ -5,11 +5,15 @@ package businesslogic;
  */
 public class SleepyPanda extends Panda {
 
-    private boolean slept = false;
-    private boolean sleeping = false;
+    private boolean sleptLastTime = false;
 
     public SleepyPanda() {
     }
+
+    public void sleptThisTurn() {
+        sleptLastTime = true;
+    }
+
 
     /**
      * Szomszédos mezőn fotel van.
@@ -17,17 +21,12 @@ public class SleepyPanda extends Panda {
      * @return beleült-e a fotelbe
      */
     public boolean sofaActivated(Sofa s) {
-        if (sleeping) return false;
-        if (!slept) {
+        if (!sleptLastTime) {
             sleep(s);
             return true;
         }
-        slept = !slept;
+        sleptLastTime = false;
         return false;
-    }
-
-    public void setSleeping(boolean b) {
-        sleeping = b;
     }
 
     /**
@@ -40,7 +39,8 @@ public class SleepyPanda extends Panda {
         releaseBoth();
         s.sit(this);
         getField().remove(this);
-        sleeping = true;
+        setField(null);
+        sleptLastTime = true;
     }
 
     public String toString() {
