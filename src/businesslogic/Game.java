@@ -129,8 +129,8 @@ public class Game {
         }
     }
 
-    /**
-     * @param fieldId
+    /** A soron következő orángután lép a kapott mezőre
+     * @param fieldId a mező amire a soron levő orángután lép
      * @return vége-e a játéknak
      */
     public boolean stepOrangutan(int fieldId) {

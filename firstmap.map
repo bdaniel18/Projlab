@@ -877,11 +877,10 @@
     <target>60</target>
     <host>48</host>
   </wardrobe>
-  <panda>
+  <orangutan>
     <id>62</id>
-    <type>sleepy</type>
     <host>17</host>
-  </panda>
+  </orangutan>
   <panda>
     <id>63</id>
     <type>coward</type>
