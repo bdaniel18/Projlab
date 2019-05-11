@@ -31,7 +31,7 @@ public class GameFrame extends Frame {
     }
 
     public void paint(Graphics g) {
-        canvas.repaint();
+        if (canvas != null) canvas.repaint();
     }
 
 }

@@ -21,6 +21,8 @@ public class Game {
 
     private View view;
     private int currentOrangutan = -1;
+    private boolean gameWon = false;
+    private boolean gameRunning = false;
 
     private Game(){
         floor = null;
@@ -44,6 +46,14 @@ public class Game {
 
     public Floor getFloor() {
         return floor;
+    }
+
+    public boolean getGameWon() {
+        return gameWon;
+    }
+
+    public boolean getGameRunning() {
+        return gameRunning;
     }
 
 
@@ -111,6 +121,7 @@ public class Game {
 
     public void startGame() {
         currentOrangutan = 0;
+        gameRunning = true;
         Steppable st = floor.getOrangutan(currentOrangutan);
         while (st != null) {
             push(st.getField());
@@ -118,6 +129,10 @@ public class Game {
         }
     }
 
+    /**
+     * @param fieldId
+     * @return vége-e a játéknak
+     */
     public boolean stepOrangutan(int fieldId) {
         Field f = floor.getFieldforId(fieldId);
         if (floor.getOrangutan(currentOrangutan).step(f)) {
@@ -129,6 +144,14 @@ public class Game {
             for (int i = 0; i < floor.getFieldCount(); i++) {
                 push(floor.getField(i));
             }
+        }
+        if (floor.getOrangutanNumber() == 0) {
+            gameWon = false;
+            gameRunning = false;
+            return true;
+        } else if (floor.getPandaNumber() == 0) {
+            gameWon = true;
+            gameRunning = false;
             return true;
         }
         return false;

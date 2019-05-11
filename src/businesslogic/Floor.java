@@ -30,6 +30,10 @@ public class Floor {
         return orangutans.size();
     }
 
+    public int getPandaNumber() {
+        return pandas.size();
+    }
+
     /**
      * Egy mezőt ad a pályához.
      * @param f Field

@@ -93,6 +93,8 @@ public class Orangutan extends Steppable {
         if (getFollower() != null) {
             getFollower().releaseBoth();
         }
+        getField().remove(this);
+        setField(null);
         getFloor().remove(this);
     }
 

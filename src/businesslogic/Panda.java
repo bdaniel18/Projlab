@@ -142,6 +142,8 @@ public abstract  class Panda extends Steppable {
         System.out.println("MESSAGE: Panda " + getId() + " died.");
         setCatcher(null);
         releaseBoth();
+        getField().remove(this);
+        setField(null);
         getFloor().remove(this);
     }
 

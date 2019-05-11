@@ -136,12 +136,17 @@ public class View {
     }
 
     public void clickedAt(int x, int y) {
+        if (!getGame().getGameRunning()) return;
         for (int i = 0; i < fieldViews.size(); i++) {
             FieldView fw = fieldViews.get(i);
             Polygon poly = fw.getPolygon();
             if (poly.contains(x, y)) {
                 int id = fw.getId();
-                game.stepOrangutan(id);
+                if (game.stepOrangutan(id)) {
+                    JDialog dialog = new JDialog(frame, "Game End", true);
+                    dialog.setVisible(true);
+                    //TODO dialog
+                }
             }
         }
     }
