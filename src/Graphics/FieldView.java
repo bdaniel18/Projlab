@@ -14,21 +14,46 @@ public class FieldView {
     private Color color;
     private Color borderColor = Color.BLUE;
 
+    public enum Colors {
+        FRAGILE_COLOR,
+        NON_FRAGILE_COLOR,
+        BROKEN_COLOR,
+        TO_STEP_COLOR,
+        TO_STEP_FOLLOWER_COLOR
+    }
+
     private static final Color FRAGILE_COLOR = new Color(147, 177, 130),
             NON_FRAGILE_COLOR = new Color(128, 177, 205),
             BROKEN_COLOR = Color.BLUE,
-            GOING_TO_STEP = new Color(255, 255, 110),
-            GOING_TO_STEP_FOLLOWER = new Color(255, 127, 80);
+            TO_STEP_COLOR = new Color(255, 255, 110),
+            TO_STEP_FOLLOWER_COLOR = new Color(255, 127, 80);
 
     private Polygon polygon;
     private Vertex middle;
 
-    public FieldView(Field f) {
+    public FieldView(Field f, Colors c) {
         id = f.getId();
         vertices = f.getVertices();
         getMiddle(); // init middle
 
-        //TODO COLOR SET
+        switch (c) {
+            case FRAGILE_COLOR:
+                color = FRAGILE_COLOR;
+                break;
+            case NON_FRAGILE_COLOR:
+                color = NON_FRAGILE_COLOR;
+                break;
+            case BROKEN_COLOR:
+                color = BROKEN_COLOR;
+                break;
+            case TO_STEP_COLOR:
+                color = TO_STEP_COLOR;
+                break;
+            case TO_STEP_FOLLOWER_COLOR:
+                color = TO_STEP_FOLLOWER_COLOR;
+                break;
+            default:
+        }
 
         int x[] = new int[vertices.size()];
         int y[] = new int[vertices.size()];

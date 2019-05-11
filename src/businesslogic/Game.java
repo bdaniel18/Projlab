@@ -1,5 +1,6 @@
 package businesslogic;
 
+import Graphics.FieldView;
 import Graphics.Icons;
 import Graphics.View;
 
@@ -55,7 +56,36 @@ public class Game {
     }
 
     public void push(Field f) {
-        view.add(f);
+        if (currentOrangutan >= 0 && f.getFieldElement() != null) {
+            Orangutan o = floor.getOrangutan(currentOrangutan);
+            if (f.getFieldElement().getId() == o.getId()) {
+                view.add(f, FieldView.Colors.TO_STEP_COLOR);
+                return;
+            }
+            ArrayList<Panda> followers = new ArrayList<>();
+            Panda p = o.getFollower();
+            while (p != null) {
+                followers.add(p);
+                p = p.getFollower();
+            }
+            FieldElement fe = f.getFieldElement();
+            for (int i = 0; i < followers.size(); i++) {
+                if (fe.getId() == followers.get(i).getId()) {
+                    view.add(f, FieldView.Colors.TO_STEP_FOLLOWER_COLOR);
+                    return;
+                }
+            }
+        }
+
+        if (f.isFragile()) {
+            if (f.getDurability() <= 0) {
+                view.add(f, FieldView.Colors.BROKEN_COLOR);
+                return;
+            }
+            view.add(f, FieldView.Colors.FRAGILE_COLOR);
+            return;
+        }
+        view.add(f, FieldView.Colors.NON_FRAGILE_COLOR);
     }
 
     public void push(FieldElement fe, Icons ic) {
@@ -77,6 +107,11 @@ public class Game {
 
     public void startGame() {
         currentOrangutan = 0;
+        Steppable st = floor.getOrangutan(currentOrangutan);
+        while (st != null) {
+            push(st.getField());
+            st = st.getFollower();
+        }
     }
 
     public boolean stepOrangutan(int fieldId) {
@@ -86,6 +121,9 @@ public class Game {
             if (currentOrangutan >= floor.getOrangutanNumber()) {
                 currentOrangutan = 0;
                 floor.newTurn();
+            }
+            for (int i = 0; i < floor.getFieldCount(); i++) {
+                push(floor.getField(i));
             }
             return true;
         }
@@ -123,6 +161,8 @@ public class Game {
             }
         }
         MapParser mp = new MapParser(this);
+
+        view.clear();
         mp.parse(s);
         System.out.println("MESSAGE: Map loading successful!");
     }

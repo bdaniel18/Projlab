@@ -91,6 +91,10 @@ public class Floor {
         return fields.get(i);
     }
 
+    public int getFieldCount() {
+        return fields.size();
+    }
+
     public Field getFieldforId(int id) {
         for (int i = 0; i < fields.size(); i++) {
             Field f = fields.get(i);

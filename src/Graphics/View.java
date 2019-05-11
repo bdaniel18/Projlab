@@ -75,9 +75,9 @@ public class View {
         }
     }
 
-    public void add(Field f) {
+    public void add(Field f, FieldView.Colors fc) {
         removeFieldView(f.getId());
-        fieldViews.add(new FieldView(f));
+        fieldViews.add(new FieldView(f, fc));
     }
 
     public void add(FieldElement fe, Icons ic) {
@@ -113,6 +113,11 @@ public class View {
         dw.setWidth((int) rect.width);
         dw.setIcon(icon);
         drawables.add(dw);
+    }
+
+    public void clear() {
+        drawables = new ArrayList<Drawable>();
+        fieldViews = new ArrayList<FieldView>();
     }
 
 
