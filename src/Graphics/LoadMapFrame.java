@@ -12,6 +12,7 @@ public class LoadMapFrame extends Frame {
 
     public LoadMapFrame(View v) {
         super(v);
+        setTitle("Load map");
     }
 
     public void run() {

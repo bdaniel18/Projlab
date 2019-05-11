@@ -10,6 +10,7 @@ public class MainMenuFrame extends Frame {
 
     MainMenuFrame(View v) {
         super(v);
+        setTitle("Main menu");
     }
 
     /**

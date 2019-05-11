@@ -104,6 +104,10 @@ public class Game {
         view.add(s, Icons.SOFAPANDA);
     }
 
+    public void pushremove(FieldElement fe) {
+        view.removeDrawable(fe.getId());
+    }
+
 
     public void startGame() {
         currentOrangutan = 0;

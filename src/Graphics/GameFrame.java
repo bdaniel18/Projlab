@@ -8,6 +8,8 @@ public class GameFrame extends Frame {
 
     public GameFrame(View v) {
         super(v);
+        setResizable(true);
+        setTitle("Game - " + view.getGame().getMapName());
     }
 
     public void run() {

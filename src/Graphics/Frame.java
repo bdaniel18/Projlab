@@ -40,11 +40,12 @@ public abstract class Frame extends JFrame {
 
         setPreferredSize(new Dimension(400, 500));
         panel = new JPanel(new BorderLayout());
-        panel.setPreferredSize(new Dimension(350, 400));
+        panel.setPreferredSize(new Dimension(400, 500));
 
         add(panel);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setIconImage(view.getGameIcon().getImage());
     }
 
     public abstract void run();

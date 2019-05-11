@@ -68,6 +68,7 @@ public class Floor {
      */
     public void remove (Orangutan o){
         orangutans.remove(o);
+        Game.getInstance().pushremove(o);
     }
 
     /**
@@ -76,6 +77,7 @@ public class Floor {
      */
     public void remove (Panda p){
         pandas.remove(p);
+        Game.getInstance().pushremove(p);
     }
 
     public void resetStepped() {

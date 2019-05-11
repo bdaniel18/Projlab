@@ -24,6 +24,9 @@ public class View {
         icons.put(Icons.GAMBLINGMACHINE, loadIcon("gambling_machine.png"));
         icons.put(Icons.ORANGUTAN, loadIcon("orangutan.png"));
         icons.put(Icons.SOFAPANDA, loadIcon("sofapanda.png"));
+
+        gameIcon = loadIcon("icon.png");
+
     }
 
     private Game game;
@@ -34,6 +37,7 @@ public class View {
     private ArrayList<FieldView> fieldViews = new ArrayList<>();
 
     private Map<Icons, ImageIcon> icons = new HashMap<>();
+    private ImageIcon gameIcon;
 
     public void setNextFrame(Options o) {
         nextFrame = o;
@@ -59,6 +63,10 @@ public class View {
 
     public Game getGame() {
         return game;
+    }
+
+    public ImageIcon getGameIcon() {
+        return gameIcon;
     }
 
     public void removeFieldView(int id) {
@@ -155,13 +163,14 @@ public class View {
                     nextFrame = null;
                     break;
                 case NEWGAME:
-                    if (game.getMapid() < 0) nextFrame = Options.MAINMENU;
-                    frame = new GameFrame(this);
+                    if (game.getMapid() < 0) {
+                        nextFrame = Options.MAINMENU;
+                        frame = null;
+                    } else frame = new GameFrame(this);
                     break;
                 default:
-                    break;
             }
-            frame.run();
+            if (frame != null) frame.run();
         }
     }
 }
