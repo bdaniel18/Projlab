@@ -115,8 +115,8 @@ public class MapParser {
 
     private void fetchMap(ArrayList<ArrayList<String>> s) {
         for (int i = 0; i < s.size(); i++) {
-            if (s.get(i).get(0).trim().equals("id")) {
-                game.setMapid(Integer.parseInt(s.get(i).get(1)));
+            if (s.get(i).get(0).equals("id")) {
+                game.setMapid(Integer.parseInt(s.get(i).get(1).trim()));
             } else if (s.get(i).get(0).equals("name")) {
                 game.setMapName(s.get(i).get(1));
             }

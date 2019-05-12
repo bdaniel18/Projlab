@@ -89,6 +89,10 @@ public class Game {
         return vec;
     }
 
+    public Orangutan getActiveOrangutan() {
+        if (gameRunning) return floor.getOrangutan(currentOrangutan);
+        else return null;
+    }
 
     /*
     A nézettel való kommunikációhoz szükséges függvények

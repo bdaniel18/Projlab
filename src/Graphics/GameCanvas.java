@@ -9,7 +9,7 @@ public class GameCanvas extends Canvas {
 
     public GameCanvas(View v) {
         view = v;
-        setSize(new Dimension(1000, 1000));
+        setPreferredSize(new Dimension(1000, 880));
     }
 
     public void paint(java.awt.Graphics g) {

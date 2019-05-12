@@ -1,6 +1,6 @@
 <mapfile>
 <map>
-    <id>1001 </id>
+    <id>1001</id>
    <name>First Map</name>
 </map>
 <field>
@@ -23,7 +23,6 @@
     <neighbour>4</neighbour>
     <neighbour>11</neighbour>
     <neighbour>13</neighbour>
-    <neighbour>12</neighbour>
                 <coords>204,32</coords>
                 <coords>326,138</coords>
                 <coords>316,186</coords>
@@ -34,7 +33,6 @@
 <id>3</id>
     <fragile>0</fragile>
     <neighbour>1</neighbour>
-    <neighbour>4</neighbour>
     <neighbour>5</neighbour>
                 <coords>62,92</coords>
                 <coords>145,251</coords>
@@ -45,10 +43,8 @@
     <fragile>0</fragile>
     <neighbour>1</neighbour>
     <neighbour>2</neighbour>
-    <neighbour>3</neighbour>
     <neighbour>5</neighbour>
     <neighbour>8</neighbour>
-    <neighbour>15</neighbour>
     <neighbour>14</neighbour>
     <neighbour>13</neighbour>
                 <coords>191,177</coords>
@@ -75,7 +71,6 @@
 <id>6</id>
     <fragile>0</fragile>
     <neighbour>5</neighbour>
-    <neighbour>8</neighbour>
     <neighbour>9</neighbour>
     <neighbour>10</neighbour>
     <neighbour>7</neighbour>
@@ -101,11 +96,8 @@
     <fragile>0</fragile>
     <neighbour>5</neighbour>
     <neighbour>4</neighbour>
-    <neighbour>14</neighbour>
     <neighbour>15</neighbour>
-    <neighbour>16</neighbour>
     <neighbour>9</neighbour>
-    <neighbour>6</neighbour>
                 <coords>174,303</coords>
                 <coords>290,285</coords>
                 <coords>217,355</coords>
@@ -115,12 +107,10 @@
 <id>9</id>
     <fragile>0</fragile>
     <neighbour>6</neighbour>
-    <neighbour>5</neighbour>
     <neighbour>8</neighbour>
     <neighbour>15</neighbour>
     <neighbour>16</neighbour>
     <neighbour>17</neighbour>
-    <neighbour>12</neighbour>
                 <coords>151,389</coords>
                 <coords>217,355</coords>
                 <coords>272,459</coords>
@@ -134,7 +124,6 @@
     <neighbour>7</neighbour>
     <neighbour>6</neighbour>
     <neighbour>9</neighbour>
-    <neighbour>17</neighbour>
     <neighbour>18</neighbour>
                 <coords>204,517</coords>
                 <coords>269,500</coords>
@@ -146,11 +135,8 @@
 
 <id>11</id>
     <fragile>0</fragile>
-    <neighbour>1</neighbour>
     <neighbour>2</neighbour>
-    <neighbour>13</neighbour>
     <neighbour>12</neighbour>
-    <neighbour>21</neighbour>
                 <coords>204,32</coords>
                 <coords>326,136</coords>
                 <coords>375,43</coords>
@@ -160,9 +146,7 @@
 <id>12</id>
     <fragile>0</fragile>
     <neighbour>11</neighbour>
-    <neighbour>2</neighbour>
     <neighbour>13</neighbour>
-    <neighbour>22</neighbour>
     <neighbour>21</neighbour>
                 <coords>375,43</coords>
                 <coords>326,136</coords>
@@ -172,9 +156,7 @@
 
 <id>13</id>
     <fragile>0</fragile>
-    <neighbour>11</neighbour>
     <neighbour>12</neighbour>
-    <neighbour>21</neighbour>
     <neighbour>22</neighbour>
     <neighbour>23</neighbour>
     <neighbour>14</neighbour>
@@ -193,9 +175,7 @@
     <neighbour>4</neighbour>
     <neighbour>13</neighbour>
     <neighbour>23</neighbour>
-    <neighbour>24</neighbour>
     <neighbour>15</neighbour>
-    <neighbour>8</neighbour>
                 <coords>343,203</coords>
                 <coords>402,214</coords>
                 <coords>356,292</coords>
@@ -205,14 +185,10 @@
 <id>15</id>
     <fragile>0</fragile>
     <neighbour>8</neighbour>
-    <neighbour>4</neighbour>
     <neighbour>14</neighbour>
-    <neighbour>23</neighbour>
     <neighbour>24</neighbour>
-    <neighbour>25</neighbour>
     <neighbour>19</neighbour>
     <neighbour>16</neighbour>
-    <neighbour>9</neighbour>
                 <coords>290,285</coords>
                 <coords>356,292</coords>
                 <coords>405,348</coords>
@@ -224,7 +200,6 @@
 <id>16</id>
     <fragile>1</fragile>
     <durability>20</durability>
-    <neighbour>8</neighbour>
     <neighbour>15</neighbour>
     <neighbour>19</neighbour>
     <neighbour>17</neighbour>
@@ -241,10 +216,7 @@
     <neighbour>19</neighbour>
     <neighbour>25</neighbour>
     <neighbour>26</neighbour>
-    <neighbour>27</neighbour>
-    <neighbour>20</neighbour>
     <neighbour>18</neighbour>
-    <neighbour>10</neighbour>
                 <coords>294,421</coords>
                 <coords>354,430</coords>
                 <coords>380,448</coords>
@@ -256,10 +228,7 @@
 <id>18</id>
     <fragile>0</fragile>
     <neighbour>10</neighbour>
-    <neighbour>9</neighbour>
     <neighbour>17</neighbour>
-    <neighbour>26</neighbour>
-    <neighbour>27</neighbour>
     <neighbour>20</neighbour>
                 <coords>268,500</coords>
                 <coords>371,497</coords>
@@ -270,7 +239,6 @@
     <fragile>0</fragile>
     <neighbour>16</neighbour>
     <neighbour>15</neighbour>
-    <neighbour>24</neighbour>
     <neighbour>25</neighbour>
     <neighbour>17</neighbour>
                 <coords>339,341</coords>
@@ -282,7 +250,6 @@
 <id>20</id>
     <fragile>0</fragile>
     <neighbour>18</neighbour>
-    <neighbour>17</neighbour>
     <neighbour>26</neighbour>
     <neighbour>27</neighbour>
                 <coords>369,497</coords>
@@ -297,7 +264,6 @@
     <neighbour>50</neighbour>
     <neighbour>49</neighbour>
     <neighbour>22</neighbour>
-    <neighbour>13</neighbour>
                 <coords>375,43</coords>
                 <coords>432,21</coords>
                 <coords>501,62</coords>
@@ -308,10 +274,8 @@
 <id>22</id>
     <fragile>0</fragile>
     <neighbour>13</neighbour>
-    <neighbour>12</neighbour>
     <neighbour>21</neighbour>
     <neighbour>49</neighbour>
-    <neighbour>48</neighbour>
     <neighbour>24</neighbour>
     <neighbour>23</neighbour>
                 <coords>428,136</coords>
@@ -328,7 +292,6 @@
     <neighbour>13</neighbour>
     <neighbour>22</neighbour>
     <neighbour>24</neighbour>
-    <neighbour>15</neighbour>
                 <coords>425,177</coords>
                 <coords>478,281</coords>
                 <coords>356,292</coords>
@@ -338,14 +301,11 @@
 <id>24</id>
     <fragile>0</fragile>
     <neighbour>15</neighbour>
-    <neighbour>14</neighbour>
     <neighbour>23</neighbour>
     <neighbour>22</neighbour>
     <neighbour>48</neighbour>
     <neighbour>47</neighbour>
     <neighbour>25</neighbour>
-    <neighbour>19</neighbour>
-    <neighbour>49</neighbour>
                 <coords>356,292</coords>
                 <coords>478,281</coords>
                 <coords>544,248</coords>
@@ -359,10 +319,8 @@
     <fragile>1</fragile>
     <durability>20</durability>
     <neighbour>19</neighbour>
-    <neighbour>15</neighbour>
     <neighbour>24</neighbour>
     <neighbour>47</neighbour>
-    <neighbour>34</neighbour>
     <neighbour>28</neighbour>
     <neighbour>26</neighbour>
     <neighbour>17</neighbour>
@@ -380,10 +338,7 @@
     <neighbour>17</neighbour>
     <neighbour>25</neighbour>
     <neighbour>28</neighbour>
-    <neighbour>29</neighbour>
     <neighbour>27</neighbour>
-    <neighbour>20</neighbour>
-    <neighbour>18</neighbour>
                 <coords>380,447</coords>
                 <coords>505,452</coords>
                 <coords>610,564</coords>
@@ -394,10 +349,7 @@
 <id>27</id>
     <fragile>0</fragile>
     <neighbour>20</neighbour>
-    <neighbour>18</neighbour>
-    <neighbour>17</neighbour>
     <neighbour>26</neighbour>
-    <neighbour>28</neighbour>
     <neighbour>29</neighbour>
                 <coords>371,497</coords>
                 <coords>610,564</coords>
@@ -410,10 +362,8 @@
     <fragile>0</fragile>
     <neighbour>26</neighbour>
     <neighbour>25</neighbour>
-    <neighbour>47</neighbour>
     <neighbour>34</neighbour>
     <neighbour>29</neighbour>
-    <neighbour>27</neighbour>
                 <coords>505,452</coords>
                 <coords>563,378</coords>
                 <coords>615,504</coords>
@@ -427,9 +377,7 @@
     <neighbour>26</neighbour>
     <neighbour>28</neighbour>
     <neighbour>34</neighbour>
-    <neighbour>35</neighbour>
     <neighbour>30</neighbour>
-    <neighbour>31</neighbour>
                 <coords>610,564</coords>
                 <coords>615,504</coords>
                 <coords>680,487</coords>
@@ -441,9 +389,7 @@
 <id>30</id>
     <fragile>0</fragile>
     <neighbour>29</neighbour>
-    <neighbour>34</neighbour>
     <neighbour>35</neighbour>
-    <neighbour>32</neighbour>
     <neighbour>31</neighbour>
                 <coords>680,487</coords>
                 <coords>782,484</coords>
@@ -456,7 +402,6 @@
     <neighbour>30</neighbour>
     <neighbour>35</neighbour>
     <neighbour>32</neighbour>
-    <neighbour>33</neighbour>
                 <coords>782,484</coords>
                 <coords>906,582</coords>
                 <coords>735,579</coords>
@@ -466,7 +411,6 @@
 <id>32</id>
     <fragile>0</fragile>
     <neighbour>31</neighbour>
-    <neighbour>30</neighbour>
     <neighbour>35</neighbour>
     <neighbour>38</neighbour>
     <neighbour>33</neighbour>
@@ -481,10 +425,7 @@
     <fragile>0</fragile>
     <neighbour>32</neighbour>
     <neighbour>38</neighbour>
-    <neighbour>39</neighbour>
     <neighbour>40</neighbour>
-    <neighbour>41</neighbour>
-    <neighbour>31</neighbour>
                 <coords>906,582</coords>
                 <coords>916,441</coords>
                 <coords>962,363</coords>
@@ -496,12 +437,10 @@
 <id>34</id>
     <fragile>0</fragile>
     <neighbour>28</neighbour>
-    <neighbour>25</neighbour>
-    <neighbour>47</neighbour>
     <neighbour>36</neighbour>
     <neighbour>35</neighbour>
-    <neighbour>30</neighbour>
     <neighbour>29</neighbour>
+    <neighbour>47</neighbour>
                 <coords>563,378</coords>
                 <coords>629,341</coords>
                 <coords>683,447</coords>
@@ -517,9 +456,7 @@
     <neighbour>37</neighbour>
     <neighbour>38</neighbour>
     <neighbour>32</neighbour>
-    <neighbour>31</neighbour>
     <neighbour>30</neighbour>
-    <neighbour>29</neighbour>
                 <coords>683,446</coords>
                 <coords>705,409</coords>
                 <coords>764,418</coords>
@@ -533,7 +470,6 @@
     <fragile>0</fragile>
     <neighbour>34</neighbour>
     <neighbour>47</neighbour>
-    <neighbour>46</neighbour>
     <neighbour>37</neighbour>
     <neighbour>35</neighbour>
                 <coords>629,341</coords>
@@ -545,7 +481,6 @@
 <id>37</id>
     <fragile>0</fragile>
     <neighbour>36</neighbour>
-    <neighbour>47</neighbour>
     <neighbour>46</neighbour>
     <neighbour>38</neighbour>
     <neighbour>35</neighbour>
@@ -561,7 +496,6 @@
     <neighbour>37</neighbour>
     <neighbour>46</neighbour>
     <neighbour>39</neighbour>
-    <neighbour>40</neighbour>
     <neighbour>33</neighbour>
     <neighbour>32</neighbour>
     <neighbour>35</neighbour>
@@ -577,10 +511,7 @@
 <id>39</id>
     <fragile>0</fragile>
     <neighbour>46</neighbour>
-    <neighbour>44</neighbour>
     <neighbour>43</neighbour>
-    <neighbour>42</neighbour>
-    <neighbour>41</neighbour>
     <neighbour>40</neighbour>
     <neighbour>33</neighbour>
     <neighbour>38</neighbour>
@@ -594,11 +525,8 @@
 <id>40</id>
     <fragile>0</fragile>
     <neighbour>39</neighbour>
-    <neighbour>43</neighbour>
-    <neighbour>42</neighbour>
     <neighbour>41</neighbour>
     <neighbour>33</neighbour>
-    <neighbour>38</neighbour>
                 <coords>962,363</coords>
                 <coords>952,248</coords>
                 <coords>999,329</coords>
@@ -607,10 +535,8 @@
   <field>
 <id>41</id>
     <fragile>0</fragile>
-    <neighbour>39</neighbour>
-    <neighbour>43</neighbour>
+    <neighbour>40</neighbour>
     <neighbour>42</neighbour>
-    <neighbour>33</neighbour>
                 <coords>999,329</coords>
                 <coords>952,248</coords>
                 <coords>999,84</coords>
@@ -638,13 +564,9 @@
     <fragile>0</fragile>
     <neighbour>44</neighbour>
     <neighbour>51</neighbour>
-    <neighbour>53</neighbour>
     <neighbour>54</neighbour>
     <neighbour>42</neighbour>
-    <neighbour>41</neighbour>
-    <neighbour>40</neighbour>
     <neighbour>39</neighbour>
-    <neighbour>46</neighbour>
                 <coords>836,177</coords>
                 <coords>839,136</coords>
                 <coords>906,121</coords>
@@ -659,7 +581,6 @@
     <neighbour>45</neighbour>
     <neighbour>51</neighbour>
     <neighbour>43</neighbour>
-    <neighbour>39</neighbour>
     <neighbour>46</neighbour>
                 <coords>836,177</coords>
                 <coords>890,281</coords>
@@ -673,7 +594,6 @@
     <neighbour>51</neighbour>
     <neighbour>44</neighbour>
     <neighbour>46</neighbour>
-    <neighbour>47</neighbour>
                 <coords>702,285</coords>
                 <coords>753,203</coords>
                 <coords>813,214</coords>
@@ -684,14 +604,11 @@
 <id>46</id>
     <fragile>0</fragile>
     <neighbour>47</neighbour>
-    <neighbour>48</neighbour>
     <neighbour>45</neighbour>
     <neighbour>44</neighbour>
-    <neighbour>43</neighbour>
     <neighbour>39</neighbour>
     <neighbour>38</neighbour>
     <neighbour>37</neighbour>
-    <neighbour>36</neighbour>
                 <coords>702,285</coords>
                 <coords>765,293</coords>
                 <coords>890,281</coords>
@@ -706,12 +623,9 @@
     <neighbour>25</neighbour>
     <neighbour>24</neighbour>
     <neighbour>48</neighbour>
-    <neighbour>45</neighbour>
-    <neighbour>44</neighbour>
     <neighbour>39</neighbour>
-    <neighbour>38</neighbour>
-    <neighbour>37</neighbour>
-    <neighbour>36</neighbour>
+    <neighbour>46</neighbour>
+    <neighbour>34</neighbour>
                 <coords>521,326</coords>
                 <coords>586,303</coords>
                 <coords>702,285</coords>
@@ -724,12 +638,10 @@
 <id>48</id>
     <fragile>0</fragile>
     <neighbour>24</neighbour>
-    <neighbour>22</neighbour>
     <neighbour>49</neighbour>
     <neighbour>50</neighbour>
     <neighbour>51</neighbour>
     <neighbour>45</neighbour>
-    <neighbour>46</neighbour>
     <neighbour>47</neighbour>
                 <coords>544,248</coords>
                 <coords>603,177</coords>
@@ -746,8 +658,6 @@
     <neighbour>21</neighbour>
     <neighbour>50</neighbour>
     <neighbour>48</neighbour>
-    <neighbour>24</neighbour>
-    <neighbour>55</neighbour>
                 <coords>494,121</coords>
                 <coords>501,62</coords>
                 <coords>603,177</coords>
@@ -758,10 +668,7 @@
 <id>50</id>
     <fragile>0</fragile>
     <neighbour>49</neighbour>
-    <neighbour>21</neighbour>
     <neighbour>55</neighbour>
-    <neighbour>52</neighbour>
-    <neighbour>53</neighbour>
     <neighbour>51</neighbour>
     <neighbour>48</neighbour>
                 <coords>501,62</coords>
@@ -774,10 +681,7 @@
 <id>51</id>
     <fragile>0</fragile>
     <neighbour>50</neighbour>
-    <neighbour>55</neighbour>
-    <neighbour>52</neighbour>
     <neighbour>53</neighbour>
-    <neighbour>54</neighbour>
     <neighbour>43</neighbour>
     <neighbour>44</neighbour>
     <neighbour>45</neighbour>
@@ -794,10 +698,7 @@
 <id>52</id>
     <fragile>0</fragile>
     <neighbour>55</neighbour>
-    <neighbour>50</neighbour>
-    <neighbour>51</neighbour>
     <neighbour>53</neighbour>
-    <neighbour>54</neighbour>
                 <coords>616,32</coords>
                 <coords>739,136</coords>
                 <coords>787,43</coords>
@@ -807,10 +708,7 @@
 <id>53</id>
     <fragile>0</fragile>
     <neighbour>52</neighbour>
-    <neighbour>55</neighbour>
-    <neighbour>50</neighbour>
     <neighbour>51</neighbour>
-    <neighbour>43</neighbour>
     <neighbour>54</neighbour>
                 <coords>788,43</coords>
                 <coords>840,136</coords>
@@ -821,8 +719,6 @@
 <id>54</id>
     <fragile>0</fragile>
     <neighbour>53</neighbour>
-    <neighbour>52</neighbour>
-    <neighbour>51</neighbour>
     <neighbour>43</neighbour>
     <neighbour>42</neighbour>
                 <coords>786,43</coords>
@@ -836,10 +732,7 @@
 <id>55</id>
     <fragile>0</fragile>
     <neighbour>21</neighbour>
-    <neighbour>49</neighbour>
     <neighbour>50</neighbour>
-    <neighbour>51</neighbour>
-    <neighbour>53</neighbour>
     <neighbour>52</neighbour>
                 <coords>432,21</coords>
                 <coords>501,62</coords>
