@@ -62,10 +62,15 @@ public class Game {
     public Vector<String> getOrangutanResults() {
         Vector<String> vec = new Vector<String>();
         Vector<Orangutan> orangs = floor.getOriginalOrangutans();
+        saveResults();
 
+        return vec;
+    }
+
+    public void saveResults() {
+        Vector<Orangutan> orangs = floor.getOriginalOrangutans();
         for (int i = 0; i < orangs.size(); i++) {
             Orangutan o = orangs.get(i);
-            vec.add("Orangutan " + o.getId() + ":  " + o.getScore() + " points");
 
             for(int j = 0; j < 5; j++) {
                 if(o.getScore() > leaderBoard[j][1]) {
@@ -85,8 +90,6 @@ public class Game {
         } catch(Exception e) {
 
         }
-
-        return vec;
     }
 
     public Orangutan getActiveOrangutan() {
@@ -191,6 +194,7 @@ public class Game {
             currentOrangutan += 1;
             if (currentOrangutan >= floor.getOrangutanNumber()) {
                 currentOrangutan = 0;
+                saveResults();
                 floor.newTurn();
             }
             for (int i = 0; i < floor.getFieldCount(); i++) {
