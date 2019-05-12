@@ -5,6 +5,7 @@ import Graphics.Icons;
 import Graphics.View;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
@@ -24,6 +25,7 @@ public class Game {
     private int currentOrangutan = -1;
     private boolean gameWon = false;
     private boolean gameRunning = false;
+    private int[][] leaderBoard;
 
     private Game(){
         floor = null;
@@ -60,10 +62,30 @@ public class Game {
     public Vector<String> getOrangutanResults() {
         Vector<String> vec = new Vector<String>();
         Vector<Orangutan> orangs = floor.getOriginalOrangutans();
+
         for (int i = 0; i < orangs.size(); i++) {
             Orangutan o = orangs.get(i);
             vec.add("Orangutan " + o.getId() + ":  " + o.getScore() + " points");
+
+            for(int j = 0; j < 5; j++) {
+                if(o.getScore() > leaderBoard[j][1]) {
+                    leaderBoard[j][0] = o.getId();
+                    leaderBoard[j][1] = o.getScore();
+                    break;
+                }
+            }
         }
+
+        try {
+            PrintWriter pw = new PrintWriter("leaderboard.txt");
+            for(int i = 0; i < 5; i++) {
+                pw.println(leaderBoard[i][0] + " " + leaderBoard[i][1]);
+            }
+            pw.close();
+        } catch(Exception e) {
+
+        }
+
         return vec;
     }
 
@@ -137,6 +159,21 @@ public class Game {
         while (st != null) {
             push(st.getField());
             st = st.getFollower();
+        }
+
+        //A leaderboard állását kiolvassa fájlból, és beírja a saját tömbjébe
+        leaderBoard = new int[5][2];
+        try {
+            File leaderBoardFile = new File("leaderboard.txt");
+            Scanner sc = new Scanner(leaderBoardFile).useDelimiter("\\s*");
+
+            for(int i = 0; i < 5; i++) {
+                leaderBoard[i][0] = sc.nextInt();
+                leaderBoard[i][1] = sc.nextInt();
+            }
+            sc.close();
+        } catch(Exception e) {
+
         }
     }
 
