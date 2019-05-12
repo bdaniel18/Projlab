@@ -115,7 +115,7 @@ public class MapParser {
 
     private void fetchMap(ArrayList<ArrayList<String>> s) {
         for (int i = 0; i < s.size(); i++) {
-            if (s.get(i).get(0).equals("id")) {
+            if (s.get(i).get(0).trim().equals("id")) {
                 game.setMapid(Integer.parseInt(s.get(i).get(1)));
             } else if (s.get(i).get(0).equals("name")) {
                 game.setMapName(s.get(i).get(1));
@@ -420,7 +420,7 @@ public class MapParser {
     private ArrayList<String> splitS(String s) throws Exception {
         ArrayList<String> ss = new ArrayList<String>();
         s = s.trim();
-        String pattern = "<(\\w*)>\\s*(?:([\\w,]*)\\s*</(\\w*)>)?";
+        String pattern = "<(\\w*)>\\s*(?:([\\w,\\s]*)</(\\w*)>)?";
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(s);
         if (m.find()) {
