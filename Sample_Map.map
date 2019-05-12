@@ -1,0 +1,765 @@
+<mapfile>
+<map>
+    <id>1400</id>
+    <name>Sample Map</name>
+</map>
+  
+<field>
+<id>9</id>
+<fragile>0</fragile>
+<coords>129,57</coords>
+<coords>80,92</coords>
+<coords>99,149</coords>
+<coords>159,149</coords>
+<coords>177,92</coords>
+<coords>129,57</coords>
+	<neighbour>1</neighbour>
+	<neighbour>10</neighbour>
+</field>
+
+<field>
+<id>10</id>
+<fragile>0</fragile>
+<coords>178,92</coords>
+<coords>158,149</coords>
+<coords>206,185</coords>
+<coords>257,152</coords>
+<coords>238,93</coords>
+<coords>178,92</coords>
+	<neighbour>1</neighbour>
+	<neighbour>9</neighbour>
+	<neighbour>11</neighbour>
+</field>
+
+<field>
+<id>11</id>
+<fragile>0</fragile>
+<coords>207,185</coords>
+<coords>224,242</coords>
+<coords>286,245</coords>
+<coords>304,188</coords>
+<coords>257,152</coords>
+<coords>207,185</coords>
+	<neighbour>10</neighbour>
+	<neighbour>1</neighbour>
+	<neighbour>12</neighbour>
+	<neighbour>2</neighbour>
+	<neighbour>16</neighbour>
+</field>
+
+<field>
+<id>12</id>
+<fragile>0</fragile>
+<coords>225,243</coords>
+<coords>206,300</coords>
+<coords>254,336</coords>
+<coords>304,301</coords>
+<coords>286,245</coords>
+<coords>225,243</coords>
+	<neighbour>11</neighbour>
+	<neighbour>1</neighbour>
+	<neighbour>13</neighbour>
+	<neighbour>27</neighbour>
+	<neighbour>2</neighbour>
+</field>
+
+<field>
+<id>13</id>
+<fragile>0</fragile>
+<coords>158,334</coords>
+<coords>176,392</coords>
+<coords>234,392</coords>
+<coords>254,337</coords>
+<coords>207,300</coords>
+<coords>158,334</coords>
+	<neighbour>1</neighbour>
+	<neighbour>14</neighbour>
+	<neighbour>7</neighbour>
+	<neighbour>12</neighbour>
+</field>
+
+<field>
+<id>14</id>
+<fragile>0</fragile>
+<coords>127,427</coords>
+<coords>176,392</coords>
+<coords>158,334</coords>
+<coords>97,335</coords>
+<coords>78,392</coords>
+<coords>127,427</coords>
+	<neighbour>15</neighbour>
+	<neighbour>1</neighbour>
+	<neighbour>13</neighbour>
+	<neighbour>31</neighbour>
+</field>
+
+<field>
+<id>15</id>
+<fragile>0</fragile>
+<coords>49,299</coords>
+<coords>1,334</coords>
+<coords>19,391</coords>
+<coords>79,391</coords>
+<coords>98,334</coords>
+<coords>49,299</coords>
+	<neighbour>1</neighbour>
+	<neighbour>14</neighbour>
+</field>
+
+<field>
+<id>1</id>
+<fragile>0</fragile>
+<coords>158,150</coords>
+<coords>98,150</coords>
+<coords>50,185</coords>
+<coords>31,242</coords>
+<coords>50,299</coords>
+<coords>98,334</coords>
+<coords>158,334</coords>
+<coords>207,299</coords>
+<coords>225,242</coords>
+<coords>207,185</coords>
+<coords>158,150</coords>
+	<neighbour>9</neighbour>
+	<neighbour>10</neighbour>
+	<neighbour>11</neighbour>
+	<neighbour>12</neighbour>
+	<neighbour>13</neighbour>
+	<neighbour>14</neighbour>
+	<neighbour>15</neighbour>
+</field>
+
+<field>
+<id>7</id>
+<fragile>1</fragile>
+<durability>20</durability>
+<coords>305,485</coords>
+<coords>256,449</coords>
+<coords>206,485</coords>
+<coords>225,428</coords>
+<coords>176,392</coords>
+<coords>234,392</coords>
+<coords>254,337</coords>
+<coords>274,394</coords>
+<coords>334,392</coords>
+<coords>285,427</coords>
+<coords>305,485</coords>
+	<neighbour>13</neighbour>
+	<neighbour>31</neighbour>
+	<neighbour>30</neighbour>
+	<neighbour>28</neighbour>
+	<neighbour>27</neighbour>
+</field>
+
+<field>
+<id>31</id>
+<fragile>0</fragile>
+<coords>176,393</coords>
+<coords>127,428</coords>
+<coords>146,485</coords>
+<coords>206,485</coords>
+<coords>224,428</coords>
+<coords>176,393</coords>
+	<neighbour>14</neighbour>
+	<neighbour>7</neighbour>
+</field>
+
+<field>
+<id>28</id>
+<fragile>0</fragile>
+<coords>334,392</coords>
+<coords>285,427</coords>
+<coords>304,484</coords>
+<coords>365,485</coords>
+<coords>384,428</coords>
+<coords>334,392</coords>
+	<neighbour>7</neighbour>
+	<neighbour>29</neighbour>
+	<neighbour>3</neighbour>
+	<neighbour>26</neighbour>
+</field>
+
+<field>
+<id>27</id>
+<fragile>0</fragile>
+<coords>304,301</coords>
+<coords>254,337</coords>
+<coords>272,394</coords>
+<coords>334,392</coords>
+<coords>353,338</coords>
+<coords>304,301</coords>
+	<neighbour>12</neighbour>
+	<neighbour>7</neighbour>
+	<neighbour>26</neighbour>
+	<neighbour>2</neighbour>
+</field>
+
+<field>
+<id>30</id>
+<fragile>0</fragile>
+<coords>256,449</coords>
+<coords>208,485</coords>
+<coords>226,542</coords>
+<coords>286,542</coords>
+<coords>305,485</coords>
+<coords>256,449</coords>
+	<neighbour>7</neighbour>
+	<neighbour>29</neighbour>
+</field>
+
+<field>
+<id>2</id>
+<fragile>0</fragile>
+<coords>413,153</coords>
+<coords>353,153</coords>
+<coords>305,188</coords>
+<coords>286,245</coords>
+<coords>305,303</coords>
+<coords>353,338</coords>
+<coords>413,338</coords>
+<coords>462,303</coords>
+<coords>480,245</coords>
+<coords>462,188</coords>
+<coords>413,153</coords>
+	<neighbour>16</neighbour>
+	<neighbour>11</neighbour>
+	<neighbour>12</neighbour>
+	<neighbour>27</neighbour>
+	<neighbour>26</neighbour>
+	<neighbour>25</neighbour>
+	<neighbour>8</neighbour>
+	<neighbour>18</neighbour>
+	<neighbour>17</neighbour>
+</field>
+
+<field>
+<id>17</id>
+<fragile>0</fragile>
+<coords>383,60</coords>
+<coords>335,95</coords>
+<coords>354,154</coords>
+<coords>414,153</coords>
+<coords>432,95</coords>
+<coords>383,60</coords>
+	<neighbour>16</neighbour>
+	<neighbour>2</neighbour>
+	<neighbour>18</neighbour>
+</field>
+
+<field>
+<id>16</id>
+<fragile>0</fragile>
+<coords>276,95</coords>
+<coords>257,152</coords>
+<coords>304,188</coords>
+<coords>354,154</coords>
+<coords>334,95</coords>
+<coords>276,95</coords>
+	<neighbour>11</neighbour>
+	<neighbour>2</neighbour>
+	<neighbour>17</neighbour>
+</field>
+
+<field>
+<id>18</id>
+<fragile>0</fragile>
+<coords>492,94</coords>
+<coords>432,95</coords>
+<coords>414,153</coords>
+<coords>461,187</coords>
+<coords>511,151</coords>
+<coords>492,94</coords>
+	<neighbour>17</neighbour>
+	<neighbour>2</neighbour>
+	<neighbour>8</neighbour>
+	<neighbour>19</neighbour>
+</field>
+
+<field>
+<id>8</id>
+<fragile>0</fragile>
+<coords>572,151</coords>
+<coords>510,152</coords>
+<coords>461,187</coords>
+<coords>480,245</coords>
+<coords>462,303</coords>
+<coords>510,336</coords>
+<coords>570,336</coords>
+<coords>618,301</coords>
+<coords>637,244</coords>
+<coords>618,187</coords>
+<coords>572,151</coords>
+	<neighbour>18</neighbour>
+	<neighbour>2</neighbour>
+	<neighbour>25</neighbour>
+	<neighbour>24</neighbour>
+	<neighbour>23</neighbour>
+	<neighbour>22</neighbour>
+	<neighbour>21</neighbour>
+	<neighbour>20</neighbour>
+	<neighbour>19</neighbour>
+</field>
+
+<field>
+<id>19</id>
+<fragile>0</fragile>
+<coords>542,59</coords>
+<coords>492,94</coords>
+<coords>512,151</coords>
+<coords>572,151</coords>
+<coords>590,94</coords>
+<coords>542,59</coords>
+	<neighbour>18</neighbour>
+	<neighbour>8</neighbour>
+	<neighbour>20</neighbour>
+</field>
+
+<field>
+<id>20</id>
+<fragile>0</fragile>
+<coords>650,94</coords>
+<coords>590,95</coords>
+<coords>572,151</coords>
+<coords>618,187</coords>
+<coords>670,152</coords>
+<coords>650,94</coords>
+	<neighbour>19</neighbour>
+	<neighbour>8</neighbour>
+	<neighbour>21</neighbour>
+	<neighbour>5</neighbour>
+</field>
+
+<field>
+<id>21</id>
+<fragile>0</fragile>
+<coords>618,187</coords>
+<coords>637,243</coords>
+<coords>699,247</coords>
+<coords>717,189</coords>
+<coords>670,152</coords>
+<coords>618,187</coords>
+	<neighbour>20</neighbour>
+	<neighbour>8</neighbour>
+	<neighbour>22</neighbour>
+	<neighbour>4</neighbour>
+	<neighbour>41</neighbour>
+</field>
+
+<field>
+<id>22</id>
+<fragile>0</fragile>
+<coords>637,244</coords>
+<coords>618,301</coords>
+<coords>669,339</coords>
+<coords>717,302</coords>
+<coords>699,247</coords>
+<coords>637,244</coords>
+	<neighbour>21</neighbour>
+	<neighbour>8</neighbour>
+	<neighbour>23</neighbour>
+	<neighbour>37</neighbour>
+	<neighbour>4</neighbour>
+</field>
+
+<field>
+<id>23</id>
+<fragile>0</fragile>
+<coords>569,335</coords>
+<coords>588,393</coords>
+<coords>650,394</coords>
+<coords>669,339</coords>
+<coords>619,301</coords>
+<coords>569,335</coords>
+	<neighbour>22</neighbour>
+	<neighbour>8</neighbour>
+	<neighbour>24</neighbour>
+	<neighbour>6</neighbour>
+</field>
+
+<field>
+<id>24</id>
+<fragile>0</fragile>
+<coords>541,428</coords>
+<coords>588,393</coords>
+<coords>570,336</coords>
+<coords>510,336</coords>
+<coords>492,393</coords>
+<coords>541,428</coords>
+	<neighbour>23</neighbour>
+	<neighbour>8</neighbour>
+	<neighbour>25</neighbour>
+	<neighbour>3</neighbour>
+	<neighbour>33</neighbour>
+</field>
+
+<field>
+<id>25</id>
+<fragile>0</fragile>
+<coords>462,303</coords>
+<coords>413,338</coords>
+<coords>432,392</coords>
+<coords>492,392</coords>
+<coords>510,335</coords>
+<coords>462,303</coords>
+	<neighbour>2</neighbour>
+	<neighbour>26</neighbour>
+	<neighbour>3</neighbour>
+	<neighbour>24</neighbour>
+	<neighbour>8</neighbour>
+</field>
+
+<field>
+<id>26</id>
+<fragile>0</fragile>
+<coords>384,428</coords>
+<coords>432,393</coords>
+<coords>413,338</coords>
+<coords>353,338</coords>
+<coords>334,392</coords>
+<coords>384,428</coords>
+	<neighbour>2</neighbour>
+	<neighbour>27</neighbour>
+	<neighbour>28</neighbour>
+	<neighbour>3</neighbour>
+	<neighbour>25</neighbour>
+</field>
+
+<field>
+<id>29</id>
+<fragile>0</fragile>
+<coords>335,577</coords>
+<coords>383,542</coords>
+<coords>365,485</coords>
+<coords>305,485</coords>
+<coords>286,542</coords>
+<coords>335,577</coords>
+	<neighbour>28</neighbour>
+	<neighbour>30</neighbour>
+	<neighbour>3</neighbour>
+</field>
+
+<field>
+<id>3</id>
+<fragile>0</fragile>
+<coords>492,393</coords>
+<coords>432,393</coords>
+<coords>384,428</coords>
+<coords>365,485</coords>
+<coords>384,542</coords>
+<coords>432,578</coords>
+<coords>492,578</coords>
+<coords>541,542</coords>
+<coords>559,485</coords>
+<coords>541,428</coords>
+<coords>492,393</coords>
+	<neighbour>29</neighbour>
+	<neighbour>28</neighbour>
+	<neighbour>26</neighbour>
+	<neighbour>25</neighbour>
+	<neighbour>24</neighbour>
+	<neighbour>33</neighbour>
+	<neighbour>32</neighbour>
+</field>
+
+<field>
+<id>33</id>
+<fragile>0</fragile>
+<coords>541,428</coords>
+<coords>560,484</coords>
+<coords>622,487</coords>
+<coords>640,430</coords>
+<coords>588,393</coords>
+<coords>541,428</coords>
+	<neighbour>24</neighbour>
+	<neighbour>3</neighbour>
+	<neighbour>32</neighbour>
+	<neighbour>6</neighbour>
+</field>
+
+<field>
+<id>32</id>
+<fragile>0</fragile>
+<coords>559,485</coords>
+<coords>541,542</coords>
+<coords>589,578</coords>
+<coords>640,543</coords>
+<coords>622,487</coords>
+<coords>559,485</coords>
+	<neighbour>33</neighbour>
+	<neighbour>3</neighbour>
+	<neighbour>34</neighbour>
+</field>
+
+<field>
+<id>6</id>
+<fragile>1</fragile>
+<durability>20</durability>
+<coords>720,486</coords>
+<coords>671,451</coords>
+<coords>622,487</coords>
+<coords>640,430</coords>
+<coords>588,393</coords>
+<coords>650,394</coords>
+<coords>669,339</coords>
+<coords>689,396</coords>
+<coords>748,392</coords>
+<coords>704,428</coords>
+<coords>720,486</coords>
+	<neighbour>23</neighbour>
+	<neighbour>33</neighbour>
+	<neighbour>34</neighbour>
+	<neighbour>36</neighbour>
+	<neighbour>37</neighbour>
+</field>
+
+<field>
+<id>36</id>
+<fragile>0</fragile>
+<coords>748,392</coords>
+<coords>704,428</coords>
+<coords>720,486</coords>
+<coords>779,486</coords>
+<coords>795,428</coords>
+<coords>748,392</coords>
+	<neighbour>6</neighbour>
+	<neighbour>35</neighbour>
+	<neighbour>38</neighbour>
+</field>
+
+<field>
+<id>34</id>
+<fragile>0</fragile>
+<coords>671,451</coords>
+<coords>622,487</coords>
+<coords>640,543</coords>
+<coords>701,543</coords>
+<coords>720,486</coords>
+<coords>671,451</coords>
+	<neighbour>6</neighbour>
+	<neighbour>32</neighbour>
+	<neighbour>35</neighbour>
+</field>
+
+<field>
+<id>35</id>
+<fragile>0</fragile>
+<coords>750,579</coords>
+<coords>798,544</coords>
+<coords>779,486</coords>
+<coords>720,487</coords>
+<coords>701,544</coords>
+<coords>750,579</coords>
+	<neighbour>34</neighbour>
+	<neighbour>36</neighbour>
+</field>
+
+<field>
+<id>4</id>
+<fragile>0</fragile>
+<coords>825,153</coords>
+<coords>765,153</coords>
+<coords>717,188</coords>
+<coords>698,245</coords>
+<coords>717,302</coords>
+<coords>765,339</coords>
+<coords>825,337</coords>
+<coords>874,302</coords>
+<coords>892,245</coords>
+<coords>874,188</coords>
+<coords>825,153</coords>
+	<neighbour>40</neighbour>
+	<neighbour>41</neighbour>
+	<neighbour>21</neighbour>
+	<neighbour>22</neighbour>
+	<neighbour>37</neighbour>
+	<neighbour>38</neighbour>
+	<neighbour>39</neighbour>
+</field>
+
+<field>
+<id>37</id>
+<fragile>0</fragile>
+<coords>717,301</coords>
+<coords>669,339</coords>
+<coords>687,395</coords>
+<coords>748,392</coords>
+<coords>765,339</coords>
+<coords>717,301</coords>
+	<neighbour>22</neighbour>
+	<neighbour>6</neighbour>
+	<neighbour>38</neighbour>
+	<neighbour>4</neighbour>
+</field>
+
+<field>
+<id>39</id>
+<fragile>0</fragile>
+<coords>875,300</coords>
+<coords>825,337</coords>
+<coords>845,393</coords>
+<coords>905,393</coords>
+<coords>923,336</coords>
+<coords>875,300</coords>
+	<neighbour>4</neighbour>
+	<neighbour>38</neighbour>
+</field>
+
+<field>
+<id>38</id>
+<fragile>0</fragile>
+<coords>795,428</coords>
+<coords>845,393</coords>
+<coords>825,337</coords>
+<coords>765,339</coords>
+<coords>748,392</coords>
+<coords>795,428</coords>
+	<neighbour>4</neighbour>
+	<neighbour>37</neighbour>
+	<neighbour>36</neighbour>
+	<neighbour>39</neighbour>
+</field>
+
+<field>
+<id>41</id>
+<fragile>0</fragile>
+<coords>746,94</coords>
+<coords>686,95</coords>
+<coords>669,152</coords>
+<coords>716,188</coords>
+<coords>765,153</coords>
+<coords>746,94</coords>
+	<neighbour>5</neighbour>
+	<neighbour>21</neighbour>
+	<neighbour>4</neighbour>
+	<neighbour>40</neighbour>
+</field>
+
+<field>
+<id>40</id>
+<fragile>0</fragile>
+<coords>796,59</coords>
+<coords>746,94</coords>
+<coords>765,153</coords>
+<coords>825,153</coords>
+<coords>844,94</coords>
+<coords>796,59</coords>
+	<neighbour>42</neighbour>
+	<neighbour>41</neighbour>
+	<neighbour>4</neighbour>
+</field>
+
+<field>
+<id>5</id>
+<fragile>0</fragile>
+<coords>670,152</coords>
+<coords>652,97</coords>
+<coords>590,94</coords>
+<coords>640,60</coords>
+<coords>619,6</coords>
+<coords>668,40</coords>
+<coords>716,2</coords>
+<coords>697,61</coords>
+<coords>746,94</coords>
+<coords>686,95</coords>
+<coords>670,152</coords>
+	<neighbour>42</neighbour>
+	<neighbour>41</neighbour>
+	<neighbour>20</neighbour>
+</field>
+
+<field>
+<id>42</id>
+<fragile>0</fragile>
+<coords>777,1</coords>
+<coords>716,2</coords>
+<coords>697,61</coords>
+<coords>746,94</coords>
+<coords>796,59</coords>
+<coords>777,1</coords>
+	<neighbour>5</neighbour>
+	<neighbour>40</neighbour>
+</field>
+
+<panda>
+	<id>50</id>
+	<host>16</host>
+	<type>sleepy</type>
+</panda>
+
+<panda>
+	<id>51</id>
+	<host>18</host>
+	<type>coward</type>
+</panda>
+
+<panda>
+	<id>52</id>
+	<host>41</host>
+	<type>sleepy</type>
+</panda>
+
+<panda>
+	<id>53</id>
+	<host>40</host>
+	<type>jumpy</type>
+</panda>
+
+<panda>
+	<id>54</id>
+	<host>26</host>
+	<type>coward</type>
+</panda>
+
+<panda>
+	<id>55</id>
+	<host>34</host>
+	<type>sleepy</type>
+</panda>
+
+<exit>
+	<id>56</id>
+	<host>4</host>
+	<target>1</target>
+</exit>
+
+<wardrobe>
+	<id>57</id>
+	<host>39</host>
+	<target>58</target>
+</wardrobe>
+
+<wardrobe>
+	<id>58</id>
+	<host>30</host>
+	<target>57</target>
+</wardrobe>
+
+<activateable>
+	<id>59</id>
+	<type>gamblingmachine</type>
+	<host>8</host>
+</activateable>
+
+<activateable>
+	<id>60</id>
+	<type>chocolatemachine</type>
+	<host>3</host>
+</activateable>
+
+<activateable>
+	<id>61</id>
+	<type>sofa</type>
+	<host>35</type>
+</activateable>
+
+<orangutan>
+	<id>62</id>
+	<host>9</host>
+</orangutan>
+
+<orangutan>
+	<id>63</id>
+	<host>42</host>
+</orangutan>
+
+</mapfile>
