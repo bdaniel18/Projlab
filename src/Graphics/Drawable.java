@@ -3,11 +3,14 @@ package Graphics;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * A FieldElementek, és a bejárat grafikus megfelelője
+ */
 public class Drawable {
-    private int id;
-    private ImageIcon icon;
-    private Vertex position;
-    private int width = 0, height = 0;
+    private int id; // az eredeti objektum idje
+    private ImageIcon icon; //  a kirajzolandó ikon
+    private Vertex position; // a kirajzolás helye
+    private int width = 0, height = 0; // a mérete
 
     public Drawable(int _id) {
         id = _id;
@@ -33,6 +36,11 @@ public class Drawable {
         width = w;
     }
 
+    /**
+     * Kirajzolódik az ikon a kapott grafikus felületre
+     *
+     * @param g a grafikus felület, amire kirajzoljuk
+     */
     public void draw(Graphics g) {
         g.drawImage(icon.getImage(), position.x, position.y, width, height, null);
     }

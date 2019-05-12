@@ -1,5 +1,8 @@
 package Graphics;
 
+/**
+ * A játékban található Drawable elemek lehetséges ikonjainak felsorolása
+ */
 public enum Icons {
     PANDA,
     ORANGUTAN,

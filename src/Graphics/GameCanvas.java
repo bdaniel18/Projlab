@@ -3,6 +3,9 @@ package Graphics;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Rajzolófelület, amire a pálya kirajzolásra kerül
+ */
 public class GameCanvas extends Canvas {
 
     private View view;
@@ -12,6 +15,11 @@ public class GameCanvas extends Canvas {
         setPreferredSize(new Dimension(1000, 880));
     }
 
+    /**
+     * Kirajzoljuk a pálya állapotát
+     *
+     * @param g a grafikus felület, amire rajzolunk
+     */
     public void paint(java.awt.Graphics g) {
         ArrayList<FieldView> fieldViews = view.getFieldViews();
         for (int i = 0; i < fieldViews.size(); i++)

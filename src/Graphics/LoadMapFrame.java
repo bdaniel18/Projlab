@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Vector;
 
+/**
+ * Egy pályát betöltő ablak
+ */
 public class LoadMapFrame extends Frame {
 
     public LoadMapFrame(View v) {
@@ -14,6 +17,9 @@ public class LoadMapFrame extends Frame {
         setTitle("Load map");
     }
 
+    /**
+     * Az ablak kirajzolódik, és visszatér, ha bezárták
+     */
     public void run() {
         // a pályafájlok listájának betöltése
         JList<String> list = new JList<>();

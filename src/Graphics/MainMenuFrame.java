@@ -4,6 +4,9 @@ package Graphics;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * A főmenü ablaka
+ */
 public class MainMenuFrame extends Frame {
 
     MainMenuFrame(View v) {
@@ -11,6 +14,10 @@ public class MainMenuFrame extends Frame {
         setTitle("Main menu");
     }
 
+    /**
+     * A főmenü kirajzolódik, és ha egy gombjára kattintunk
+     * megnyílik egy másik ablak, vagy kilépünk a játékból
+     */
     public void run() {
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));

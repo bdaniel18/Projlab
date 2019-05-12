@@ -3,11 +3,17 @@ package Graphics;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * A játék kirajzolásáért felelős ablak
+ */
 public class GameFrame extends Frame {
 
-    private GameCanvas canvas;
-    private JLabel lOrang, lPanda, lRound;
+    private GameCanvas canvas; // a vászon, amire rajzolódik a játék
+    private JLabel lOrang, lPanda, lRound; // az ablak változó címkéi
 
+    /**
+     * Frissíti a címkéket a pálya állapotától függően
+     */
     public void refreshLabels() {
         lOrang.setText("Orangutans: " + view.getGame().getFloor().getOrangutanNumber());
         lPanda.setText("Pandas: " + view.getGame().getFloor().getPandaNumber());
@@ -22,16 +28,21 @@ public class GameFrame extends Frame {
         setTitle("Game - " + view.getGame().getMapName());
     }
 
+    /**
+     * Az ablak fut
+     */
     public void run() {
         setPreferredSize(new Dimension(1050, 1050));
         canvas = new GameCanvas(view);
         panel.setPreferredSize(new Dimension(1050, 1050));
         canvas.addMouseListener(new MouseEventHandler(view));
 
+        // a játék panelja
         JPanel canvasPanel = new JPanel();
         canvasPanel.setPreferredSize(new Dimension(1000, 880));
         canvasPanel.add(canvas);
 
+        //a képernyő alján lévő címkék panelja
         JPanel pGadgets = new JPanel();
         pGadgets.setLayout(new BoxLayout(pGadgets, BoxLayout.PAGE_AXIS));
         pGadgets.setPreferredSize(new Dimension(1000, 150));
@@ -128,6 +139,11 @@ public class GameFrame extends Frame {
         }
     }
 
+    /**
+     * Az ablak kirajzolódik, és a vásznon kirajzoltatja a pálya állapotát
+     *
+     * @param g a grafikus felület, amire rajzol
+     */
     public void paint(Graphics g) {
         super.paint(g);
         if (canvas != null) canvas.repaint();

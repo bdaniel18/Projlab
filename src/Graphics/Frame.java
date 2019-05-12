@@ -5,13 +5,16 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * Ablak osztály, minden játékbeli ablak őse
+ */
 public abstract class Frame extends JFrame {
 
     protected View view;
-    protected static Object syncObject = new Object();
-    protected boolean running = true;
-    protected Thread waitingThread;
-    protected JPanel panel;
+    protected static Object syncObject = new Object(); // szálak konkurenciáját kezeli, erre lockolunk
+    protected boolean running = true; // fut- e az ablak
+    protected Thread waitingThread; // a bezárásra várakozó szál
+    protected JPanel panel; // a fő panel az ablakon
 
     public Frame(View v) {
         view = v;
@@ -48,6 +51,9 @@ public abstract class Frame extends JFrame {
         setIconImage(view.getGameIcon().getImage());
     }
 
+    /**
+     * Az ablak futtatásáért felelős függvény
+     */
     public abstract void run();
 
 

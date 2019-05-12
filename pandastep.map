@@ -72,9 +72,9 @@
 		<anterior>7</anterior>
 		<catcher>7</catcher>
 	</panda>
-	<activateable>
+	<exit>
 		<id>9</id>
-		<type>sofa</type>
+		<target>4</target>
 		<host>6</host>
-	</activateable>
+	</exit>
 </mapfile>
