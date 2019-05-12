@@ -1,7 +1,6 @@
 package Graphics;
 
-import javax.swing.JButton;
-import javax.swing.JList;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,8 +15,8 @@ public class LoadMapFrame extends Frame {
     }
 
     public void run() {
+        // a pályafájlok listájának betöltése
         JList<String> list = new JList<>();
-
         File folder = new File(System.getProperty("user.dir"));
         File[] files = folder.listFiles();
         Vector<String> maps = new Vector<>();
@@ -32,6 +31,29 @@ public class LoadMapFrame extends Frame {
             }
         }
         list.setListData(maps);
+
+
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        JPanel pList = new JPanel();
+        pList.setPreferredSize(new Dimension(350, 400));
+        JScrollPane scrollPane = new JScrollPane(list);
+        list.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 15));
+        list.setForeground(new Color(114, 40, 176));
+        scrollPane.setPreferredSize(new Dimension(340, 330));
+        pList.add(scrollPane);
+        panel.add(pList);
+
+        JPanel pDown = new JPanel();
+        JLabel logo = new JLabel();
+        Image img = view.getGameLogo().getImage();
+        double ratio = (double) img.getHeight(null) / (double) img.getWidth(null);
+        int w = 200;
+        int h = (int) (ratio * (double) w);
+        img = view.getScaledImage(img, w, h);
+        logo.setIcon(new ImageIcon(img));
+        pDown.add(logo);
 
         JButton b = new JButton();
         Frame f = this;
@@ -49,14 +71,16 @@ public class LoadMapFrame extends Frame {
                         syncObject.notifyAll();
                         f.dispose();
                     }
-
                 }
             }
         });
         b.setText("Load map");
-        b.setPreferredSize(new Dimension(100, 40));
-        panel.add(list, BorderLayout.CENTER);
-        panel.add(b, BorderLayout.SOUTH);
+        b.setPreferredSize(new Dimension(120, 30));
+        pDown.add(b);
+
+        pDown.setPreferredSize(new Dimension(360, 70));
+        panel.add(pDown);
+
         pack();
 
         waitingThread.start();

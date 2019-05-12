@@ -54,7 +54,7 @@ public class MainMenuFrame extends Frame {
         labelPanel.setPreferredSize(new Dimension(330, 40));
         JLabel l1 = new JLabel();
         l1.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 17));
-        l1.setText("Loaded map: ");
+        l1.setText("Loaded map:");
         labelPanel.add(l1);
 
         JLabel lMap = new JLabel();
