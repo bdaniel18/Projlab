@@ -2,6 +2,8 @@ package Graphics;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * A játék kirajzolásáért felelős ablak
@@ -112,6 +114,17 @@ public class GameFrame extends Frame {
         logo.setIcon(new ImageIcon(img));
         p31.add(logo, FlowLayout.LEFT);
 
+        JButton dissolve = new JButton("Dissolve");
+        dissolve.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 16));
+        dissolve.setPreferredSize(new Dimension(250, 30));
+        dissolve.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                view.getGame().dissolveCurrentOrangutan();
+            }
+        });
+        p32.add(dissolve);
+
         JButton exit = new JButton("Back to Main menu");
         exit.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 16));
         exit.setPreferredSize(new Dimension(250, 30));
@@ -141,7 +154,6 @@ public class GameFrame extends Frame {
 
     /**
      * Az ablak kirajzolódik, és a vásznon kirajzoltatja a pálya állapotát
-     *
      * @param g a grafikus felület, amire rajzol
      */
     public void paint(Graphics g) {

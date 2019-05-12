@@ -129,6 +129,7 @@ public class View {
     public void add(Field f, FieldView.Colors fc) {
         removeFieldView(f.getId());
         fieldViews.add(new FieldView(f, fc));
+        frame.repaint();
     }
 
 

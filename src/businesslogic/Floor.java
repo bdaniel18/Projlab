@@ -91,6 +91,9 @@ public class Floor {
         Game.getInstance().pushremove(p);
     }
 
+    /**
+     * Minden léptethető objektum léptethetőségét igazra állítja
+     */
     public void resetStepped() {
         for (int i = 0; i < orangutans.size(); i++) {
             orangutans.get(i).setStepped(false);

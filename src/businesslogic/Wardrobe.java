@@ -22,18 +22,6 @@ public class Wardrobe extends FieldElement {
         this.target = target;
     }
 
-    public Wardrobe getTarget() {
-        return target;
-    }
-
-    public void setTargetField(Map<Orangutan, Field> targetField) {
-        this.targetField = targetField;
-    }
-
-    public Map<Orangutan, Field> getTargetField() {
-        return targetField;
-    }
-
     /**
      * Valamelyik szomszédos szabad mezőre rakja a kapott Orangutant
      * @param o: Orangutan

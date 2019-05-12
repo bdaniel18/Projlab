@@ -59,14 +59,26 @@ public class Game {
         return gameRunning;
     }
 
+    /**
+     * visszaadja a játék eredményét, az orángutánok pontjait.
+     *
+     * @return az eredmények
+     */
     public Vector<String> getOrangutanResults() {
         Vector<String> vec = new Vector<String>();
         Vector<Orangutan> orangs = floor.getOriginalOrangutans();
+        for (int i = 0; i < orangs.size(); i++) {
+            Orangutan o = orangs.get(i);
+            vec.add("Orangutan " + o.getId() + ":  " + o.getScore() + " points");
+        }
         saveResults();
 
         return vec;
     }
 
+    /**
+     * Elmenti a dicsőséglistához az adatokat fájlba
+     */
     public void saveResults() {
         Vector<Orangutan> orangs = floor.getOriginalOrangutans();
         for (int i = 0; i < orangs.size(); i++) {
@@ -92,6 +104,7 @@ public class Game {
         }
     }
 
+
     public Orangutan getActiveOrangutan() {
         if (gameRunning) return floor.getOrangutan(currentOrangutan);
         else return null;
@@ -105,6 +118,10 @@ public class Game {
         this.view = view;
     }
 
+    /**
+     * Egy mezőt ad át a nézetnek
+     * @param f a mező
+     */
     public void push(Field f) {
         if (currentOrangutan >= 0 && f.getFieldElement() != null) {
             Orangutan o = floor.getOrangutan(currentOrangutan);
@@ -138,6 +155,11 @@ public class Game {
         view.add(f, FieldView.Colors.NON_FRAGILE_COLOR);
     }
 
+    /**
+     * Egy fieldelementet ad át a nézetnek
+     * @param fe a fieldelement
+     * @param ic az ikonja
+     */
     public void push(FieldElement fe, Icons ic) {
         if (fe.getField() == null) return;
         view.add(fe, ic);
@@ -147,6 +169,10 @@ public class Game {
         view.addEntrance(f);
     }
 
+    /**
+     * Egy olyan fotelt ad át a nézetnek, amiben panda ül
+     * @param s a fotel
+     */
     public void pushSofaPanda(Sofa s) {
         if (s.getField() == null) return;
         view.removeDrawable(s.getId());
@@ -154,11 +180,18 @@ public class Game {
         view.add(s, Icons.SOFAPANDA);
     }
 
+    /**
+     * Kitörli a kapott fieldelementet a nézetből
+     * @param fe a törlendő elem
+     */
     public void pushremove(FieldElement fe) {
         view.removeDrawable(fe.getId());
     }
 
 
+    /**
+     * Elindítja a játékot, inicializája a dicsőséglistát, és a nézetet
+     */
     public void startGame() {
         currentOrangutan = 0;
         gameRunning = true;
@@ -194,7 +227,6 @@ public class Game {
             currentOrangutan += 1;
             if (currentOrangutan >= floor.getOrangutanNumber()) {
                 currentOrangutan = 0;
-                saveResults();
                 floor.newTurn();
             }
             for (int i = 0; i < floor.getFieldCount(); i++) {
@@ -211,6 +243,23 @@ public class Game {
             return true;
         }
         return false;
+    }
+
+    /**
+     * A soron lévő orángután elengedi a mögötte álló kezét
+     */
+    public void dissolveCurrentOrangutan() {
+        ArrayList<Panda> followers = new ArrayList<>();
+        Panda p = floor.getOrangutan(currentOrangutan).getFollower();
+        while (p != null) {
+            followers.add(p);
+            p = p.getFollower();
+        }
+        floor.getOrangutan(currentOrangutan).dissolve();
+
+        for (int i = 0; i < followers.size(); i++) {
+            push(followers.get(i).getField());
+        }
     }
 
 

@@ -17,9 +17,6 @@ public class Orangutan extends Steppable {
         stepsLeft = 0; //default
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
     public void setStepsLeft(int i){
         stepsLeft = i;
     }

@@ -56,7 +56,7 @@ public class MainMenuFrame extends Frame {
         pStart.setPreferredSize(new Dimension(330, 60));
         JButton bStart = new JButton();
         bStart.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
-        bStart.setText("Start new game");
+        bStart.setText("Start game");
         bStart.setPreferredSize(new Dimension(330, 50));
         bStart.addActionListener(new ButtonListener(Options.NEWGAME, this));
         pStart.setAlignmentX(Component.CENTER_ALIGNMENT);
