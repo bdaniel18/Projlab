@@ -170,10 +170,10 @@ public class View {
                 int id = fw.getId();
                 if (game.stepOrangutan(id)) {
                     GameEndDialog dialog = new GameEndDialog(frame, game.getGameWon(), game.getOrangutanResults());
-
                 }
             }
         }
+        ((GameFrame) frame).refreshLabels();
     }
 
 

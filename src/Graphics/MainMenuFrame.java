@@ -3,8 +3,6 @@ package Graphics;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MainMenuFrame extends Frame {
 
@@ -12,29 +10,6 @@ public class MainMenuFrame extends Frame {
         super(v);
         setTitle("Main menu");
     }
-
-    /**
-     * A Menu egy gombjára való kattintást figyeli
-     */
-    public class ButtonListener implements ActionListener {
-        Options opt;
-        Frame frame;
-
-        public ButtonListener(Options o, Frame f) {
-            opt = o;
-            frame = f;
-        }
-
-        public void actionPerformed(ActionEvent e) {
-            view.setNextFrame(opt);
-            synchronized (syncObject) {
-                running = false;
-                syncObject.notifyAll();
-                frame.dispose();
-            }
-        }
-    }
-
 
     public void run() {
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -73,6 +48,7 @@ public class MainMenuFrame extends Frame {
         JPanel pStart = new JPanel();
         pStart.setPreferredSize(new Dimension(330, 60));
         JButton bStart = new JButton();
+        bStart.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         bStart.setText("Start new game");
         bStart.setPreferredSize(new Dimension(330, 50));
         bStart.addActionListener(new ButtonListener(Options.NEWGAME, this));
@@ -83,6 +59,7 @@ public class MainMenuFrame extends Frame {
         JPanel pLeaderb = new JPanel();
         pLeaderb.setPreferredSize(new Dimension(330, 60));
         JButton bLeaderb = new JButton();
+        bLeaderb.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         bLeaderb.setText("Leaderboard");
         bLeaderb.setPreferredSize(new Dimension(330, 50));
         bLeaderb.addActionListener(new ButtonListener(Options.LEADERBOARD, this));
@@ -93,6 +70,7 @@ public class MainMenuFrame extends Frame {
         JPanel pLoad = new JPanel();
         pLoad.setPreferredSize(new Dimension(330, 60));
         JButton bLoad = new JButton();
+        bLoad.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         bLoad.setText("Load map");
         bLoad.setPreferredSize(new Dimension(330, 50));
         bLoad.addActionListener(new ButtonListener(Options.LOAD, this));
@@ -104,6 +82,7 @@ public class MainMenuFrame extends Frame {
         JPanel pExit = new JPanel();
         pExit.setPreferredSize(new Dimension(330, 60));
         JButton bExit = new JButton();
+        bExit.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         bExit.setText("Exit the game");
         bExit.setPreferredSize(new Dimension(330, 50));
         bExit.addActionListener(new ButtonListener(null, this));
