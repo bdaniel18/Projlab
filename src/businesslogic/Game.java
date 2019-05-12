@@ -7,6 +7,7 @@ import Graphics.View;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Vector;
 
 /**
  * A játék osztály, felelős a játék indításáért és befejezésért.
@@ -54,6 +55,16 @@ public class Game {
 
     public boolean getGameRunning() {
         return gameRunning;
+    }
+
+    public Vector<String> getOrangutanResults() {
+        Vector<String> vec = new Vector<String>();
+        Vector<Orangutan> orangs = floor.getOriginalOrangutans();
+        for (int i = 0; i < orangs.size(); i++) {
+            Orangutan o = orangs.get(i);
+            vec.add("Orangutan " + o.getId() + ":  " + o.getScore() + " points");
+        }
+        return vec;
     }
 
 

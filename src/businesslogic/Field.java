@@ -112,6 +112,7 @@ public class Field {
     public boolean accept(Steppable st) {
         if (st.isStepped()) return false;
         if(fieldElement != null){
+            System.out.println(fieldElement.getId());
             if (st.collideWith(fieldElement)) { // a lépés sikeres
                 if (!st.isStepped()) {
                     st.printStepped(this);
@@ -150,7 +151,10 @@ public class Field {
      * Paraméterként kapja, hogy hova és mit kell mozgatni
      */
     public boolean moveTo(Field f, Steppable st) {
-        if (!isNeighbour(f)) return false;
+        if (!isNeighbour(f)) {
+            System.out.println("Not Neighbours with target");
+            return false;
+        }
         if(f.accept(st)){
             remove(st);
             return true;

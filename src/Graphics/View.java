@@ -7,6 +7,7 @@ import businesslogic.Game;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +27,7 @@ public class View {
         icons.put(Icons.SOFAPANDA, loadIcon("sofapanda.png"));
 
         gameIcon = loadIcon("icon.png");
+        gameLogo = loadIcon("logo.png");
 
     }
 
@@ -38,6 +40,7 @@ public class View {
 
     private Map<Icons, ImageIcon> icons = new HashMap<>();
     private ImageIcon gameIcon;
+    private ImageIcon gameLogo;
 
     public void setNextFrame(Options o) {
         nextFrame = o;
@@ -67,6 +70,29 @@ public class View {
 
     public ImageIcon getGameIcon() {
         return gameIcon;
+    }
+
+    public ImageIcon getGameLogo() {
+        return gameLogo;
+    }
+
+    /**
+     * Átméretez egy képet a kért értékre
+     *
+     * @param srcImg
+     * @param w
+     * @param h
+     * @return
+     */
+    public Image getScaledImage(Image srcImg, int w, int h) {
+        BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = resizedImg.createGraphics();
+
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(srcImg, 0, 0, w, h, null);
+        g2.dispose();
+
+        return resizedImg;
     }
 
     public void removeFieldView(int id) {
@@ -143,9 +169,8 @@ public class View {
             if (poly.contains(x, y)) {
                 int id = fw.getId();
                 if (game.stepOrangutan(id)) {
-                    JDialog dialog = new JDialog(frame, "Game End", true);
-                    dialog.setVisible(true);
-                    //TODO dialog
+                    GameEndDialog dialog = new GameEndDialog(frame, game.getGameWon(), game.getOrangutanResults());
+
                 }
             }
         }

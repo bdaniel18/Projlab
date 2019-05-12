@@ -5,7 +5,8 @@
 	</map>
 	<field>
 		<id>2</id>
-		<fragile>0</fragile>
+		<fragile>1</fragile>
+		<durability>2</durability>
 		<neighbour>3</neighbour>
 		<neighbour>4</neighbour>
 		<neighbour>5</neighbour>

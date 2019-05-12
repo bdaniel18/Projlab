@@ -12,7 +12,7 @@ public class FieldView {
     private ArrayList<Vertex> vertices;
     private int id;
     private Color color;
-    private Color borderColor = Color.BLUE;
+    private static Color borderColor = new Color(0, 0, 110);
 
     public enum Colors {
         FRAGILE_COLOR,
@@ -24,7 +24,7 @@ public class FieldView {
 
     private static final Color FRAGILE_COLOR = new Color(147, 177, 130),
             NON_FRAGILE_COLOR = new Color(128, 177, 205),
-            BROKEN_COLOR = Color.BLUE,
+            BROKEN_COLOR = borderColor,
             TO_STEP_COLOR = new Color(255, 255, 110),
             TO_STEP_FOLLOWER_COLOR = new Color(255, 127, 80);
 
