@@ -1,6 +1,6 @@
 <mapfile>
 <map>
-    <id>1001 </id>
+    <id>1001</id>
    <name>First Map</name>
 </map>
 <field>
@@ -546,11 +546,8 @@
 <id>42</id>
     <fragile>0</fragile>
     <neighbour>41</neighbour>
-<<<<<<< HEAD
-=======
     <neighbour>40</neighbour>
     <neighbour>39</neighbour>
->>>>>>> origin/development
     <neighbour>43</neighbour>
     <neighbour>54</neighbour>
                 <coords>844,21</coords>
