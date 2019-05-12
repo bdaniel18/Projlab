@@ -20,7 +20,7 @@ public class LeaderBoardFrame extends Frame {
 
         try {
             File leaderBoardFile = new File("leaderboard.txt");
-            Scanner sc = new Scanner(leaderBoardFile).useDelimiter("\\s*");
+            Scanner sc = new Scanner(leaderBoardFile).useDelimiter("\\D+");
 
             for(int i = 0; i < 5; i++) {
                 labels[i] = new JLabel();
