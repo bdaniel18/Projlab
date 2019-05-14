@@ -112,7 +112,6 @@ public class Field {
     public boolean accept(Steppable st) {
         if (st.isStepped()) return false;
         if(fieldElement != null){
-            System.out.println(fieldElement.getId());
             if (st.collideWith(fieldElement)) { // a lépés sikeres
                 if (!st.isStepped()) {
                     st.printStepped(this);

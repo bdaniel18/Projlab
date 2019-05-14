@@ -27,6 +27,7 @@ public class Game {
     private boolean gameRunning = false;
     private int[][] leaderBoard;
 
+
     private Game(){
         floor = null;
     }
@@ -224,14 +225,7 @@ public class Game {
     public boolean stepOrangutan(int fieldId) {
         Field f = floor.getFieldforId(fieldId);
         if (floor.getOrangutan(currentOrangutan).step(f)) {
-            currentOrangutan += 1;
-            if (currentOrangutan >= floor.getOrangutanNumber()) {
-                currentOrangutan = 0;
-                floor.newTurn();
-            }
-            for (int i = 0; i < floor.getFieldCount(); i++) {
-                push(floor.getField(i));
-            }
+            incrementCurrentOrangutan();
         }
         if (floor.getOrangutanNumber() == 0) {
             gameWon = false;
@@ -243,6 +237,28 @@ public class Game {
             return true;
         }
         return false;
+    }
+
+    /**
+     * A következő orángután köre következik,
+     * ha mindenki lépett már, új kör jön
+     */
+    private void incrementCurrentOrangutan() {
+        currentOrangutan += 1;
+        if (currentOrangutan >= floor.getOrangutanNumber()) {
+            currentOrangutan = 0;
+            floor.newTurn();
+        }
+        for (int i = 0; i < floor.getFieldCount(); i++) {
+            push(floor.getField(i));
+        }
+    }
+
+    /**
+     * A soron lévő orángután lemond a lépés jogáról.
+     */
+    public void passTurn() {
+        incrementCurrentOrangutan();
     }
 
     /**

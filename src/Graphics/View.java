@@ -81,7 +81,7 @@ public class View {
     }
 
     /**
-     * Átméretez egy képet a kért értékre
+     * Atmeretez egy kepet a kert ertekre
      * @param srcImg a forráskép
      * @param w kért szélesség
      * @param h kért magasság

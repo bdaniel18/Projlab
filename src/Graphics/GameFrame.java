@@ -116,7 +116,7 @@ public class GameFrame extends Frame {
 
         JButton dissolve = new JButton("Dissolve");
         dissolve.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 16));
-        dissolve.setPreferredSize(new Dimension(250, 30));
+        dissolve.setPreferredSize(new Dimension(150, 30));
         dissolve.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -124,6 +124,17 @@ public class GameFrame extends Frame {
             }
         });
         p32.add(dissolve);
+
+        JButton passturn = new JButton("Pass Turn");
+        passturn.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 16));
+        passturn.setPreferredSize(new Dimension(150, 30));
+        passturn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                view.getGame().passTurn();
+            }
+        });
+        p32.add(passturn);
 
         JButton exit = new JButton("Back to Main menu");
         exit.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 16));
