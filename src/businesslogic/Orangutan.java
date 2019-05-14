@@ -111,7 +111,6 @@ public class Orangutan extends Steppable {
     public boolean step(Field f){
         if (isStepped()) return false;
         if(getField().moveTo(f, this)){
-            System.out.println(getField().getId());
             if(stepsLeft > 0){
                 stepsLeft -=1;
             }
@@ -140,7 +139,6 @@ public class Orangutan extends Steppable {
             setStepped(false); // ha már lépett a körben, akkor is helyet cserélnek
             getField().moveTo(temp, this);
             Game.getInstance().push(this, Icons.ORANGUTAN);
-            System.out.println(getField().getId());
 
             getFollower().setCatcher(o);
             getFollower().setAnterior(o);

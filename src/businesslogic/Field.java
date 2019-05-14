@@ -151,7 +151,6 @@ public class Field {
      */
     public boolean moveTo(Field f, Steppable st) {
         if (!isNeighbour(f)) {
-            System.out.println("Not Neighbours with target");
             return false;
         }
         if(f.accept(st)){
