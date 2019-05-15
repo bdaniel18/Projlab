@@ -36,6 +36,7 @@ public class Exit extends FieldElement {
      */
     @Override
     public boolean hitBy(Orangutan o) {
+        if (entrance.getFieldElement() != null) return false;
         if(entrance.accept(o)){
             if(o.getFollower() != null)
                 o.getFollower().exitReached();

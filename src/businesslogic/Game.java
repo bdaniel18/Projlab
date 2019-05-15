@@ -124,7 +124,7 @@ public class Game {
      * @param f a mező
      */
     public void push(Field f) {
-        if (currentOrangutan >= 0 && f.getFieldElement() != null) {
+        if (currentOrangutan >= 0 && floor.getOrangutanNumber() > 0 && f.getFieldElement() != null) {
             Orangutan o = floor.getOrangutan(currentOrangutan);
             if (f.getFieldElement().getId() == o.getId()) {
                 view.add(f, FieldView.Colors.TO_STEP_COLOR);

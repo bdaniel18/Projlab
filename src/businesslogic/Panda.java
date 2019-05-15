@@ -82,6 +82,8 @@ public abstract  class Panda extends Steppable {
             }
             setLastSteppedOn(f);
             Game.getInstance().push(this, Icons.PANDA);
+
+            return true;
         }
         return false;
     }
