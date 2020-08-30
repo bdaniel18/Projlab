@@ -1,7 +1,8 @@
 package businesslogic;
 
-import test.DepthWriter;
+import Graphics.Icons;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -13,109 +14,101 @@ public abstract  class Panda extends Steppable {
     private Orangutan catcher;
 
     public Panda() {
-        DepthWriter.add();
-        DepthWriter.print("Panda CTOR");
-        DepthWriter.reduce();
         floor = null;
         catcher = null;
     }
 
     public void setFloor(Floor floor) {
-        DepthWriter.add();
-        DepthWriter.print("Panda.setFloor()");
-        DepthWriter.reduce();
         this.floor = floor;
     }
 
     public Floor getFloor() {
-        DepthWriter.add();
-        DepthWriter.print("Panda.getFloor()");
-        DepthWriter.reduce();
         return floor;
     }
 
-    public void setCatcher(Orangutan catcher) {
-        DepthWriter.add();
-        DepthWriter.print("Panda.setCatcher()");
-        DepthWriter.reduce();
-        this.catcher = catcher;
+    public void setCatcher(Orangutan _catcher) {
+        if (catcher != null && _catcher == null) {
+            System.out.println("MESSAGE: Orangutan " + catcher.getId() + " lost Panda " + getId() + ".");
+        }
+        this.catcher = _catcher;
     }
 
     public Orangutan getCatcher() {
-        DepthWriter.add();
-        DepthWriter.print("Panda.getCatcher()");
-        DepthWriter.reduce();
         return catcher;
     }
 
-    /** A szabad pandak random mezőre lépnek
-     *
+    /**
+     * A szabad panda random mezőre lép
      */
     public void step() {
-        DepthWriter.add();
-        DepthWriter.print("Panda.step()");
-        DepthWriter.reduce();
-
-        /**
-         * Létrehoz egy random számot 0-10-ig
-         */
+        if (getField() == null || catcher != null) return;
         Random rand = new Random();
-        int n = rand.nextInt(10);
+        ArrayList<Field> options = new ArrayList<Field>();
 
-        /**
-         * Leellenőrzi, hogy a generált randomszámnak megfelelő szomszéd létezik e
-         */
-        while(getField().getNeighbour(n) == null) {
-            n = rand.nextInt(10);
+        for (int i = 0; i < getField().getNeighbourNumber(); i++) {
+            options.add(getField().getNeighbour(i)); // feltöltjük a szomszédos mezők tömbjét
         }
-        this.step(getField().getNeighbour(n));
+
+        while (options.size() > 0) { // próbál lépni egy mezőre, ha sikertelen kiveszi a tömbből.
+            int r = rand.nextInt(options.size());
+            if (step(options.get(r))) return;
+            options.remove(r);
+        }
     }
 
-    /**A pandát kivezette egy Orangutan a kijáraton így az megszünik( előtte még ad egy pontot az Orangutannak)
-     *
+    /**
+     * A pandát kivezette egy Orángután a kijáraton így az megszünik,
+     * ad egy pontot az Orangutannak
      */
-
     public void exitReached() {
-        DepthWriter.add();
-        DepthWriter.print("Panda.exitReached()");
-
+        System.out.println("MESSAGE: Panda " + getId() + " exited.");
         getCatcher().incScore();
         if(getFollower() != null){
             getFollower().exitReached();
         }
         die();
-        DepthWriter.reduce();
     }
 
-    /**A panda egy Orangutannal ütközött így az elfogja
-     *
+    /**
+     * A panda lép a kapott mezőre
+     * @param f: Field
+     * @return sikeres lépés volt-e
+     */
+    @Override
+    public boolean step(Field f) {
+        if (getField().moveTo(f, this)) {
+            if (getFollower() != null) {
+                getFollower().step(getLastSteppedOn());
+            }
+            setLastSteppedOn(f);
+            Game.getInstance().push(this, Icons.PANDA);
+
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * A panda egy Orangutannal ütközött így az elfogja
      * @param o: Orangutan
-     * @return boolean
+     * @return az ütközés kimenetele
      */
     @Override
     public boolean hitBy(Orangutan o) {
-        DepthWriter.add();
-        DepthWriter.print("Panda.hitBy()");
-        if(catcher == null){
-            DepthWriter.add();
+        if(o.getStepsLeft() == 0 && catcher == null){
             o.caught(this);
-            DepthWriter.reduce();
             return true;
         }
-        DepthWriter.reduce();
-        return false; //default return value
+        return false;
     }
 
     /**
      * A panda ütközik egy másik pandával, ezért nem tud oda lépni
-     * @param p
-     * @return
+     * @param p Panda
+     * @return mindig hamis
      */
     @Override
     public boolean hitBy(Panda p){
-        DepthWriter.add();
-        DepthWriter.print("Panda.hitBy()");
-        DepthWriter.reduce();
         return false;
     }
 
@@ -123,26 +116,23 @@ public abstract  class Panda extends Steppable {
      * A panda elengedi a követője kezét(ha van) illetve az őt vezető kezét is.
      */
     public void releaseBoth() {
-        DepthWriter.add();
-        DepthWriter.print("Panda.releaseBoth()");
-        catcher = null;
+        setCatcher(null);
+        if (getAnterior() != null) getAnterior().setFollower(null);
+        setAnterior(null);
         if(getFollower() != null)
             getFollower().releaseBoth();
-        DepthWriter.reduce();
+        setFollower(null);
     }
 
     /**
      * A paraméterként kapott FieldElement hitBy függvénnyel közli a Panda,
      * hogy ütköztek és a visszatérési értéket továbbadja a hívónak
-     * @param fe: Field
-     * @return boolean
+     * @param fe: vele történt ütközés
+     * @return az ütközés kimenetele
      */
     @Override
-    public  boolean  collideWith(FieldElement fe){
-        DepthWriter.add();
-        DepthWriter.print("Panda.collideWith()");
+    public boolean collideWith(FieldElement fe){
         boolean temp = fe.hitBy(this);
-        DepthWriter.reduce();
         return temp;
     }
 
@@ -151,12 +141,25 @@ public abstract  class Panda extends Steppable {
      */
     @Override
     public void die() {
-        DepthWriter.add();
-        DepthWriter.print("Panda.die()");
-        if (getFollower() != null) {
-            getFollower().releaseBoth();
-        }
+        System.out.println("MESSAGE: Panda " + getId() + " died.");
+        setCatcher(null);
+        releaseBoth();
+        getField().remove(this);
+        setField(null);
         getFloor().remove(this);
-        DepthWriter.reduce();
+    }
+
+    public abstract String toString();
+
+    @Override
+    public void printStepped(Field f) {
+        System.out.println("MESSAGE: Panda " + getId() + " stepped to Field " + f.getId() + ".");
+    }
+
+    /**
+     * Ha egy panda alszik, vagy felébred állítani kell a változót
+     * csak SleepyPanda esetén kell felüldefiniálni
+     */
+    public void sleptThisTurn() {
     }
 }

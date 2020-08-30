@@ -1,16 +1,11 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 /**
  * Játékgép, néha sípol és megijeszti a szomszédok cellákon állókat
  */
 public class GamblingMachine extends Activateable {
 
     public GamblingMachine() {
-        DepthWriter.add();
-        DepthWriter.print("GamblingMachine CTOR");
-        DepthWriter.reduce();
     }
 
     /**
@@ -18,11 +13,13 @@ public class GamblingMachine extends Activateable {
      * Random szám alapján aktiválódik és fejti ki hatását
      */
     public void activate() {
-        DepthWriter.add();
-        DepthWriter.print("GamblingMachine.activate()");
+        if(random()) {
+            System.out.println("MESSAGE: Activateable " + getId() + "(GamblingMachine) was activated.");
+            getField().scareNeighbours();
+        }
+    }
 
-        random();
-        getField().scareNeighbours();
-        DepthWriter.reduce();
+    public String toString() {
+        return "Activateable " + getId() + ",type: GamblingMachine, host ID: " + getField().getId();
     }
 }

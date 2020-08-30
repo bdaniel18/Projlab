@@ -1,27 +1,23 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 /**
- * Csokoládéautomata, néha aktiválódik, ilyenkor sípol.
+ * Csokoládéautomata. Néha aktiválódik, ilyenkor sípol.
  */
 public class ChocolateMachine extends Activateable {
 
     public ChocolateMachine() {
-        DepthWriter.add();
-        DepthWriter.print("ChocolateMachine CTOR");
-        DepthWriter.reduce();
     }
-
     /**
-     * Az automata sípol, amit jelez a mezőjének.
+     * Az automata aktiválódik(sípol), amit jelez a mezőjének.
      */
     public void activate() {
-        DepthWriter.add();
-        DepthWriter.print("ChocolateMachine.activate()");
+        if(random()) {
+            System.out.println("MESSAGE: Activateable " + getId() + "(ChocolateMachine) was activated.");
+            getField().jumpNeighbours();
+        }
+    }
 
-        random();
-        getField().jumpNeighbours();
-        DepthWriter.reduce();
+    public String toString() {
+        return "Activateable " + getId() + ",type: ChocolateMachine, host ID: " + getField().getId();
     }
 }

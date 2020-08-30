@@ -1,9 +1,8 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 /**
  * Az emelet osztály, tárolja a pálya mezőit, és az elemeket, amik minden körben
@@ -16,43 +15,44 @@ public class Floor {
     private List<Orangutan> orangutans; // a pálya orángutánjai
     private List<Panda> pandas; // a pálya pandái
 
-    /**
-     * Konstruktor, inicializálja a listákat
-     */
-    public Floor(){
-        DepthWriter.add();
-        DepthWriter.print("Floor CTOR");
-        fields = new ArrayList<Field>();
-        activateables = new ArrayList<Activateable>();
-        orangutans = new ArrayList<Orangutan>();
-        pandas = new ArrayList<Panda>();
+    private Vector<Orangutan> originalOrangutans = new Vector<>();
 
-        DepthWriter.reduce();
+    public Floor(){
+        fields = new ArrayList<>();
+        activateables = new ArrayList<>();
+        orangutans = new ArrayList<>();
+        pandas = new ArrayList<>();
+    }
+
+    public Orangutan getOrangutan(int i) {
+        return orangutans.get(i);
+    }
+
+    public int getOrangutanNumber() {
+        return orangutans.size();
+    }
+
+    public int getPandaNumber() {
+        return pandas.size();
+    }
+
+    public Vector<Orangutan> getOriginalOrangutans() {
+        return originalOrangutans;
     }
 
     /**
      * Egy mezőt ad a pályához.
-     *
      * @param f Field
      */
     public void addField(Field f){
-        DepthWriter.add();
-        DepthWriter.print("Floor.addField()");
-        DepthWriter.reduce();
-
         fields.add(f);
     }
 
     /**
      * Egy Activeablet ad a pályához
-     *
      * @param a Aktiválható elem
      */
     public void add(Activateable a) {
-        DepthWriter.add();
-        DepthWriter.print("Floor.add()");
-        DepthWriter.reduce();
-
         activateables.add(a);
     }
 
@@ -61,11 +61,8 @@ public class Floor {
      * @param o Orángután
      */
     public void add(Orangutan o){
-        DepthWriter.add();
-        DepthWriter.print("Floor.add()");
-        DepthWriter.reduce();
-
         orangutans.add(o);
+        originalOrangutans.add(o);
     }
 
     /**
@@ -73,10 +70,6 @@ public class Floor {
      * @param p Panda
      */
     public void add(Panda p){
-        DepthWriter.add();
-        DepthWriter.print("Floor.add()");
-        DepthWriter.reduce();
-
         pandas.add(p);
     }
 
@@ -85,11 +78,8 @@ public class Floor {
      * @param o az eltávolítandó orángután.
      */
     public void remove (Orangutan o){
-        DepthWriter.add();
-        DepthWriter.print("Floor.remove()");
-        DepthWriter.reduce();
-
         orangutans.remove(o);
+        Game.getInstance().pushremove(o);
     }
 
     /**
@@ -97,11 +87,36 @@ public class Floor {
      * @param p az eltávolítandó panda
      */
     public void remove (Panda p){
-        DepthWriter.add();
-        DepthWriter.print("Floor.remove()");
-        DepthWriter.reduce();
-
         pandas.remove(p);
+        Game.getInstance().pushremove(p);
+    }
+
+    /**
+     * Minden léptethető objektum léptethetőségét igazra állítja
+     */
+    public void resetStepped() {
+        for (int i = 0; i < orangutans.size(); i++) {
+            orangutans.get(i).setStepped(false);
+        }
+        for (int i = 0; i < pandas.size(); i++) {
+            pandas.get(i).setStepped(false);
+        }
+    }
+
+    public Field getField(int i) {
+        return fields.get(i);
+    }
+
+    public int getFieldCount() {
+        return fields.size();
+    }
+
+    public Field getFieldforId(int id) {
+        for (int i = 0; i < fields.size(); i++) {
+            Field f = fields.get(i);
+            if (f.getId() == id) return f;
+        }
+        return null;
     }
 
     /**
@@ -109,31 +124,15 @@ public class Floor {
      * az activate() függvénye
      */
     public void newTurn() {
-        DepthWriter.add();
-        DepthWriter.print("Floor.newTurn()");
-
-
-        DepthWriter.reduce();
-
-        if(orangutans.size() != 0) orangutans.get(0).setStepped(false);
-        if(pandas.size() != 0) {
-            pandas.get(0).setStepped(false);
-            pandas.get(0).step();
+        System.out.println("MESSAGE: Round of pandas.");
+        for (int i = 0; i < pandas.size(); i++) {
+            Panda p = pandas.get(i);
+            if (!p.isStepped() && p.getField() != null) p.step();
         }
-
-        if(activateables.size() != 0) activateables.get(0).activate();
+        resetStepped();
+        for (int i = 0; i < activateables.size(); i++)
+            activateables.get(i).activate();
     }
 
-    /**
-     * Várunk, hogy a felhasználó léptesse az adott orángutánt.
-     * @param o Orángután
-     * @return a mező, amire lépett
-     */
-    public Field waitForStep(Orangutan o){
-        DepthWriter.add();
-        DepthWriter.print("Floor.waitForStep()");
-        DepthWriter.reduce();
-        return  null; //default return value
-    }
 
 }

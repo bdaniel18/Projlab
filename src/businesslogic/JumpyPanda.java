@@ -1,26 +1,16 @@
 package businesslogic;
 
-import test.DepthWriter;
-
 /**
  * Olyan panda, ami a csokiautomata sípolásától ugrik egyet.
  */
 public class JumpyPanda extends Panda{
 
     public JumpyPanda(){
-        DepthWriter.add();
-        DepthWriter.print("JumpyPanda CTOR");
-        DepthWriter.reduce();
     }
-
     /**
      * Csokiautomata aktiválódott szomszédos mezőn.
      */
     public void cmActivated(){
-        DepthWriter.add();
-        DepthWriter.print("JumpyPanda.cmActivated()");
-        DepthWriter.reduce();
-
         jump();
     }
 
@@ -28,10 +18,13 @@ public class JumpyPanda extends Panda{
      * A panda ugrik egyet.
      */
     private void jump(){
-        DepthWriter.add();
-        DepthWriter.print("JumpyPanda.jump()");
-        DepthWriter.reduce();
-
         getField().pandaJumped(this);
+    }
+
+    /**
+     * @return Visszaadja az objektum tulajdonságait stringként.
+     */
+    public String toString() {
+        return "Panda " + getId() + ", type: jumpy" + ", host ID:" + getField().getId();
     }
 }
